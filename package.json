@@ -1,0 +1,36 @@
+{
+  "name": "disqus-node",
+  "version": "0.0.0",
+  "description": "Disqus API bindings for NodeJS http://disqus.com/api/",
+  "main": "lib/index.js",
+  "bin": {
+    "disqus": "./bin/disqus"
+  },
+  "scripts": {
+    "test": "node node_modules/grunt-cli/bin/grunt test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/jmdobry/disqus-node.git"
+  },
+  "keywords": [
+    "disqus"
+  ],
+  "author": "Jason Dobry <jason.dobry@gmail.com> (http://www.pseudobry.com/)",
+  "license": "Apachev2",
+  "bugs": {
+    "url": "https://github.com/jmdobry/disqus-node/issues"
+  },
+  "homepage": "https://github.com/jmdobry/disqus-node",
+  "dependencies": {
+    "bluebird": "^1.2.2",
+    "request": "^2.34.0",
+    "commander": "^2.2.0"
+  },
+  "devDependencies": {
+    "grunt-bump": "0.0.13",
+    "grunt-cli": "^0.1.13",
+    "grunt": "^0.4.4",
+    "grunt-contrib-jshint": "^0.10.0"
+  }
+}

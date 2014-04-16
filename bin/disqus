@@ -1,0 +1,5 @@
+#!/usr/bin/env node
+
+var disqus = require('../lib/cli');
+
+disqus.parse(process.argv.slice(0, 3), process.argv.slice(3));

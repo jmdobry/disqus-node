@@ -1,7 +1,7 @@
 {
   "name": "disqus-node",
-  "version": "0.0.0",
-  "description": "Disqus API bindings for NodeJS http://disqus.com/api/",
+  "version": "0.0.1",
+  "description": "Disqus API bindings and CLI for NodeJS http://disqus.com/api/",
   "main": "lib/index.js",
   "bin": {
     "disqus": "./bin/disqus"
@@ -16,8 +16,14 @@
   "keywords": [
     "disqus"
   ],
+  "readmeFilename": "README.md",
   "author": "Jason Dobry <jason.dobry@gmail.com> (http://www.pseudobry.com/)",
-  "license": "Apachev2",
+  "licenses": [
+    {
+      "type": "Apachev2",
+      "url": "https://github.com/jmdobry/disqus-node/blob/master/LICENSE"
+    }
+  ],
   "bugs": {
     "url": "https://github.com/jmdobry/disqus-node/issues"
   },
@@ -25,12 +31,18 @@
   "dependencies": {
     "bluebird": "^1.2.2",
     "request": "^2.34.0",
-    "commander": "^2.2.0"
+    "commander": "^2.2.0",
+    "log": "^1.4.0"
   },
   "devDependencies": {
     "grunt-bump": "0.0.13",
     "grunt-cli": "^0.1.13",
     "grunt": "^0.4.4",
-    "grunt-contrib-jshint": "^0.10.0"
+    "grunt-contrib-jshint": "^0.10.0",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-groc": "^0.4.5",
+    "time-grunt": "^0.3.1",
+    "load-grunt-tasks": "^0.4.0",
+    "grunt-contrib-clean": "^0.5.0"
   }
 }

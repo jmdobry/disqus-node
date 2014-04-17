@@ -1,0 +1,32 @@
+<!DOCTYPE html><html lang="en"><head><title>lib/cli/exports</title></head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"><meta name="groc-relative-root" content="../../"><meta name="groc-document-path" content="lib/cli/exports"><meta name="groc-project-path" content="lib/cli/exports.js"><link rel="stylesheet" type="text/css" media="all" href="../../assets/style.css"><script type="text/javascript" src="../../assets/behavior.js"></script><body><div id="meta"><div class="file-path">lib/cli/exports.js</div></div><div id="document"><div class="segment"><div class="comments "><div class="wrapper"><p><a href="../index.html">Up one level</a></p>
+
+<h3 id="exports-cli">Exports CLI</h3>
+
+<p>See also <a href="../api/exports.html">Exports API</a></p></div></div><div class="code"><div class="wrapper"><span class="kd">var</span> <span class="nx">commander</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;commander&#39;</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">exports</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">commander</span><span class="p">.</span><span class="nx">Command</span><span class="p">(</span><span class="s1">&#39;disqus exports&#39;</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">Disqus</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;../&#39;</span><span class="p">);</span>
+
+<span class="nx">exports</span>
+  <span class="p">.</span><span class="nx">usage</span><span class="p">(</span><span class="s1">&#39;&lt;cmd&gt; [options] [args]&#39;</span><span class="p">);</span>
+
+<span class="nx">exports</span>
+  <span class="p">.</span><span class="nx">command</span><span class="p">(</span><span class="s1">&#39;exportForum &lt;forumId&gt;&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">description</span><span class="p">(</span><span class="s1">&#39;Adds an entry to the blacklist.&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-d --domain [array]&#39;</span><span class="p">,</span> <span class="s1">&#39;Domain Name. Defaults to [].&#39;</span><span class="p">,</span> <span class="p">[])</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-e --email [array]&#39;</span><span class="p">,</span> <span class="s1">&#39;Email address (defined by RFC 5322). Defaults to [].&#39;</span><span class="p">,</span> <span class="p">[])</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-h --https [boolean]&#39;</span><span class="p">,</span> <span class="s1">&#39;Whether to use https. Defaults to true.&#39;</span><span class="p">,</span> <span class="kc">true</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-i --ip [array]&#39;</span><span class="p">,</span> <span class="s1">&#39;IP address in CIDR notation. Defaults to [].&#39;</span><span class="p">,</span> <span class="p">[])</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-n --notes [string]&#39;</span><span class="p">,</span> <span class="s1">&#39;Maximum length of 50. Defaults to &quot;&quot;.&#39;</span><span class="p">,</span> <span class="p">[])</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-r --retroactive [boolean]&#39;</span><span class="p">,</span> <span class="s1">&#39;Defaults to false.&#39;</span><span class="p">,</span> <span class="kc">false</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-u --user [array]&#39;</span><span class="p">,</span> <span class="s1">&#39;Looks up a user by ID. You may look up a user by username using the &quot;username&quot; query type. Defaults to [].&#39;</span><span class="p">,</span> <span class="p">[])</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-w --word [array]&#39;</span><span class="p">,</span> <span class="s1">&#39;Maximum length of 200. Defaults to [].&#39;</span><span class="p">,</span> <span class="p">[])</span>
+  <span class="p">.</span><span class="nx">action</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">forumId</span><span class="p">,</span> <span class="nx">options</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;disqus exports exportForum&#39;</span><span class="p">,</span> <span class="nx">forumId</span><span class="p">,</span> <span class="nx">options</span><span class="p">);</span>
+    <span class="kd">var</span> <span class="nx">disqus</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Disqus</span><span class="p">({</span>
+      <span class="nx">https</span><span class="o">:</span> <span class="o">!!</span><span class="nx">options</span><span class="p">.</span><span class="nx">https</span>
+    <span class="p">});</span>
+    <span class="nx">options</span><span class="p">.</span><span class="nx">forumId</span> <span class="o">=</span> <span class="nx">forumId</span><span class="p">;</span>
+    <span class="nx">disqus</span><span class="p">.</span><span class="nx">exports</span><span class="p">.</span><span class="nx">exportForum</span><span class="p">(</span><span class="nx">options</span><span class="p">);</span>
+  <span class="p">});</span>
+
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="nx">exports</span><span class="p">;</span></div></div></div></div></body></html>

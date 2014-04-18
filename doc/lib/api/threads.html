@@ -1,0 +1,313 @@
+<!DOCTYPE html><html lang="en"><head><title>lib/api/threads</title></head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"><meta name="groc-relative-root" content="../../"><meta name="groc-document-path" content="lib/api/threads"><meta name="groc-project-path" content="lib/api/threads.js"><link rel="stylesheet" type="text/css" media="all" href="../../assets/style.css"><script type="text/javascript" src="../../assets/behavior.js"></script><body><div id="meta"><div class="file-path">lib/api/threads.js</div></div><div id="document"><div class="segment"><div class="comments "><div class="wrapper"><p><a href="../index.html">Up one level</a></p>
+
+<h3 id="threads-api">Threads API</h3>
+
+<p>See also <a href="../cli/threads.html">Threads CLI</a></p></div></div><div class="code"><div class="wrapper"><span class="kd">var</span> <span class="nx">Promise</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;bluebird&#39;</span><span class="p">);</span>
+
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="kd">function</span> <span class="nx">Threads</span><span class="p">(</span><span class="nx">config</span><span class="p">)</span> <span class="p">{</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><h3 id="close">close</h3>
+
+<p>Closes a thread. See <a href="http://disqus.com/api/docs/threads/close">disqus.com/api/docs/threads/close</a>.</p>
+
+<p>Signature:</p>
+
+<pre><code class="js">Disqus#threads.close(options[, cb])
+</code></pre>
+
+<p>Usage:</p>
+
+<pre><code class="js">Method not yet implemented.
+</code></pre></div></div><div class="code"><div class="wrapper">  <span class="k">this</span><span class="p">.</span><span class="nx">close</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="nx">cb</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">Promise</span><span class="p">.</span><span class="nx">resolve</span><span class="p">({})</span>
+      <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">qs</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">options</span> <span class="o">=</span> <span class="nx">options</span> <span class="o">||</span> <span class="p">{};</span>
+        <span class="nx">qs</span><span class="p">.</span><span class="nx">api_key</span> <span class="o">=</span> <span class="nx">options</span><span class="p">.</span><span class="nx">api_key</span> <span class="o">||</span> <span class="nx">config</span><span class="p">.</span><span class="nx">api_key</span><span class="p">;</span>
+
+        <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="s1">&#39;Not yet implemented!&#39;</span><span class="p">);</span>
+      <span class="p">}).</span><span class="nx">nodeify</span><span class="p">(</span><span class="nx">cb</span><span class="p">);</span>
+  <span class="p">};</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><h3 id="create">create</h3>
+
+<p>Creates a new thread. See <a href="http://disqus.com/api/docs/threads/create">disqus.com/api/docs/threads/create</a>.</p>
+
+<p>Signature:</p>
+
+<pre><code class="js">Disqus#threads.create(options[, cb])
+</code></pre>
+
+<p>Usage:</p>
+
+<pre><code class="js">Method not yet implemented.
+</code></pre></div></div><div class="code"><div class="wrapper">  <span class="k">this</span><span class="p">.</span><span class="nx">create</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="nx">cb</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">Promise</span><span class="p">.</span><span class="nx">resolve</span><span class="p">({})</span>
+      <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">qs</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">options</span> <span class="o">=</span> <span class="nx">options</span> <span class="o">||</span> <span class="p">{};</span>
+        <span class="nx">qs</span><span class="p">.</span><span class="nx">api_key</span> <span class="o">=</span> <span class="nx">options</span><span class="p">.</span><span class="nx">api_key</span> <span class="o">||</span> <span class="nx">config</span><span class="p">.</span><span class="nx">api_key</span><span class="p">;</span>
+
+        <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="s1">&#39;Not yet implemented!&#39;</span><span class="p">);</span>
+      <span class="p">}).</span><span class="nx">nodeify</span><span class="p">(</span><span class="nx">cb</span><span class="p">);</span>
+  <span class="p">};</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><h3 id="details">details</h3>
+
+<p>Returns thread details. See <a href="http://disqus.com/api/docs/threads/details">disqus.com/api/docs/threads/details</a>.</p>
+
+<p>Signature:</p>
+
+<pre><code class="js">Disqus#threads.details(options[, cb])
+</code></pre>
+
+<p>Usage:</p>
+
+<pre><code class="js">Method not yet implemented.
+</code></pre></div></div><div class="code"><div class="wrapper">  <span class="k">this</span><span class="p">.</span><span class="nx">details</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="nx">cb</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">Promise</span><span class="p">.</span><span class="nx">resolve</span><span class="p">({})</span>
+      <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">qs</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">options</span> <span class="o">=</span> <span class="nx">options</span> <span class="o">||</span> <span class="p">{};</span>
+        <span class="nx">qs</span><span class="p">.</span><span class="nx">api_key</span> <span class="o">=</span> <span class="nx">options</span><span class="p">.</span><span class="nx">api_key</span> <span class="o">||</span> <span class="nx">config</span><span class="p">.</span><span class="nx">api_key</span><span class="p">;</span>
+
+        <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="s1">&#39;Not yet implemented!&#39;</span><span class="p">);</span>
+      <span class="p">}).</span><span class="nx">nodeify</span><span class="p">(</span><span class="nx">cb</span><span class="p">);</span>
+  <span class="p">};</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><h3 id="list">list</h3>
+
+<p>Returns a list of threads sorted by the date created. See <a href="http://disqus.com/api/docs/threads/list">disqus.com/api/docs/threads/list</a>.</p>
+
+<p>Signature:</p>
+
+<pre><code class="js">Disqus#threads.list(options[, cb])
+</code></pre>
+
+<p>Usage:</p>
+
+<pre><code class="js">Method not yet implemented.
+</code></pre></div></div><div class="code"><div class="wrapper">  <span class="k">this</span><span class="p">.</span><span class="nx">list</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="nx">cb</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">Promise</span><span class="p">.</span><span class="nx">resolve</span><span class="p">({})</span>
+      <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">qs</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">options</span> <span class="o">=</span> <span class="nx">options</span> <span class="o">||</span> <span class="p">{};</span>
+        <span class="nx">qs</span><span class="p">.</span><span class="nx">api_key</span> <span class="o">=</span> <span class="nx">options</span><span class="p">.</span><span class="nx">api_key</span> <span class="o">||</span> <span class="nx">config</span><span class="p">.</span><span class="nx">api_key</span><span class="p">;</span>
+
+        <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="s1">&#39;Not yet implemented!&#39;</span><span class="p">);</span>
+      <span class="p">}).</span><span class="nx">nodeify</span><span class="p">(</span><span class="nx">cb</span><span class="p">);</span>
+  <span class="p">};</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><h3 id="listhot">listHot</h3>
+
+<p>Returns a list of threads sorted by hotness (date and likes). See <a href="http://disqus.com/api/docs/threads/listHot">disqus.com/api/docs/threads/listHot</a>.</p>
+
+<p>Signature:</p>
+
+<pre><code class="js">Disqus#threads.listHot(options[, cb])
+</code></pre>
+
+<p>Usage:</p>
+
+<pre><code class="js">Method not yet implemented.
+</code></pre></div></div><div class="code"><div class="wrapper">  <span class="k">this</span><span class="p">.</span><span class="nx">listHot</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="nx">cb</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">Promise</span><span class="p">.</span><span class="nx">resolve</span><span class="p">({})</span>
+      <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">qs</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">options</span> <span class="o">=</span> <span class="nx">options</span> <span class="o">||</span> <span class="p">{};</span>
+        <span class="nx">qs</span><span class="p">.</span><span class="nx">api_key</span> <span class="o">=</span> <span class="nx">options</span><span class="p">.</span><span class="nx">api_key</span> <span class="o">||</span> <span class="nx">config</span><span class="p">.</span><span class="nx">api_key</span><span class="p">;</span>
+
+        <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="s1">&#39;Not yet implemented!&#39;</span><span class="p">);</span>
+      <span class="p">}).</span><span class="nx">nodeify</span><span class="p">(</span><span class="nx">cb</span><span class="p">);</span>
+  <span class="p">};</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><h3 id="listpopular">listPopular</h3>
+
+<p>Returns a list of threads sorted by number of posts made since "interval".</p>
+
+<p>If you are using both "category" and "forum" parameters, the forum of the category must match that as the
+parameter value for "forum".</p>
+
+<p>See <a href="http://disqus.com/api/docs/threads/listPopular">disqus.com/api/docs/threads/listPopular</a>.</p>
+
+<p>Signature:</p>
+
+<pre><code class="js">Disqus#threads.listPopular(options[, cb])
+</code></pre>
+
+<p>Usage:</p>
+
+<pre><code class="js">Method not yet implemented.
+</code></pre></div></div><div class="code"><div class="wrapper">  <span class="k">this</span><span class="p">.</span><span class="nx">listPopular</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="nx">cb</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">Promise</span><span class="p">.</span><span class="nx">resolve</span><span class="p">({})</span>
+      <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">qs</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">options</span> <span class="o">=</span> <span class="nx">options</span> <span class="o">||</span> <span class="p">{};</span>
+        <span class="nx">qs</span><span class="p">.</span><span class="nx">api_key</span> <span class="o">=</span> <span class="nx">options</span><span class="p">.</span><span class="nx">api_key</span> <span class="o">||</span> <span class="nx">config</span><span class="p">.</span><span class="nx">api_key</span><span class="p">;</span>
+
+        <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="s1">&#39;Not yet implemented!&#39;</span><span class="p">);</span>
+      <span class="p">}).</span><span class="nx">nodeify</span><span class="p">(</span><span class="nx">cb</span><span class="p">);</span>
+  <span class="p">};</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><h3 id="listposts">listPosts</h3>
+
+<p>Returns a list of posts within a thread. See <a href="http://disqus.com/api/docs/threads/listPosts">disqus.com/api/docs/threads/listPosts</a>.</p>
+
+<p>Signature:</p>
+
+<pre><code class="js">Disqus#threads.listPosts(options[, cb])
+</code></pre>
+
+<p>Usage:</p>
+
+<pre><code class="js">Method not yet implemented.
+</code></pre></div></div><div class="code"><div class="wrapper">  <span class="k">this</span><span class="p">.</span><span class="nx">listPosts</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="nx">cb</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">Promise</span><span class="p">.</span><span class="nx">resolve</span><span class="p">({})</span>
+      <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">qs</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">options</span> <span class="o">=</span> <span class="nx">options</span> <span class="o">||</span> <span class="p">{};</span>
+        <span class="nx">qs</span><span class="p">.</span><span class="nx">api_key</span> <span class="o">=</span> <span class="nx">options</span><span class="p">.</span><span class="nx">api_key</span> <span class="o">||</span> <span class="nx">config</span><span class="p">.</span><span class="nx">api_key</span><span class="p">;</span>
+
+        <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="s1">&#39;Not yet implemented!&#39;</span><span class="p">);</span>
+      <span class="p">}).</span><span class="nx">nodeify</span><span class="p">(</span><span class="nx">cb</span><span class="p">);</span>
+  <span class="p">};</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><h3 id="open">open</h3>
+
+<p>Opens a thread. See <a href="http://disqus.com/api/docs/threads/open">disqus.com/api/docs/threads/open</a>.</p>
+
+<p>Signature:</p>
+
+<pre><code class="js">Disqus#threads.open(options[, cb])
+</code></pre>
+
+<p>Usage:</p>
+
+<pre><code class="js">Method not yet implemented.
+</code></pre></div></div><div class="code"><div class="wrapper">  <span class="k">this</span><span class="p">.</span><span class="nx">open</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="nx">cb</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">Promise</span><span class="p">.</span><span class="nx">resolve</span><span class="p">({})</span>
+      <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">qs</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">options</span> <span class="o">=</span> <span class="nx">options</span> <span class="o">||</span> <span class="p">{};</span>
+        <span class="nx">qs</span><span class="p">.</span><span class="nx">api_key</span> <span class="o">=</span> <span class="nx">options</span><span class="p">.</span><span class="nx">api_key</span> <span class="o">||</span> <span class="nx">config</span><span class="p">.</span><span class="nx">api_key</span><span class="p">;</span>
+
+        <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="s1">&#39;Not yet implemented!&#39;</span><span class="p">);</span>
+      <span class="p">}).</span><span class="nx">nodeify</span><span class="p">(</span><span class="nx">cb</span><span class="p">);</span>
+  <span class="p">};</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><h3 id="remove">remove</h3>
+
+<p>Removes a thread. See <a href="http://disqus.com/api/docs/threads/remove">disqus.com/api/docs/threads/remove</a>.</p>
+
+<p>Signature:</p>
+
+<pre><code class="js">Disqus#threads.remove(options[, cb])
+</code></pre>
+
+<p>Usage:</p>
+
+<pre><code class="js">Method not yet implemented.
+</code></pre></div></div><div class="code"><div class="wrapper">  <span class="k">this</span><span class="p">.</span><span class="nx">remove</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="nx">cb</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">Promise</span><span class="p">.</span><span class="nx">resolve</span><span class="p">({})</span>
+      <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">qs</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">options</span> <span class="o">=</span> <span class="nx">options</span> <span class="o">||</span> <span class="p">{};</span>
+        <span class="nx">qs</span><span class="p">.</span><span class="nx">api_key</span> <span class="o">=</span> <span class="nx">options</span><span class="p">.</span><span class="nx">api_key</span> <span class="o">||</span> <span class="nx">config</span><span class="p">.</span><span class="nx">api_key</span><span class="p">;</span>
+
+        <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="s1">&#39;Not yet implemented!&#39;</span><span class="p">);</span>
+      <span class="p">}).</span><span class="nx">nodeify</span><span class="p">(</span><span class="nx">cb</span><span class="p">);</span>
+  <span class="p">};</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><h3 id="restore">restore</h3>
+
+<p>Opens a thread. See <a href="http://disqus.com/api/docs/threads/restore">disqus.com/api/docs/threads/restore</a>.</p>
+
+<p>Signature:</p>
+
+<pre><code class="js">Disqus#threads.restore(options[, cb])
+</code></pre>
+
+<p>Usage:</p>
+
+<pre><code class="js">Method not yet implemented.
+</code></pre></div></div><div class="code"><div class="wrapper">  <span class="k">this</span><span class="p">.</span><span class="nx">restore</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="nx">cb</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">Promise</span><span class="p">.</span><span class="nx">resolve</span><span class="p">({})</span>
+      <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">qs</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">options</span> <span class="o">=</span> <span class="nx">options</span> <span class="o">||</span> <span class="p">{};</span>
+        <span class="nx">qs</span><span class="p">.</span><span class="nx">api_key</span> <span class="o">=</span> <span class="nx">options</span><span class="p">.</span><span class="nx">api_key</span> <span class="o">||</span> <span class="nx">config</span><span class="p">.</span><span class="nx">api_key</span><span class="p">;</span>
+
+        <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="s1">&#39;Not yet implemented!&#39;</span><span class="p">);</span>
+      <span class="p">}).</span><span class="nx">nodeify</span><span class="p">(</span><span class="nx">cb</span><span class="p">);</span>
+  <span class="p">};</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><h3 id="set">set</h3>
+
+<p>Returns an unsorted set of threads given a list of ids. See <a href="http://disqus.com/api/docs/threads/set">disqus.com/api/docs/threads/set</a>.</p>
+
+<p>Signature:</p>
+
+<pre><code class="js">Disqus#threads.set(options[, cb])
+</code></pre>
+
+<p>Usage:</p>
+
+<pre><code class="js">Method not yet implemented.
+</code></pre></div></div><div class="code"><div class="wrapper">  <span class="k">this</span><span class="p">.</span><span class="nx">set</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="nx">cb</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">Promise</span><span class="p">.</span><span class="nx">resolve</span><span class="p">({})</span>
+      <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">qs</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">options</span> <span class="o">=</span> <span class="nx">options</span> <span class="o">||</span> <span class="p">{};</span>
+        <span class="nx">qs</span><span class="p">.</span><span class="nx">api_key</span> <span class="o">=</span> <span class="nx">options</span><span class="p">.</span><span class="nx">api_key</span> <span class="o">||</span> <span class="nx">config</span><span class="p">.</span><span class="nx">api_key</span><span class="p">;</span>
+
+        <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="s1">&#39;Not yet implemented!&#39;</span><span class="p">);</span>
+      <span class="p">}).</span><span class="nx">nodeify</span><span class="p">(</span><span class="nx">cb</span><span class="p">);</span>
+  <span class="p">};</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><h3 id="subscribe">subscribe</h3>
+
+<p>Subscribe to a thread. See <a href="http://disqus.com/api/docs/threads/subscribe">disqus.com/api/docs/threads/subscribe</a>.</p>
+
+<p>Signature:</p>
+
+<pre><code class="js">Disqus#threads.subscribe(options[, cb])
+</code></pre>
+
+<p>Usage:</p>
+
+<pre><code class="js">Method not yet implemented.
+</code></pre></div></div><div class="code"><div class="wrapper">  <span class="k">this</span><span class="p">.</span><span class="nx">subscribe</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="nx">cb</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">Promise</span><span class="p">.</span><span class="nx">resolve</span><span class="p">({})</span>
+      <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">qs</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">options</span> <span class="o">=</span> <span class="nx">options</span> <span class="o">||</span> <span class="p">{};</span>
+        <span class="nx">qs</span><span class="p">.</span><span class="nx">api_key</span> <span class="o">=</span> <span class="nx">options</span><span class="p">.</span><span class="nx">api_key</span> <span class="o">||</span> <span class="nx">config</span><span class="p">.</span><span class="nx">api_key</span><span class="p">;</span>
+
+        <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="s1">&#39;Not yet implemented!&#39;</span><span class="p">);</span>
+      <span class="p">}).</span><span class="nx">nodeify</span><span class="p">(</span><span class="nx">cb</span><span class="p">);</span>
+  <span class="p">};</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><h3 id="unsubscribe">unsubscribe</h3>
+
+<p>Un-subscribe from a thread. See <a href="http://disqus.com/api/docs/threads/unsubscribe">disqus.com/api/docs/threads/unsubscribe</a>.</p>
+
+<p>Signature:</p>
+
+<pre><code class="js">Disqus#threads.unsubscribe(options[, cb])
+</code></pre>
+
+<p>Usage:</p>
+
+<pre><code class="js">Method not yet implemented.
+</code></pre></div></div><div class="code"><div class="wrapper">  <span class="k">this</span><span class="p">.</span><span class="nx">unsubscribe</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="nx">cb</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">Promise</span><span class="p">.</span><span class="nx">resolve</span><span class="p">({})</span>
+      <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">qs</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">options</span> <span class="o">=</span> <span class="nx">options</span> <span class="o">||</span> <span class="p">{};</span>
+        <span class="nx">qs</span><span class="p">.</span><span class="nx">api_key</span> <span class="o">=</span> <span class="nx">options</span><span class="p">.</span><span class="nx">api_key</span> <span class="o">||</span> <span class="nx">config</span><span class="p">.</span><span class="nx">api_key</span><span class="p">;</span>
+
+        <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="s1">&#39;Not yet implemented!&#39;</span><span class="p">);</span>
+      <span class="p">}).</span><span class="nx">nodeify</span><span class="p">(</span><span class="nx">cb</span><span class="p">);</span>
+  <span class="p">};</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><h3 id="update">update</h3>
+
+<p>Updates information on a thread. See <a href="http://disqus.com/api/docs/threads/update">disqus.com/api/docs/threads/update</a>.</p>
+
+<p>Signature:</p>
+
+<pre><code class="js">Disqus#threads.update(options[, cb])
+</code></pre>
+
+<p>Usage:</p>
+
+<pre><code class="js">Method not yet implemented.
+</code></pre></div></div><div class="code"><div class="wrapper">  <span class="k">this</span><span class="p">.</span><span class="nx">update</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="nx">cb</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">Promise</span><span class="p">.</span><span class="nx">resolve</span><span class="p">({})</span>
+      <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">qs</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">options</span> <span class="o">=</span> <span class="nx">options</span> <span class="o">||</span> <span class="p">{};</span>
+        <span class="nx">qs</span><span class="p">.</span><span class="nx">api_key</span> <span class="o">=</span> <span class="nx">options</span><span class="p">.</span><span class="nx">api_key</span> <span class="o">||</span> <span class="nx">config</span><span class="p">.</span><span class="nx">api_key</span><span class="p">;</span>
+
+        <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="s1">&#39;Not yet implemented!&#39;</span><span class="p">);</span>
+      <span class="p">}).</span><span class="nx">nodeify</span><span class="p">(</span><span class="nx">cb</span><span class="p">);</span>
+  <span class="p">};</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><h3 id="vote">vote</h3>
+
+<p>Register a vote on a thread. See <a href="http://disqus.com/api/docs/threads/vote">disqus.com/api/docs/threads/vote</a>.</p>
+
+<p>Signature:</p>
+
+<pre><code class="js">Disqus#threads.vote(options[, cb])
+</code></pre>
+
+<p>Usage:</p>
+
+<pre><code class="js">Method not yet implemented.
+</code></pre></div></div><div class="code"><div class="wrapper">  <span class="k">this</span><span class="p">.</span><span class="nx">vote</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="nx">cb</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">Promise</span><span class="p">.</span><span class="nx">resolve</span><span class="p">({})</span>
+      <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">qs</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">options</span> <span class="o">=</span> <span class="nx">options</span> <span class="o">||</span> <span class="p">{};</span>
+        <span class="nx">qs</span><span class="p">.</span><span class="nx">api_key</span> <span class="o">=</span> <span class="nx">options</span><span class="p">.</span><span class="nx">api_key</span> <span class="o">||</span> <span class="nx">config</span><span class="p">.</span><span class="nx">api_key</span><span class="p">;</span>
+
+        <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="s1">&#39;Not yet implemented!&#39;</span><span class="p">);</span>
+      <span class="p">}).</span><span class="nx">nodeify</span><span class="p">(</span><span class="nx">cb</span><span class="p">);</span>
+  <span class="p">};</span>
+<span class="p">};</span></div></div></div></div></body></html>

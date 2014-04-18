@@ -302,6 +302,382 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
                   "foldPrefix": "^",
                   "name": "JavaScript"
                 },
+                "sourcePath": "/Users/jason/codetrain/disqus-node/lib/api/imports.js",
+                "projectPath": "lib/api/imports.js",
+                "targetPath": "lib/api/imports",
+                "pageTitle": "lib/api/imports",
+                "title": "imports"
+              },
+              "depth": 3,
+              "outline": [
+                {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "Imports API",
+                    "slug": "imports-api"
+                  },
+                  "depth": 3
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "details",
+                    "slug": "details"
+                  },
+                  "depth": 3
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "list",
+                    "slug": "list"
+                  },
+                  "depth": 3
+                }
+              ]
+            }, {
+              "type": "file",
+              "data": {
+                "language": {
+                  "nameMatchers": [".js"],
+                  "pygmentsLexer": "javascript",
+                  "multiLineComment": ["/*", "*", "*/"],
+                  "singleLineComment": ["//"],
+                  "ignorePrefix": "}",
+                  "foldPrefix": "^",
+                  "name": "JavaScript"
+                },
+                "sourcePath": "/Users/jason/codetrain/disqus-node/lib/api/posts.js",
+                "projectPath": "lib/api/posts.js",
+                "targetPath": "lib/api/posts",
+                "pageTitle": "lib/api/posts",
+                "title": "posts"
+              },
+              "depth": 3,
+              "outline": [
+                {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "Posts API",
+                    "slug": "posts-api"
+                  },
+                  "depth": 3
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "approve",
+                    "slug": "approve"
+                  },
+                  "depth": 3
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "create",
+                    "slug": "create"
+                  },
+                  "depth": 3
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "details",
+                    "slug": "details"
+                  },
+                  "depth": 3
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "getContext",
+                    "slug": "getcontext"
+                  },
+                  "depth": 3
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "list",
+                    "slug": "list"
+                  },
+                  "depth": 3
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "listPopular",
+                    "slug": "listpopular"
+                  },
+                  "depth": 3
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "remove",
+                    "slug": "remove"
+                  },
+                  "depth": 3
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "report",
+                    "slug": "report"
+                  },
+                  "depth": 3
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "restore",
+                    "slug": "restore"
+                  },
+                  "depth": 3
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "spam",
+                    "slug": "spam"
+                  },
+                  "depth": 3
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "update",
+                    "slug": "update"
+                  },
+                  "depth": 3
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "vote",
+                    "slug": "vote"
+                  },
+                  "depth": 3
+                }
+              ]
+            }, {
+              "type": "file",
+              "data": {
+                "language": {
+                  "nameMatchers": [".js"],
+                  "pygmentsLexer": "javascript",
+                  "multiLineComment": ["/*", "*", "*/"],
+                  "singleLineComment": ["//"],
+                  "ignorePrefix": "}",
+                  "foldPrefix": "^",
+                  "name": "JavaScript"
+                },
+                "sourcePath": "/Users/jason/codetrain/disqus-node/lib/api/threads.js",
+                "projectPath": "lib/api/threads.js",
+                "targetPath": "lib/api/threads",
+                "pageTitle": "lib/api/threads",
+                "title": "threads"
+              },
+              "depth": 3,
+              "outline": [
+                {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "Threads API",
+                    "slug": "threads-api"
+                  },
+                  "depth": 3
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "close",
+                    "slug": "close"
+                  },
+                  "depth": 3
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "create",
+                    "slug": "create"
+                  },
+                  "depth": 3
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "details",
+                    "slug": "details"
+                  },
+                  "depth": 3
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "list",
+                    "slug": "list"
+                  },
+                  "depth": 3
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "listHot",
+                    "slug": "listhot"
+                  },
+                  "depth": 3
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "listPopular",
+                    "slug": "listpopular"
+                  },
+                  "depth": 3
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "listPosts",
+                    "slug": "listposts"
+                  },
+                  "depth": 3
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "open",
+                    "slug": "open"
+                  },
+                  "depth": 3
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "remove",
+                    "slug": "remove"
+                  },
+                  "depth": 3
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "restore",
+                    "slug": "restore"
+                  },
+                  "depth": 3
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "set",
+                    "slug": "set"
+                  },
+                  "depth": 3
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "subscribe",
+                    "slug": "subscribe"
+                  },
+                  "depth": 3
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "unsubscribe",
+                    "slug": "unsubscribe"
+                  },
+                  "depth": 3
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "update",
+                    "slug": "update"
+                  },
+                  "depth": 3
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "vote",
+                    "slug": "vote"
+                  },
+                  "depth": 3
+                }
+              ]
+            }, {
+              "type": "file",
+              "data": {
+                "language": {
+                  "nameMatchers": [".js"],
+                  "pygmentsLexer": "javascript",
+                  "multiLineComment": ["/*", "*", "*/"],
+                  "singleLineComment": ["//"],
+                  "ignorePrefix": "}",
+                  "foldPrefix": "^",
+                  "name": "JavaScript"
+                },
+                "sourcePath": "/Users/jason/codetrain/disqus-node/lib/api/topics.js",
+                "projectPath": "lib/api/topics.js",
+                "targetPath": "lib/api/topics",
+                "pageTitle": "lib/api/topics",
+                "title": "topics"
+              },
+              "depth": 3,
+              "outline": [
+                {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "Topics API",
+                    "slug": "topics-api"
+                  },
+                  "depth": 3
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "follow",
+                    "slug": "follow"
+                  },
+                  "depth": 3
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "listFollowers",
+                    "slug": "listfollowers"
+                  },
+                  "depth": 3
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "unfollow",
+                    "slug": "unfollow"
+                  },
+                  "depth": 3
+                }
+              ]
+            }, {
+              "type": "file",
+              "data": {
+                "language": {
+                  "nameMatchers": [".js"],
+                  "pygmentsLexer": "javascript",
+                  "multiLineComment": ["/*", "*", "*/"],
+                  "singleLineComment": ["//"],
+                  "ignorePrefix": "}",
+                  "foldPrefix": "^",
+                  "name": "JavaScript"
+                },
                 "sourcePath": "/Users/jason/codetrain/disqus-node/lib/api/trends.js",
                 "projectPath": "lib/api/trends.js",
                 "targetPath": "lib/api/trends",
@@ -316,6 +692,98 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
                     "level": 3,
                     "title": "Trends API",
                     "slug": "trends-api"
+                  },
+                  "depth": 3
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "listThreads",
+                    "slug": "listthreads"
+                  },
+                  "depth": 3
+                }
+              ]
+            }, {
+              "type": "file",
+              "data": {
+                "language": {
+                  "nameMatchers": [".js"],
+                  "pygmentsLexer": "javascript",
+                  "multiLineComment": ["/*", "*", "*/"],
+                  "singleLineComment": ["//"],
+                  "ignorePrefix": "}",
+                  "foldPrefix": "^",
+                  "name": "JavaScript"
+                },
+                "sourcePath": "/Users/jason/codetrain/disqus-node/lib/api/users.js",
+                "projectPath": "lib/api/users.js",
+                "targetPath": "lib/api/users",
+                "pageTitle": "lib/api/users",
+                "title": "users"
+              },
+              "depth": 3,
+              "outline": [
+                {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "Trends API",
+                    "slug": "trends-api"
+                  },
+                  "depth": 3
+                }
+              ]
+            }, {
+              "type": "file",
+              "data": {
+                "language": {
+                  "nameMatchers": [".js"],
+                  "pygmentsLexer": "javascript",
+                  "multiLineComment": ["/*", "*", "*/"],
+                  "singleLineComment": ["//"],
+                  "ignorePrefix": "}",
+                  "foldPrefix": "^",
+                  "name": "JavaScript"
+                },
+                "sourcePath": "/Users/jason/codetrain/disqus-node/lib/api/whitelists.js",
+                "projectPath": "lib/api/whitelists.js",
+                "targetPath": "lib/api/whitelists",
+                "pageTitle": "lib/api/whitelists",
+                "title": "whitelists"
+              },
+              "depth": 3,
+              "outline": [
+                {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "Whitelists API",
+                    "slug": "whitelists-api"
+                  },
+                  "depth": 3
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "add",
+                    "slug": "add"
+                  },
+                  "depth": 3
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "list",
+                    "slug": "list"
+                  },
+                  "depth": 3
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "remove",
+                    "slug": "remove"
                   },
                   "depth": 3
                 }
@@ -570,6 +1038,148 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
                   "foldPrefix": "^",
                   "name": "JavaScript"
                 },
+                "sourcePath": "/Users/jason/codetrain/disqus-node/lib/cli/threads.js",
+                "projectPath": "lib/cli/threads.js",
+                "targetPath": "lib/cli/threads",
+                "pageTitle": "lib/cli/threads",
+                "title": "threads"
+              },
+              "depth": 3,
+              "outline": [
+                {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "Category CLI",
+                    "slug": "category-cli"
+                  },
+                  "depth": 3
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "close",
+                    "slug": "close"
+                  },
+                  "depth": 3
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "create",
+                    "slug": "create"
+                  },
+                  "depth": 3
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "details",
+                    "slug": "details"
+                  },
+                  "depth": 3
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "list",
+                    "slug": "list"
+                  },
+                  "depth": 3
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "listPopular",
+                    "slug": "listpopular"
+                  },
+                  "depth": 3
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "listPosts",
+                    "slug": "listposts"
+                  },
+                  "depth": 3
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "open",
+                    "slug": "open"
+                  },
+                  "depth": 3
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "remove",
+                    "slug": "remove"
+                  },
+                  "depth": 3
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "restore",
+                    "slug": "restore"
+                  },
+                  "depth": 3
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "set",
+                    "slug": "set"
+                  },
+                  "depth": 3
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "subscribe",
+                    "slug": "subscribe"
+                  },
+                  "depth": 3
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "unsubscribe",
+                    "slug": "unsubscribe"
+                  },
+                  "depth": 3
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "update",
+                    "slug": "update"
+                  },
+                  "depth": 3
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "vote",
+                    "slug": "vote"
+                  },
+                  "depth": 3
+                }
+              ]
+            }, {
+              "type": "file",
+              "data": {
+                "language": {
+                  "nameMatchers": [".js"],
+                  "pygmentsLexer": "javascript",
+                  "multiLineComment": ["/*", "*", "*/"],
+                  "singleLineComment": ["//"],
+                  "ignorePrefix": "}",
+                  "foldPrefix": "^",
+                  "name": "JavaScript"
+                },
                 "sourcePath": "/Users/jason/codetrain/disqus-node/lib/cli/trends.js",
                 "projectPath": "lib/cli/trends.js",
                 "targetPath": "lib/cli/trends",
@@ -722,8 +1332,56 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
                   "type": "heading",
                   "data": {
                     "level": 6,
+                    "title": "Imports",
+                    "slug": "imports"
+                  },
+                  "depth": 6
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 6,
+                    "title": "Posts",
+                    "slug": "posts"
+                  },
+                  "depth": 6
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 6,
+                    "title": "Threads",
+                    "slug": "threads"
+                  },
+                  "depth": 6
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 6,
+                    "title": "Topics",
+                    "slug": "topics"
+                  },
+                  "depth": 6
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 6,
                     "title": "Trends",
                     "slug": "trends"
+                  },
+                  "depth": 6
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 6,
+                    "title": "Users",
+                    "slug": "users"
+                  },
+                  "depth": 6
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 6,
+                    "title": "Whitelists",
+                    "slug": "whitelists"
                   },
                   "depth": 6
                 }

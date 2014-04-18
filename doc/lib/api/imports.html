@@ -1,0 +1,48 @@
+<!DOCTYPE html><html lang="en"><head><title>lib/api/imports</title></head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"><meta name="groc-relative-root" content="../../"><meta name="groc-document-path" content="lib/api/imports"><meta name="groc-project-path" content="lib/api/imports.js"><link rel="stylesheet" type="text/css" media="all" href="../../assets/style.css"><script type="text/javascript" src="../../assets/behavior.js"></script><body><div id="meta"><div class="file-path">lib/api/imports.js</div></div><div id="document"><div class="segment"><div class="comments "><div class="wrapper"><p><a href="../index.html">Up one level</a></p>
+
+<h3 id="imports-api">Imports API</h3>
+
+<p>See also <a href="../cli/imports.html">Imports CLI</a></p></div></div><div class="code"><div class="wrapper"><span class="kd">var</span> <span class="nx">Promise</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;bluebird&#39;</span><span class="p">);</span>
+
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="kd">function</span> <span class="nx">Imports</span><span class="p">(</span><span class="nx">config</span><span class="p">)</span> <span class="p">{</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><h3 id="details">details</h3>
+
+<p>Returns the details for an import.</p>
+
+<p>Signature:</p>
+
+<pre><code class="js">Disqus#imports.details(options[, cb])
+</code></pre>
+
+<p>Usage:</p>
+
+<pre><code class="js">Method not yet implemented.
+</code></pre></div></div><div class="code"><div class="wrapper">  <span class="k">this</span><span class="p">.</span><span class="nx">details</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="nx">cb</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">Promise</span><span class="p">.</span><span class="nx">resolve</span><span class="p">({})</span>
+      <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">qs</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">options</span> <span class="o">=</span> <span class="nx">options</span> <span class="o">||</span> <span class="p">{};</span>
+        <span class="nx">qs</span><span class="p">.</span><span class="nx">api_key</span> <span class="o">=</span> <span class="nx">options</span><span class="p">.</span><span class="nx">api_key</span> <span class="o">||</span> <span class="nx">config</span><span class="p">.</span><span class="nx">api_key</span><span class="p">;</span>
+
+        <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="s1">&#39;Not yet implemented!&#39;</span><span class="p">);</span>
+      <span class="p">}).</span><span class="nx">nodeify</span><span class="p">(</span><span class="nx">cb</span><span class="p">);</span>
+  <span class="p">};</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><h3 id="list">list</h3>
+
+<p>Returns a list of all imports.</p>
+
+<p>Signature:</p>
+
+<pre><code class="js">Disqus#imports.list(options[, cb])
+</code></pre>
+
+<p>Usage:</p>
+
+<pre><code class="js">Method not yet implemented.
+</code></pre></div></div><div class="code"><div class="wrapper">  <span class="k">this</span><span class="p">.</span><span class="nx">list</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="nx">cb</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">Promise</span><span class="p">.</span><span class="nx">resolve</span><span class="p">({})</span>
+      <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">qs</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">options</span> <span class="o">=</span> <span class="nx">options</span> <span class="o">||</span> <span class="p">{};</span>
+        <span class="nx">qs</span><span class="p">.</span><span class="nx">api_key</span> <span class="o">=</span> <span class="nx">options</span><span class="p">.</span><span class="nx">api_key</span> <span class="o">||</span> <span class="nx">config</span><span class="p">.</span><span class="nx">api_key</span><span class="p">;</span>
+
+        <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="s1">&#39;Not yet implemented!&#39;</span><span class="p">);</span>
+      <span class="p">}).</span><span class="nx">nodeify</span><span class="p">(</span><span class="nx">cb</span><span class="p">);</span>
+  <span class="p">};</span>
+<span class="p">};</span></div></div></div></div></body></html>

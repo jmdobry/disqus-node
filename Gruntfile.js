@@ -61,4 +61,9 @@ module.exports = function (grunt) {
 	grunt.registerTask('default', [
 		'build'
 	]);
+
+	grunt.registerTask('go', [
+		'build',
+		'watch'
+	]);
 };

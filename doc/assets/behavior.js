@@ -894,6 +894,38 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
                     "slug": "create"
                   },
                   "depth": 3
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "details",
+                    "slug": "details"
+                  },
+                  "depth": 3
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "list",
+                    "slug": "list"
+                  },
+                  "depth": 3
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "listPosts",
+                    "slug": "listposts"
+                  },
+                  "depth": 3
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "listThreads",
+                    "slug": "listthreads"
+                  },
+                  "depth": 3
                 }
               ]
             }, {
@@ -968,6 +1000,52 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
                   "foldPrefix": "^",
                   "name": "JavaScript"
                 },
+                "sourcePath": "/Users/jason/codetrain/disqus-node/lib/cli/imports.js",
+                "projectPath": "lib/cli/imports.js",
+                "targetPath": "lib/cli/imports",
+                "pageTitle": "lib/cli/imports",
+                "title": "imports"
+              },
+              "depth": 3,
+              "outline": [
+                {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "Imports CLI",
+                    "slug": "imports-cli"
+                  },
+                  "depth": 3
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "details",
+                    "slug": "details"
+                  },
+                  "depth": 3
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "list",
+                    "slug": "list"
+                  },
+                  "depth": 3
+                }
+              ]
+            }, {
+              "type": "file",
+              "data": {
+                "language": {
+                  "nameMatchers": [".js"],
+                  "pygmentsLexer": "javascript",
+                  "multiLineComment": ["/*", "*", "*/"],
+                  "singleLineComment": ["//"],
+                  "ignorePrefix": "}",
+                  "foldPrefix": "^",
+                  "name": "JavaScript"
+                },
                 "sourcePath": "/Users/jason/codetrain/disqus-node/lib/cli/index.js",
                 "projectPath": "lib/cli/index.js",
                 "targetPath": "lib/cli/index",
@@ -1014,6 +1092,14 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
                     "level": 6,
                     "title": "Forums",
                     "slug": "forums"
+                  },
+                  "depth": 6
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 6,
+                    "title": "Imports",
+                    "slug": "imports"
                   },
                   "depth": 6
                 }, {
@@ -1408,31 +1494,11 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
                   "foldPrefix": "^",
                   "name": "JavaScript"
                 },
-                "sourcePath": "/Users/jason/codetrain/disqus-node/lib/util/parse.js",
-                "projectPath": "lib/util/parse.js",
-                "targetPath": "lib/util/parse",
-                "pageTitle": "lib/util/parse",
-                "title": "parse"
-              },
-              "depth": 3,
-              "outline": []
-            }, {
-              "type": "file",
-              "data": {
-                "language": {
-                  "nameMatchers": [".js"],
-                  "pygmentsLexer": "javascript",
-                  "multiLineComment": ["/*", "*", "*/"],
-                  "singleLineComment": ["//"],
-                  "ignorePrefix": "}",
-                  "foldPrefix": "^",
-                  "name": "JavaScript"
-                },
-                "sourcePath": "/Users/jason/codetrain/disqus-node/lib/util/serialize.js",
-                "projectPath": "lib/util/serialize.js",
-                "targetPath": "lib/util/serialize",
-                "pageTitle": "lib/util/serialize",
-                "title": "serialize"
+                "sourcePath": "/Users/jason/codetrain/disqus-node/lib/util/index.js",
+                "projectPath": "lib/util/index.js",
+                "targetPath": "lib/util/index",
+                "pageTitle": "lib/util/index",
+                "title": "index"
               },
               "depth": 3,
               "outline": []

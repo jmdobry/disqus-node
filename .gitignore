@@ -27,4 +27,6 @@ node_modules
 .idea/
 *.iml
 
+doc/
 mytest/
+test/coverage/

@@ -8,6 +8,17 @@ Copyright © 2014 Jason Dobry
 ## Status
 [![NPM](https://nodei.co/npm/disqus-node.png?downloads=true&stars=true)](https://nodei.co/npm/disqus-node/)
 
+[![Build Status](https://travis-ci.org/jmdobry/disqus-node.svg?branch=master)](https://travis-ci.org/jmdobry/disqus-node)
+
+[![Coverage Status](https://coveralls.io/repos/jmdobry/disqus-node/badge.png)](https://coveralls.io/r/jmdobry/disqus-node)
+
+[![Code Climate](https://codeclimate.com/github/jmdobry/disqus-node.png)](https://codeclimate.com/github/jmdobry/disqus-node)
+
+[![Dependency Status](https://gemnasium.com/jmdobry/disqus-node.svg)](https://gemnasium.com/jmdobry/disqus-node)
+
+## Documentation
+[API](http://disqus-node.pseudobry.com/lib/index.html) | [CLI](http://disqus-node.pseudobry.com/lib/cli/index.html)
+
 ## Functional
 - Applications
 - Blacklists
@@ -23,9 +34,6 @@ Copyright © 2014 Jason Dobry
 - Trends
 - Users
 - Whitelists
-
-## Documentation
-[API](http://disqus-node.pseudobry.com/lib/index.html) | [CLI](http://disqus-node.pseudobry.com/lib/cli/index.html)
 
 ## License
 [Apache License Version 2.0](https://github.com/jmdobry/disqus-node/blob/master/LICENSE)

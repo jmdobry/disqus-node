@@ -1,69 +1,126 @@
 module.exports = function (grunt) {
 
-	require('load-grunt-tasks')(grunt);
-	require('time-grunt')(grunt);
+  require('load-grunt-tasks')(grunt);
+  require('time-grunt')(grunt);
 
-	grunt.initConfig({
-		clean: {
-			doc: ['doc/']
-		},
+  grunt.initConfig({
+    clean: {
+      doc: ['doc/'],
+      coverage: ['test/coverage/']
+    },
 
-		watch: {
-			dist: {
-				files: ['lib/**/*.js', 'README.md'],
-				tasks: ['build']
-			}
-		},
+    watch: {
+      dist: {
+        files: ['lib/**/*.js', 'README.md'],
+        tasks: ['build']
+      }
+    },
 
-		jshint: {
-			options: {
-				jshintrc: '.jshintrc'
-			},
-			all: [
-				'Gruntfile.js',
-				'lib/**/*.js',
-				'test/**/*.js'
-			]
-		},
+    jshint: {
+      options: {
+        jshintrc: '.jshintrc'
+      },
+      all: [
+        'Gruntfile.js',
+        'lib/**/*.js',
+        'test/unit/**/*.js',
+        'test/requireHelper.js'
+      ]
+    },
 
-		simplemocha: {
-			options: {
-				globals: [],
-				timeout: 5000,
-				ignoreLeaks: false,
-				ui: 'bdd',
-				reporter: 'spec'
-			},
-			dist: {
-				src: [
-					'test/**/*.js'
-				]
-			}
-		},
+    simplemocha: {
+      options: {
+        globals: [],
+        timeout: 5000,
+        ignoreLeaks: false,
+        ui: 'bdd',
+        reporter: 'spec'
+      },
+      dist: {
+        src: [
+          'test/**/*.js'
+        ]
+      }
+    },
 
-		groc: {
-			javascript: [
-				'lib/**/*.js', 'README.md'
-			],
-			options: {
-				'out': 'doc/'
-			}
-		}
-	});
+    groc: {
+      javascript: [
+        'lib/**/*.js', 'README.md'
+      ],
+      options: {
+        'out': 'doc/'
+      }
+    },
 
-	grunt.registerTask('doc', ['clean', 'groc']);
+    mochaTest: {
+      unit: {
+        options: {
+          reporter: 'spec'
+        },
+        src: ['test/unit/**/*.js']
+      }
+    },
 
-	grunt.registerTask('build', [
-		'jshint',
-		'doc'
-	]);
+    env: {
+      coverage: {
+        APP_DIR_FOR_CODE_COVERAGE: '../test/coverage/instrument/lib/'
+      }
+    },
 
-	grunt.registerTask('default', [
-		'build'
-	]);
+    instrument: {
+      files: 'lib/**/*.js',
+      options: {
+        lazy: true,
+        basePath: 'test/coverage/instrument/'
+      }
+    },
 
-	grunt.registerTask('go', [
-		'build',
-		'watch'
-	]);
+    storeCoverage: {
+      options: {
+        dir: 'test/coverage/reports'
+      }
+    },
+
+    makeReport: {
+      src: 'test/coverage/reports/**/*.json',
+      options: {
+        type: 'lcov',
+        dir: 'test/coverage/reports',
+        print: 'detail'
+      }
+    },
+
+    coveralls: {
+      options: {
+        coverage_dir: 'test/coverage/reports'
+      }
+    }
+  });
+
+  grunt.registerTask('doc', ['clean:doc', 'groc']);
+
+  grunt.registerTask('build', [
+    'test',
+    'doc'
+  ]);
+
+  grunt.registerTask('default', [
+    'build'
+  ]);
+
+  grunt.registerTask('test', ['jshint', 'mochaTest:unit']);
+
+  grunt.registerTask('coverage', [
+    'clean:coverage',
+    'env:coverage',
+    'instrument',
+    'test',
+    'storeCoverage',
+    'makeReport'
+  ]);
+
+  grunt.registerTask('go', [
+    'build',
+    'watch'
+  ]);
 };

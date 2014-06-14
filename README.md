@@ -11,9 +11,9 @@ Copyright © 2014 Jason Dobry
 ## Functional
 - Applications
 - Blacklists
+- Categories
 
 ## Not Yet Implemented
-- Category
 - Exports
 - Forums
 - Imports

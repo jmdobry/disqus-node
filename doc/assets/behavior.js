@@ -236,11 +236,11 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
                   "foldPrefix": "^",
                   "name": "JavaScript"
                 },
-                "sourcePath": "/Users/jason/codetrain/disqus-node/lib/api/category.js",
-                "projectPath": "lib/api/category.js",
-                "targetPath": "lib/api/category",
-                "pageTitle": "lib/api/category",
-                "title": "category"
+                "sourcePath": "/Users/jason/codetrain/disqus-node/lib/api/categories.js",
+                "projectPath": "lib/api/categories.js",
+                "targetPath": "lib/api/categories",
+                "pageTitle": "lib/api/categories",
+                "title": "categories"
               },
               "depth": 3,
               "outline": [
@@ -248,8 +248,8 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
                   "type": "heading",
                   "data": {
                     "level": 3,
-                    "title": "Category API",
-                    "slug": "category-api"
+                    "title": "Categories API",
+                    "slug": "categories-api"
                   },
                   "depth": 3
                 }, {
@@ -966,11 +966,11 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
                   "foldPrefix": "^",
                   "name": "JavaScript"
                 },
-                "sourcePath": "/Users/jason/codetrain/disqus-node/lib/cli/category.js",
-                "projectPath": "lib/cli/category.js",
-                "targetPath": "lib/cli/category",
-                "pageTitle": "lib/cli/category",
-                "title": "category"
+                "sourcePath": "/Users/jason/codetrain/disqus-node/lib/cli/categories.js",
+                "projectPath": "lib/cli/categories.js",
+                "targetPath": "lib/cli/categories",
+                "pageTitle": "lib/cli/categories",
+                "title": "categories"
               },
               "depth": 3,
               "outline": [
@@ -978,8 +978,8 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
                   "type": "heading",
                   "data": {
                     "level": 3,
-                    "title": "Category CLI",
-                    "slug": "category-cli"
+                    "title": "Categories CLI",
+                    "slug": "categories-cli"
                   },
                   "depth": 3
                 }, {
@@ -1164,6 +1164,14 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
                     "level": 6,
                     "title": "Blacklists",
                     "slug": "blacklists"
+                  },
+                  "depth": 6
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 6,
+                    "title": "Categories",
+                    "slug": "categories"
                   },
                   "depth": 6
                 }
@@ -1498,6 +1506,14 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
                     "level": 6,
                     "title": "Blacklists",
                     "slug": "blacklists"
+                  },
+                  "depth": 6
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 6,
+                    "title": "Categories",
+                    "slug": "categories"
                   },
                   "depth": 6
                 }

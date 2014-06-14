@@ -1,0 +1,171 @@
+<!DOCTYPE html><html lang="en"><head><title>lib/cli/categories</title></head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"><meta name="groc-relative-root" content="../../"><meta name="groc-document-path" content="lib/cli/categories"><meta name="groc-project-path" content="lib/cli/categories.js"><link rel="stylesheet" type="text/css" media="all" href="../../assets/style.css"><script type="text/javascript" src="../../assets/behavior.js"></script><body><div id="meta"><div class="file-path">lib/cli/categories.js</div></div><div id="document"><div class="segment"><div class="comments "><div class="wrapper"><p><a href="/lib/index.html">Up one level</a></p>
+
+<h3 id="categories-cli">Categories CLI</h3>
+
+<p>See the disqus-node <a href="/lib/api/categories.html">Categories API</a>.</p>
+
+<p>See the <a href="https://disqus.com/api/docs/categories/">Categories API on Disqus.com</a>.</p></div></div><div class="code"><div class="wrapper"><span class="kd">var</span> <span class="nx">Disqus</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;../&#39;</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">commander</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;commander&#39;</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">categories</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">commander</span><span class="p">.</span><span class="nx">Command</span><span class="p">(</span><span class="s1">&#39;disqus categories&#39;</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">util</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;../util&#39;</span><span class="p">);</span>
+
+<span class="nx">categories</span>
+  <span class="p">.</span><span class="nx">usage</span><span class="p">(</span><span class="s1">&#39;&lt;cmd&gt; [options]&#39;</span><span class="p">);</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><h3 id="create">create</h3>
+
+<p>Creates a new category.</p>
+
+<p>Output of <code>disqus categories create --help</code>:</p>
+
+<pre><code> Usage: disqus categories create [options]
+
+ Options:
+
+ -h, --help                 output usage information
+ -d, --default [boolean]    Defaults to false
+ -f, --forum &lt;string&gt;       Looks up a forum by ID (aka short name). You must be a moderator on the selected forum.
+ -H, --https [boolean]      Whether to use https. Defaults to true.
+ -L, --logLevel [string]    Output log level. Choices: debug, info, notice, warning, error, critical, alert, emergency.
+ -S, --api_secret &lt;string&gt;  Your application's api_secret.
+ -t, --title &lt;string&gt;       Maximum length of 50
+</code></pre></div></div><div class="code"><div class="wrapper"><span class="nx">categories</span>
+  <span class="p">.</span><span class="nx">command</span><span class="p">(</span><span class="s1">&#39;create&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">description</span><span class="p">(</span><span class="s1">&#39;Creates a new category.&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-d, --default [boolean]&#39;</span><span class="p">,</span> <span class="s1">&#39;Defaults to false&#39;</span><span class="p">,</span> <span class="kc">false</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-f, --forum &lt;string&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;Looks up a forum by ID (aka short name). You must be a moderator on the selected forum.&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-H, --https [boolean]&#39;</span><span class="p">,</span> <span class="s1">&#39;Whether to use https. Defaults to true.&#39;</span><span class="p">,</span> <span class="kc">true</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-L, --logLevel [string]&#39;</span><span class="p">,</span> <span class="s1">&#39;Output log level. Choices: debug, info, notice, warning, error, critical, alert, emergency.&#39;</span><span class="p">,</span> <span class="s1">&#39;info&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-S, --api_secret &lt;string&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;Your applications\&#39;s api_secret.&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-t, --title &lt;string&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;Maximum length of 50&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">action</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">options</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">new</span> <span class="nx">Disqus</span><span class="p">(</span><span class="nx">options</span><span class="p">).</span><span class="nx">categories</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="nx">util</span><span class="p">.</span><span class="nx">printCliResult</span><span class="p">);</span>
+  <span class="p">});</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><h3 id="details">details</h3>
+
+<p>Returns category details.</p>
+
+<p>Output of <code>disqus categories details --help</code>:</p>
+
+<pre><code> Usage: disqus categories details [options]
+
+ Options:
+
+ -h, --help                 output usage information
+ -c, --category &lt;string&gt;    Looks up a category by ID.
+ -H, --https [boolean]      Whether to use https. Defaults to true.
+ -L, --logLevel [string]    Output log level. Choices: debug, info, notice, warning, error, critical, alert, emergency.
+ -S, --api_secret &lt;string&gt;  Your application's api_secret.
+</code></pre></div></div><div class="code"><div class="wrapper"><span class="nx">categories</span>
+  <span class="p">.</span><span class="nx">command</span><span class="p">(</span><span class="s1">&#39;details&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">description</span><span class="p">(</span><span class="s1">&#39;Returns category details.&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-c, --category &lt;string&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;Looks up a category by ID.&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-H, --https [boolean]&#39;</span><span class="p">,</span> <span class="s1">&#39;Whether to use https. Defaults to true.&#39;</span><span class="p">,</span> <span class="kc">true</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-L, --logLevel [string]&#39;</span><span class="p">,</span> <span class="s1">&#39;Output log level. Choices: debug, info, notice, warning, error, critical, alert, emergency.&#39;</span><span class="p">,</span> <span class="s1">&#39;info&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-S, --api_secret &lt;string&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;Your applications\&#39;s api_secret.&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">action</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">options</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">new</span> <span class="nx">Disqus</span><span class="p">(</span><span class="nx">options</span><span class="p">).</span><span class="nx">categories</span><span class="p">.</span><span class="nx">details</span><span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="nx">util</span><span class="p">.</span><span class="nx">printCliResult</span><span class="p">);</span>
+  <span class="p">});</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><h3 id="list">list</h3>
+
+<p>Returns a list of categories within a forum.</p>
+
+<p>Output of <code>disqus categories list --help</code>:</p>
+
+<pre><code> Usage: disqus categories list [options]
+
+ Options:
+
+ -h, --help                 output usage information
+ -c, --cursor [string]      Defaults to null.
+ -f, --forum &lt;string&gt;       Looks up a forum by ID (aka short name).
+ -H, --https [boolean]      Whether to use https. Defaults to true.
+ -l, --limit [number]       Defaults to 25.
+ -L, --logLevel [string]    Output log level. Choices: debug, info, notice, warning, error, critical, alert, emergency.
+ -o, --order [string]       Defaults to "asc". Choices: "asc", "desc".
+ -s, --since_id [string]    Defaults to null.
+ -S, --api_secret &lt;string&gt;  Your application's api_secret.
+</code></pre></div></div><div class="code"><div class="wrapper"><span class="nx">categories</span>
+  <span class="p">.</span><span class="nx">command</span><span class="p">(</span><span class="s1">&#39;list&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">description</span><span class="p">(</span><span class="s1">&#39;Returns a list of categories within a forum.&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-c, --cursor [string]&#39;</span><span class="p">,</span> <span class="s1">&#39;Defaults to null.&#39;</span><span class="p">,</span> <span class="kc">null</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-f, --forum &lt;string&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;Looks up a forum by ID (aka short name).&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-H, --https [boolean]&#39;</span><span class="p">,</span> <span class="s1">&#39;Whether to use https. Defaults to true.&#39;</span><span class="p">,</span> <span class="kc">true</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-l, --limit [number]&#39;</span><span class="p">,</span> <span class="s1">&#39;Defaults to 25.&#39;</span><span class="p">,</span> <span class="mi">25</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-L, --logLevel [string]&#39;</span><span class="p">,</span> <span class="s1">&#39;Output log level. Choices: debug, info, notice, warning, error, critical, alert, emergency.&#39;</span><span class="p">,</span> <span class="s1">&#39;info&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-o, --order [string]&#39;</span><span class="p">,</span> <span class="s1">&#39;Defaults to &quot;asc&quot;. Choices: &quot;asc&quot;, &quot;desc&quot;.&#39;</span><span class="p">,</span> <span class="s1">&#39;asc&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-s, --since_id [string]&#39;</span><span class="p">,</span> <span class="s1">&#39;Defaults to null.&#39;</span><span class="p">,</span> <span class="kc">null</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-S, --api_secret &lt;string&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;Your applications\&#39;s api_secret.&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">action</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">options</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">new</span> <span class="nx">Disqus</span><span class="p">(</span><span class="nx">options</span><span class="p">).</span><span class="nx">categories</span><span class="p">.</span><span class="nx">list</span><span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="nx">util</span><span class="p">.</span><span class="nx">printCliResult</span><span class="p">);</span>
+  <span class="p">});</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><h3 id="listposts">listPosts</h3>
+
+<p>Returns a list of posts within a category.</p>
+
+<p>Output of <code>disqus categories listPosts --help</code>:</p>
+
+<pre><code> Usage: disqus categories listPosts [options]
+
+ Options:
+
+ -h, --help                 output usage information
+ -c, --cursor [string]      Defaults to null.
+ -C, --category &lt;string&gt;    Looks up a category by ID.
+ -H, --https [boolean]      Whether to use https. Defaults to true.
+ -i, --include [array]      Defaults to ["approved"]. Choices: unapproved, approved, spam, deleted, flagged, highlighted.
+ -l, --limit [number]       Defaults to 25.
+ -L, --logLevel [string]    Output log level. Choices: debug, info, notice, warning, error, critical, alert, emergency.
+ -o, --order [string]       Defaults to "asc". Choices: "asc", "desc".
+ -q, --query [string]       Defaults to null.
+ -r, --related [array]      Defaults to [].
+ -s, --since [string]       Defaults to null.
+ -S, --api_secret &lt;string&gt;  Your application's api_secret.
+</code></pre></div></div><div class="code"><div class="wrapper"><span class="nx">categories</span>
+  <span class="p">.</span><span class="nx">command</span><span class="p">(</span><span class="s1">&#39;listPosts&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">description</span><span class="p">(</span><span class="s1">&#39;Returns a list of posts within a category.&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-c, --cursor [string]&#39;</span><span class="p">,</span> <span class="s1">&#39;Defaults to null.&#39;</span><span class="p">,</span> <span class="kc">null</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-C, --category &lt;string&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;Looks up a category by ID.&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-H, --https [boolean]&#39;</span><span class="p">,</span> <span class="s1">&#39;Whether to use https. Defaults to true.&#39;</span><span class="p">,</span> <span class="kc">true</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-i, --include [array]&#39;</span><span class="p">,</span> <span class="s1">&#39;Defaults to [&quot;approved&quot;]. Choices: unapproved, approved, spam, deleted, flagged, highlighted.&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;approved&#39;</span><span class="p">])</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-l, --limit [number]&#39;</span><span class="p">,</span> <span class="s1">&#39;Defaults to 25.&#39;</span><span class="p">,</span> <span class="mi">25</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-L, --logLevel [string]&#39;</span><span class="p">,</span> <span class="s1">&#39;Output log level. Choices: debug, info, notice, warning, error, critical, alert, emergency.&#39;</span><span class="p">,</span> <span class="s1">&#39;info&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-o, --order [string]&#39;</span><span class="p">,</span> <span class="s1">&#39;Defaults to &quot;asc&quot;. Choices: &quot;asc&quot;, &quot;desc&quot;.&#39;</span><span class="p">,</span> <span class="s1">&#39;asc&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-q, --query [string]&#39;</span><span class="p">,</span> <span class="s1">&#39;Defaults to null.&#39;</span><span class="p">,</span> <span class="kc">null</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-r, --related [array]&#39;</span><span class="p">,</span> <span class="s1">&#39;Defaults to [].&#39;</span><span class="p">,</span> <span class="p">[])</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-s, --since [string]&#39;</span><span class="p">,</span> <span class="s1">&#39;Defaults to null.&#39;</span><span class="p">,</span> <span class="kc">null</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-S, --api_secret &lt;string&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;Your applications\&#39;s api_secret.&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">action</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">options</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">new</span> <span class="nx">Disqus</span><span class="p">(</span><span class="nx">options</span><span class="p">).</span><span class="nx">categories</span><span class="p">.</span><span class="nx">listPosts</span><span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="nx">util</span><span class="p">.</span><span class="nx">printCliResult</span><span class="p">);</span>
+  <span class="p">});</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><h3 id="listthreads">listThreads</h3>
+
+<p>Returns a list of threads within a category sorted by the date created.</p>
+
+<p>Output of <code>disqus categories listThreads --help</code>:</p>
+
+<pre><code> Usage: disqus categories listThreads [options]
+
+ Options:
+
+ -h, --help                 output usage information
+ -c, --cursor [string]      Defaults to null.
+ -C, --category &lt;string&gt;    Looks up a category by ID.
+ -H, --https [boolean]      Whether to use https. Defaults to true.
+ -l, --limit [number]       Defaults to 25.
+ -L, --logLevel [string]    Output log level. Choices: debug, info, notice, warning, error, critical, alert, emergency.
+ -o, --order [string]       Defaults to "asc". Choices: "asc", "desc".
+ -r, --related [array]      Defaults to [].
+ -s, --since [string]       Defaults to null.
+ -S, --api_secret &lt;string&gt;  Your application's api_secret.
+</code></pre></div></div><div class="code"><div class="wrapper"><span class="nx">categories</span>
+  <span class="p">.</span><span class="nx">command</span><span class="p">(</span><span class="s1">&#39;listThreads&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">description</span><span class="p">(</span><span class="s1">&#39;Returns a list of threads within a category sorted by the date created.&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-c, --cursor [string]&#39;</span><span class="p">,</span> <span class="s1">&#39;Defaults to null.&#39;</span><span class="p">,</span> <span class="kc">null</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-C, --category &lt;string&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;Looks up a category by ID.&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-H, --https [boolean]&#39;</span><span class="p">,</span> <span class="s1">&#39;Whether to use https. Defaults to true.&#39;</span><span class="p">,</span> <span class="kc">true</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-l, --limit [number]&#39;</span><span class="p">,</span> <span class="s1">&#39;Defaults to 25.&#39;</span><span class="p">,</span> <span class="mi">25</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-L, --logLevel [string]&#39;</span><span class="p">,</span> <span class="s1">&#39;Output log level. Choices: debug, info, notice, warning, error, critical, alert, emergency.&#39;</span><span class="p">,</span> <span class="s1">&#39;info&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-o, --order [string]&#39;</span><span class="p">,</span> <span class="s1">&#39;Defaults to &quot;asc&quot;. Choices: &quot;asc&quot;, &quot;desc&quot;.&#39;</span><span class="p">,</span> <span class="s1">&#39;asc&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-r, --related [array]&#39;</span><span class="p">,</span> <span class="s1">&#39;Defaults to [].&#39;</span><span class="p">,</span> <span class="p">[])</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-s, --since [string]&#39;</span><span class="p">,</span> <span class="s1">&#39;Defaults to null.&#39;</span><span class="p">,</span> <span class="kc">null</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-S, --api_secret &lt;string&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;Your applications\&#39;s api_secret.&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">action</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">options</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">new</span> <span class="nx">Disqus</span><span class="p">(</span><span class="nx">options</span><span class="p">).</span><span class="nx">categories</span><span class="p">.</span><span class="nx">listThreads</span><span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="nx">util</span><span class="p">.</span><span class="nx">printCliResult</span><span class="p">);</span>
+  <span class="p">});</span>
+
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="nx">categories</span><span class="p">;</span></div></div></div></div></body></html>

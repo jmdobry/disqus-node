@@ -1,0 +1,150 @@
+<!DOCTYPE html><html lang="en"><head><title>lib/cli/topics</title></head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"><meta name="groc-relative-root" content="../../"><meta name="groc-document-path" content="lib/cli/topics"><meta name="groc-project-path" content="lib/cli/topics.js"><link rel="stylesheet" type="text/css" media="all" href="../../assets/style.css"><script type="text/javascript" src="../../assets/behavior.js"></script><body><div id="meta"><div class="file-path">lib/cli/topics.js</div></div><div id="document"><div class="segment"><div class="comments "><div class="wrapper"><p><a href="/lib/index.html">Up one level</a></p>
+
+<h3 id="topics-cli">Topics CLI</h3>
+
+<p>See the disqus-node <a href="/lib/api/topics.html">Topics API</a>.</p>
+
+<p>See the <a href="https://disqus.com/api/docs/topics/">Topics API on Disqus.com</a>.</p></div></div><div class="code"><div class="wrapper"><span class="kd">var</span> <span class="nx">commander</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;commander&#39;</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">topics</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">commander</span><span class="p">.</span><span class="nx">Command</span><span class="p">(</span><span class="s1">&#39;disqus topics&#39;</span><span class="p">);</span>
+
+<span class="nx">topics</span>
+  <span class="p">.</span><span class="nx">usage</span><span class="p">(</span><span class="s1">&#39;&lt;cmd&gt; [options]&#39;</span><span class="p">);</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><h3 id="follow">follow</h3>
+
+<p>Follow a topic.</p>
+
+<p>Output of <code>disqus topics follow --help</code>:</p>
+
+<pre><code> Usage: disqus topics follow [options]
+
+ Options:
+
+ -h, --help               output usage information
+ -A, --api_key &lt;string&gt;   Your application's public api_key.
+ -H, --https [boolean]    Whether to use https. Defaults to true.
+ -L, --logLevel [string]  Output log level. Choices: debug, info, notice, warning, error, critical, alert, emergency.
+ -t, --target &lt;string&gt;    Looks up a topic by ID (slug).
+</code></pre></div></div><div class="code"><div class="wrapper"><span class="nx">topics</span>
+  <span class="p">.</span><span class="nx">command</span><span class="p">(</span><span class="s1">&#39;follow&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">description</span><span class="p">(</span><span class="s1">&#39;Follow a topic.&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-A, --api_key &lt;string&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;Your applications\&#39;s public api_key.&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-H, --https [boolean]&#39;</span><span class="p">,</span> <span class="s1">&#39;Whether to use https. Defaults to true.&#39;</span><span class="p">,</span> <span class="kc">true</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-L, --logLevel [string]&#39;</span><span class="p">,</span> <span class="s1">&#39;Output log level. Choices: debug, info, notice, warning, error, critical, alert, emergency.&#39;</span><span class="p">,</span> <span class="s1">&#39;info&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-S, --api_secret &lt;string&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;Your applications\&#39;s api_secret.&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-t, --target &lt;string&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;Looks up a topic by ID (slug).&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">action</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">options</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">Disqus</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;../&#39;</span><span class="p">);</span>
+    <span class="kd">var</span> <span class="nx">disqus</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Disqus</span><span class="p">({</span>
+      <span class="nx">logLevel</span><span class="o">:</span> <span class="nx">options</span><span class="p">.</span><span class="nx">logLevel</span><span class="p">,</span>
+      <span class="nx">api_key</span><span class="o">:</span> <span class="nx">options</span><span class="p">.</span><span class="nx">api_key</span><span class="p">,</span>
+      <span class="nx">api_secret</span><span class="o">:</span> <span class="nx">options</span><span class="p">.</span><span class="nx">api_secret</span><span class="p">,</span>
+      <span class="nx">https</span><span class="o">:</span> <span class="nx">options</span><span class="p">.</span><span class="nx">https</span>
+    <span class="p">});</span>
+
+    <span class="nx">disqus</span><span class="p">.</span><span class="nx">topics</span><span class="p">.</span><span class="nx">follow</span><span class="p">({</span>
+      <span class="nx">target</span><span class="o">:</span> <span class="nx">options</span><span class="p">.</span><span class="nx">target</span>
+    <span class="p">},</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">if</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span>
+        <span class="nx">process</span><span class="p">.</span><span class="nx">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+      <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">result</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span> <span class="mi">2</span><span class="p">));</span>
+      <span class="p">}</span>
+    <span class="p">});</span>
+  <span class="p">});</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><h3 id="listfollowers">listFollowers</h3>
+
+<p>Returns a list of users following a topic.</p>
+
+<p>Output of <code>disqus topics listFollowers --help</code>:</p>
+
+<pre><code> Usage: disqus topics listFollowers [options]
+
+ Options:
+
+ -h, --help               output usage information
+ -A, --api_key &lt;string&gt;   Your application's public api_key.
+ -c, --cursor [string]    Defaults to null.
+ -H, --https [boolean]    Whether to use https. Defaults to true.
+ -l, --limit [number]     Defaults to 25.
+ -L, --logLevel [string]  Output log level. Choices: debug, info, notice, warning, error, critical, alert, emergency.
+ -o, --order [string]     Defaults to "asc". Choices: asc, desc.
+ -s, --since_id [string]  Defaults to null.
+ -t, --topic &lt;string&gt;     Looks up a topic by ID (slug).
+</code></pre></div></div><div class="code"><div class="wrapper"><span class="nx">topics</span>
+  <span class="p">.</span><span class="nx">command</span><span class="p">(</span><span class="s1">&#39;listFollowers&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">description</span><span class="p">(</span><span class="s1">&#39;Returns a list of users following a topic.&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-A, --api_key &lt;string&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;Your applications\&#39;s public api_key.&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-c, --cursor [string]&#39;</span><span class="p">,</span> <span class="s1">&#39;Defaults to null.&#39;</span><span class="p">,</span> <span class="kc">null</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-H, --https [boolean]&#39;</span><span class="p">,</span> <span class="s1">&#39;Whether to use https. Defaults to true.&#39;</span><span class="p">,</span> <span class="kc">true</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-l, --limit [number]&#39;</span><span class="p">,</span> <span class="s1">&#39;Defaults to 25.&#39;</span><span class="p">,</span> <span class="mi">25</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-L, --logLevel [string]&#39;</span><span class="p">,</span> <span class="s1">&#39;Output log level. Choices: debug, info, notice, warning, error, critical, alert, emergency.&#39;</span><span class="p">,</span> <span class="s1">&#39;info&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-o, --order [string]&#39;</span><span class="p">,</span> <span class="s1">&#39;Defaults to &quot;asc&quot;. Choices: asc, desc.&#39;</span><span class="p">,</span> <span class="s1">&#39;asc&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-s, --since_id [string]&#39;</span><span class="p">,</span> <span class="s1">&#39;Defaults to null.&#39;</span><span class="p">,</span> <span class="kc">null</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-t, --topic &lt;string&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;Looks up a topic by ID (slug).&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">action</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">options</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">Disqus</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;../&#39;</span><span class="p">);</span>
+    <span class="kd">var</span> <span class="nx">disqus</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Disqus</span><span class="p">({</span>
+      <span class="nx">logLevel</span><span class="o">:</span> <span class="nx">options</span><span class="p">.</span><span class="nx">logLevel</span><span class="p">,</span>
+      <span class="nx">api_key</span><span class="o">:</span> <span class="nx">options</span><span class="p">.</span><span class="nx">api_key</span><span class="p">,</span>
+      <span class="nx">https</span><span class="o">:</span> <span class="nx">options</span><span class="p">.</span><span class="nx">https</span>
+    <span class="p">});</span>
+
+    <span class="nx">disqus</span><span class="p">.</span><span class="nx">topics</span><span class="p">.</span><span class="nx">listFollowers</span><span class="p">({</span>
+      <span class="nx">topic</span><span class="o">:</span> <span class="nx">options</span><span class="p">.</span><span class="nx">topic</span><span class="p">,</span>
+      <span class="nx">since_id</span><span class="o">:</span> <span class="nx">options</span><span class="p">.</span><span class="nx">since_id</span><span class="p">,</span>
+      <span class="nx">cursor</span><span class="o">:</span> <span class="nx">options</span><span class="p">.</span><span class="nx">cursor</span><span class="p">,</span>
+      <span class="nx">limit</span><span class="o">:</span> <span class="nx">options</span><span class="p">.</span><span class="nx">limit</span><span class="p">,</span>
+      <span class="nx">order</span><span class="o">:</span> <span class="nx">options</span><span class="p">.</span><span class="nx">order</span>
+    <span class="p">},</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">if</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span>
+        <span class="nx">process</span><span class="p">.</span><span class="nx">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+      <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">result</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span> <span class="mi">2</span><span class="p">));</span>
+      <span class="p">}</span>
+    <span class="p">});</span>
+  <span class="p">});</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><h3 id="unfollow">unfollow</h3>
+
+<p>Unfollow a topic.</p>
+
+<p>Output of <code>disqus topics unfollow --help</code>:</p>
+
+<pre><code> Usage: disqus topics unfollow [options]
+
+ Options:
+
+ -h, --help                 output usage information
+ -A, --api_key &lt;string&gt;     Your application's public api_key.
+ -H, --https [boolean]      Whether to use https. Defaults to true.
+ -L, --logLevel [string]    Output log level. Choices: debug, info, notice, warning, error, critical, alert, emergency.
+ -S, --api_secret &lt;string&gt;  Your application's api_secret.
+ -t, --target &lt;string&gt;      Looks up a topic by ID (slug).
+</code></pre></div></div><div class="code"><div class="wrapper"><span class="nx">topics</span>
+  <span class="p">.</span><span class="nx">command</span><span class="p">(</span><span class="s1">&#39;unfollow&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">description</span><span class="p">(</span><span class="s1">&#39;Unfollow a topic.&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-A, --api_key &lt;string&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;Your applications\&#39;s public api_key.&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-H, --https [boolean]&#39;</span><span class="p">,</span> <span class="s1">&#39;Whether to use https. Defaults to true.&#39;</span><span class="p">,</span> <span class="kc">true</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-L, --logLevel [string]&#39;</span><span class="p">,</span> <span class="s1">&#39;Output log level. Choices: debug, info, notice, warning, error, critical, alert, emergency.&#39;</span><span class="p">,</span> <span class="s1">&#39;info&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-S, --api_secret &lt;string&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;Your applications\&#39;s api_secret.&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-t, --target &lt;string&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;Looks up a topic by ID (slug).&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">action</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">options</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">Disqus</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;../&#39;</span><span class="p">);</span>
+    <span class="kd">var</span> <span class="nx">disqus</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Disqus</span><span class="p">({</span>
+      <span class="nx">logLevel</span><span class="o">:</span> <span class="nx">options</span><span class="p">.</span><span class="nx">logLevel</span><span class="p">,</span>
+      <span class="nx">api_key</span><span class="o">:</span> <span class="nx">options</span><span class="p">.</span><span class="nx">api_key</span><span class="p">,</span>
+      <span class="nx">api_secret</span><span class="o">:</span> <span class="nx">options</span><span class="p">.</span><span class="nx">api_secret</span><span class="p">,</span>
+      <span class="nx">https</span><span class="o">:</span> <span class="nx">options</span><span class="p">.</span><span class="nx">https</span>
+    <span class="p">});</span>
+
+    <span class="nx">disqus</span><span class="p">.</span><span class="nx">topics</span><span class="p">.</span><span class="nx">unfollow</span><span class="p">({</span>
+      <span class="nx">target</span><span class="o">:</span> <span class="nx">options</span><span class="p">.</span><span class="nx">target</span>
+    <span class="p">},</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">if</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span>
+        <span class="nx">process</span><span class="p">.</span><span class="nx">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+      <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">result</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span> <span class="mi">2</span><span class="p">));</span>
+      <span class="p">}</span>
+    <span class="p">});</span>
+  <span class="p">});</span>
+
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="nx">topics</span><span class="p">;</span></div></div></div></div></body></html>

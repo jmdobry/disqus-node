@@ -1,0 +1,57 @@
+<!DOCTYPE html><html lang="en"><head><title>lib/api/trends</title></head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"><meta name="groc-relative-root" content="../../"><meta name="groc-document-path" content="lib/api/trends"><meta name="groc-project-path" content="lib/api/trends.js"><link rel="stylesheet" type="text/css" media="all" href="../../assets/style.css"><script type="text/javascript" src="../../assets/behavior.js"></script><body><div id="meta"><div class="file-path">lib/api/trends.js</div></div><div id="document"><div class="segment"><div class="comments "><div class="wrapper"><p><a href="../index.html">Up one level</a></p>
+
+<h3 id="trends-api">Trends API</h3>
+
+<p>See also <a href="../cli/trends.html">Trends CLI</a></p></div></div><div class="code"><div class="wrapper"><span class="kd">var</span> <span class="nx">Promise</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;bluebird&#39;</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">Promise</span><span class="p">.</span><span class="nx">promisify</span><span class="p">(</span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;request&#39;</span><span class="p">));</span>
+<span class="kd">var</span> <span class="nx">parse</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;../util&#39;</span><span class="p">).</span><span class="nx">parse</span><span class="p">;</span>
+
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="kd">function</span> <span class="nx">Trends</span><span class="p">(</span><span class="nx">config</span><span class="p">,</span> <span class="nx">logger</span><span class="p">)</span> <span class="p">{</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><h3 id="listthreads">listThreads</h3>
+
+<p>Adds an entry to the whitelist.</p>
+
+<p>Signature:</p>
+
+<pre><code class="js">Disqus#trends.listThreads(options[, cb])
+</code></pre>
+
+<p>Usage:</p>
+
+<pre><code class="js">// Node-style
+disqus.category.create({
+    forum: ['id1' 'id2'],
+    limit: 10,
+    related: ['forum', 'author', 'category']
+}, function (err, result) {...})
+
+// Promise-style
+disqus.category.create({
+    forum: ['id1' 'id2'],
+    limit: 10,
+    related: ['forum', 'author', 'category']
+})
+.then(function (result) {...})
+.catch(function (err) {...});
+</code></pre></div></div><div class="code"><div class="wrapper">  <span class="k">this</span><span class="p">.</span><span class="nx">listThreads</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="nx">cb</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">Promise</span><span class="p">.</span><span class="nx">resolve</span><span class="p">({})</span>
+      <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">qs</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">options</span> <span class="o">=</span> <span class="nx">options</span> <span class="o">||</span> <span class="p">{};</span>
+        <span class="nx">qs</span><span class="p">.</span><span class="nx">api_key</span> <span class="o">=</span> <span class="nx">options</span><span class="p">.</span><span class="nx">api_key</span> <span class="o">||</span> <span class="nx">config</span><span class="p">.</span><span class="nx">api_key</span><span class="p">;</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="s1">&#39;forum&#39;</span> <span class="k">in</span> <span class="nx">options</span><span class="p">)</span> <span class="p">{</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>TODO: handle array</p></div></div><div class="code"><div class="wrapper">          <span class="nx">qs</span><span class="p">.</span><span class="nx">forum</span> <span class="o">=</span> <span class="nx">options</span><span class="p">.</span><span class="nx">forum</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">if</span> <span class="p">(</span><span class="s1">&#39;limit&#39;</span> <span class="k">in</span> <span class="nx">options</span><span class="p">)</span> <span class="p">{</span>
+          <span class="nx">qs</span><span class="p">.</span><span class="nx">limit</span> <span class="o">=</span> <span class="nx">options</span><span class="p">.</span><span class="nx">limit</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">if</span> <span class="p">(</span><span class="s1">&#39;related&#39;</span> <span class="k">in</span> <span class="nx">options</span><span class="p">)</span> <span class="p">{</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>TODO: handle array</p></div></div><div class="code"><div class="wrapper">          <span class="nx">qs</span><span class="p">.</span><span class="nx">related</span> <span class="o">=</span> <span class="nx">options</span><span class="p">.</span><span class="nx">related</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="kd">var</span> <span class="nx">opts</span> <span class="o">=</span> <span class="p">{</span>
+          <span class="nx">method</span><span class="o">:</span> <span class="s1">&#39;GET&#39;</span><span class="p">,</span>
+          <span class="nx">url</span><span class="o">:</span> <span class="nx">config</span><span class="p">.</span><span class="nx">url</span> <span class="o">+</span> <span class="s1">&#39;trends/listThreads.json&#39;</span><span class="p">,</span>
+          <span class="nx">qs</span><span class="o">:</span> <span class="nx">qs</span>
+        <span class="p">};</span>
+        <span class="nx">logger</span><span class="p">.</span><span class="nx">debug</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">opts</span><span class="p">));</span>
+        <span class="k">return</span> <span class="nx">request</span><span class="p">(</span><span class="nx">opts</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="nx">parse</span><span class="p">);</span>
+      <span class="p">}).</span><span class="nx">nodeify</span><span class="p">(</span><span class="nx">cb</span><span class="p">);</span>
+  <span class="p">};</span>
+<span class="p">};</span></div></div></div></div></body></html>

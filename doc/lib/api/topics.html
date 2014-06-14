@@ -1,0 +1,113 @@
+<!DOCTYPE html><html lang="en"><head><title>lib/api/topics</title></head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"><meta name="groc-relative-root" content="../../"><meta name="groc-document-path" content="lib/api/topics"><meta name="groc-project-path" content="lib/api/topics.js"><link rel="stylesheet" type="text/css" media="all" href="../../assets/style.css"><script type="text/javascript" src="../../assets/behavior.js"></script><body><div id="meta"><div class="file-path">lib/api/topics.js</div></div><div id="document"><div class="segment"><div class="comments "><div class="wrapper"><p><a href="/lib/index.html">Up one level</a></p>
+
+<h3 id="topics-api">Topics API</h3>
+
+<p>See the disqus-node <a href="/lib/cli/topics.html">Topics CLI</a>.</p>
+
+<p>See the <a href="https://disqus.com/api/docs/topics/">Topics API on Disqus.com</a>.</p></div></div><div class="code"><div class="wrapper"><span class="kd">var</span> <span class="nx">util</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;../util&#39;</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">methods</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">follow</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">resource</span><span class="o">:</span> <span class="s1">&#39;topics&#39;</span><span class="p">,</span>
+    <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;follow&#39;</span><span class="p">,</span>
+    <span class="nx">method</span><span class="o">:</span> <span class="s1">&#39;POST&#39;</span><span class="p">,</span>
+    <span class="nx">availableOptions</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;api_secret&#39;</span><span class="p">,</span> <span class="s1">&#39;api_key&#39;</span><span class="p">,</span> <span class="s1">&#39;access_token&#39;</span><span class="p">,</span> <span class="s1">&#39;target&#39;</span><span class="p">]</span>
+  <span class="p">},</span>
+  <span class="nx">listFollowers</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">resource</span><span class="o">:</span> <span class="s1">&#39;topics&#39;</span><span class="p">,</span>
+    <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;listFollowers&#39;</span><span class="p">,</span>
+    <span class="nx">method</span><span class="o">:</span> <span class="s1">&#39;GET&#39;</span><span class="p">,</span>
+    <span class="nx">availableOptions</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;api_secret&#39;</span><span class="p">,</span> <span class="s1">&#39;api_key&#39;</span><span class="p">,</span> <span class="s1">&#39;access_token&#39;</span><span class="p">,</span> <span class="s1">&#39;topics&#39;</span><span class="p">,</span> <span class="s1">&#39;since_id&#39;</span><span class="p">,</span> <span class="s1">&#39;limit&#39;</span><span class="p">,</span> <span class="s1">&#39;order&#39;</span><span class="p">]</span>
+  <span class="p">},</span>
+  <span class="nx">unfollow</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">resource</span><span class="o">:</span> <span class="s1">&#39;topics&#39;</span><span class="p">,</span>
+    <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;unfollow&#39;</span><span class="p">,</span>
+    <span class="nx">method</span><span class="o">:</span> <span class="s1">&#39;POST&#39;</span><span class="p">,</span>
+    <span class="nx">availableOptions</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;api_secret&#39;</span><span class="p">,</span> <span class="s1">&#39;api_key&#39;</span><span class="p">,</span> <span class="s1">&#39;access_token&#39;</span><span class="p">,</span> <span class="s1">&#39;target&#39;</span><span class="p">]</span>
+  <span class="p">}</span>
+<span class="p">};</span>
+
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="kd">function</span> <span class="nx">Topics</span><span class="p">(</span><span class="nx">config</span><span class="p">,</span> <span class="nx">logger</span><span class="p">)</span> <span class="p">{</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><h3 id="follow">follow</h3>
+
+<p>Follow a topic.</p>
+
+<p>Signature:</p>
+
+<pre><code class="js">Disqus#topics.follow(options[, cb])
+</code></pre>
+
+<p>Usage:</p>
+
+<pre><code class="js">// Node-style
+disqus.topics.follow({
+    target: 'targetId'
+}, function (err, result) {...})
+
+// Promise-style
+disqus.topics.follow({
+    target: 'targetId'
+})
+.then(function (result) {...})
+.catch(function (err) {...})
+.error(function (err) {...});
+</code></pre></div></div><div class="code"><div class="wrapper">  <span class="k">this</span><span class="p">.</span><span class="nx">follow</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="nx">cb</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">util</span><span class="p">.</span><span class="nx">executeAPIMethod</span><span class="p">(</span><span class="nx">methods</span><span class="p">.</span><span class="nx">follow</span><span class="p">,</span> <span class="nx">options</span><span class="p">,</span> <span class="nx">config</span><span class="p">,</span> <span class="nx">logger</span><span class="p">,</span> <span class="nx">cb</span><span class="p">);</span>
+  <span class="p">};</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><h3 id="listfollowers">listFollowers</h3>
+
+<p>Returns a list of users following a topic.</p>
+
+<p>Signature:</p>
+
+<pre><code class="js">Disqus#topics.listFollowers(options[, cb])
+</code></pre>
+
+<p>Usage:</p>
+
+<pre><code class="js">// Node-style
+disqus.topics.listFollowers({
+    topic: 'topicId',
+    cursor: null,
+    since_id: null,
+    limit: 25,
+    order: 'asc'
+}, function (err, result) {...})
+
+// Promise-style
+disqus.topics.listFollowers({
+    topic: 'topicId',
+    cursor: null,
+    since_id: null,
+    limit: 25,
+    order: 'asc'
+})
+.then(function (result) {...})
+.catch(function (err) {...})
+.error(function (err) {...});
+</code></pre></div></div><div class="code"><div class="wrapper">  <span class="k">this</span><span class="p">.</span><span class="nx">listFollowers</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="nx">cb</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">util</span><span class="p">.</span><span class="nx">executeAPIMethod</span><span class="p">(</span><span class="nx">methods</span><span class="p">.</span><span class="nx">listFollowers</span><span class="p">,</span> <span class="nx">options</span><span class="p">,</span> <span class="nx">config</span><span class="p">,</span> <span class="nx">logger</span><span class="p">,</span> <span class="nx">cb</span><span class="p">);</span>
+  <span class="p">};</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><h3 id="unfollow">unfollow</h3>
+
+<p>Unfollow a topic.</p>
+
+<p>Signature:</p>
+
+<pre><code class="js">Disqus#topics.unfollow(options[, cb])
+</code></pre>
+
+<p>Usage:</p>
+
+<pre><code class="js">// Node-style
+disqus.topics.unfollow({
+    target: 'targetId'
+}, function (err, result) {...})
+
+// Promise-style
+disqus.topics.unfollow({
+    target: 'targetId'
+})
+.then(function (result) {...})
+.catch(function (err) {...})
+.error(function (err) {...});
+</code></pre></div></div><div class="code"><div class="wrapper">  <span class="k">this</span><span class="p">.</span><span class="nx">unfollow</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="nx">cb</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">util</span><span class="p">.</span><span class="nx">executeAPIMethod</span><span class="p">(</span><span class="nx">methods</span><span class="p">.</span><span class="nx">unfollow</span><span class="p">,</span> <span class="nx">options</span><span class="p">,</span> <span class="nx">config</span><span class="p">,</span> <span class="nx">logger</span><span class="p">,</span> <span class="nx">cb</span><span class="p">);</span>
+  <span class="p">};</span>
+<span class="p">};</span></div></div></div></div></body></html>

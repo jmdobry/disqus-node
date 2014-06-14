@@ -1,0 +1,82 @@
+<!DOCTYPE html><html lang="en"><head><title>lib/index</title></head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"><meta name="groc-relative-root" content="../"><meta name="groc-document-path" content="lib/index"><meta name="groc-project-path" content="lib/index.js"><link rel="stylesheet" type="text/css" media="all" href="../assets/style.css"><script type="text/javascript" src="../assets/behavior.js"></script><body><div id="meta"><div class="file-path">lib/index.js</div></div><div id="document"><div class="segment"><div class="comments "><div class="wrapper"><p><a href="../">Up one level</a></p>
+
+<h3 id="disqus-node-api">disqus-node API</h3></div></div><div class="code"><div class="wrapper"><span class="kd">var</span> <span class="nx">Log</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">Applications</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;./api/applications&#39;</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">Blacklists</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;./api/blacklists&#39;</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">Categories</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;./api/categories&#39;</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">Exports</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;./api/exports&#39;</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">Imports</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;./api/imports&#39;</span><span class="p">);</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><h3 id="constructor-function">Constructor Function</h3>
+
+<p>Signature:</p>
+
+<pre><code class="js">new Disqus(options)
+</code></pre>
+
+<p>Usage:</p>
+
+<pre><code class="js"> var Disqus = require('disqus-node');
+ var disqus = new Disqus({
+   api_key: 'API_KEY',
+   api_secret: 'API_SECRET',
+   access_token: 'ACCESS_TOKEN',
+   logLevel: 'info',
+   https: true
+ });
+</code></pre></div></div><div class="code"><div class="wrapper"><span class="kd">function</span> <span class="nx">Disqus</span><span class="p">(</span><span class="nx">options</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">options</span> <span class="o">=</span> <span class="nx">options</span> <span class="o">||</span> <span class="p">{};</span>
+
+  <span class="kd">var</span> <span class="nx">_this</span> <span class="o">=</span> <span class="k">this</span><span class="p">;</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><h3 id="options">Options</h3>
+
+<h6 id="loglevel">logLevel</h6>
+
+<p>Must be a string. Defaults to <code>"info"</code>.</p>
+
+<p>Choices: <code>"debug"</code>, <code>"info"</code>, <code>"notice"</code>, <code>"warning"</code>, <code>"error"</code>, <code>"critical"</code>, <code>"alert"</code>, <code>"emergency"</code>.</p></div></div><div class="code"><div class="wrapper">  <span class="nx">options</span><span class="p">.</span><span class="nx">logLevel</span> <span class="o">=</span> <span class="nx">options</span><span class="p">.</span><span class="nx">logLevel</span> <span class="o">||</span> <span class="s1">&#39;info&#39;</span><span class="p">;</span>
+  <span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="nx">options</span><span class="p">.</span><span class="nx">logLevel</span> <span class="o">!==</span> <span class="s1">&#39;string&#39;</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="s1">&#39;logLevel must be a string!&#39;</span><span class="p">);</span>
+  <span class="p">}</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><h6 id="api-key">api_key</h6>
+
+<p>Must be a string.</p></div></div><div class="code"><div class="wrapper">  <span class="k">if</span> <span class="p">(</span><span class="s1">&#39;api_key&#39;</span> <span class="k">in</span> <span class="nx">options</span> <span class="o">&amp;&amp;</span> <span class="k">typeof</span> <span class="nx">options</span><span class="p">.</span><span class="nx">api_key</span> <span class="o">!==</span> <span class="s1">&#39;string&#39;</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="s1">&#39;api_key must be a string!&#39;</span><span class="p">);</span>
+  <span class="p">}</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><h6 id="api-secret">api_secret</h6>
+
+<p>Must be a string. Required.</p></div></div><div class="code"><div class="wrapper">  <span class="k">if</span> <span class="p">(</span><span class="s1">&#39;api_secret&#39;</span> <span class="k">in</span> <span class="nx">options</span> <span class="o">&amp;&amp;</span> <span class="k">typeof</span> <span class="nx">options</span><span class="p">.</span><span class="nx">api_secret</span> <span class="o">!==</span> <span class="s1">&#39;string&#39;</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="s1">&#39;api_secret must be a string!&#39;</span><span class="p">);</span>
+  <span class="p">}</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><h6 id="access-token">access_token</h6>
+
+<p>Must be a string. Required for actions that require authentication.</p></div></div><div class="code"><div class="wrapper">  <span class="k">if</span> <span class="p">(</span><span class="s1">&#39;access_token&#39;</span> <span class="k">in</span> <span class="nx">options</span> <span class="o">&amp;&amp;</span> <span class="k">typeof</span> <span class="nx">options</span><span class="p">.</span><span class="nx">access_token</span> <span class="o">!==</span> <span class="s1">&#39;string&#39;</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="s1">&#39;access_token must be a string!&#39;</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="k">this</span><span class="p">.</span><span class="nx">config</span> <span class="o">=</span> <span class="p">{</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><h6 id="https">https</h6>
+
+<p>Must be a boolean. Defaults to <code>true</code>.</p>
+
+<p>Specifies whether to use https for requests.</p></div></div><div class="code"><div class="wrapper">    <span class="nx">url</span><span class="o">:</span> <span class="p">(</span><span class="nx">options</span><span class="p">.</span><span class="nx">https</span> <span class="o">?</span> <span class="s1">&#39;https&#39;</span> <span class="o">:</span> <span class="s1">&#39;http&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;://disqus.com/api/3.0/&#39;</span><span class="p">,</span>
+    <span class="nx">availableOptions</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;logLevel&#39;</span><span class="p">,</span> <span class="s1">&#39;api_key&#39;</span><span class="p">,</span> <span class="s1">&#39;api_secret&#39;</span><span class="p">,</span> <span class="s1">&#39;access_token&#39;</span><span class="p">]</span>
+  <span class="p">};</span>
+
+  <span class="k">this</span><span class="p">.</span><span class="nx">config</span><span class="p">.</span><span class="nx">availableOptions</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">option</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">option</span> <span class="k">in</span> <span class="nx">options</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">_this</span><span class="p">.</span><span class="nx">config</span><span class="p">[</span><span class="nx">option</span><span class="p">]</span> <span class="o">=</span> <span class="nx">options</span><span class="p">[</span><span class="nx">option</span><span class="p">];</span>
+    <span class="p">}</span>
+  <span class="p">});</span>
+
+  <span class="k">this</span><span class="p">.</span><span class="nx">logger</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Log</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">config</span><span class="p">.</span><span class="nx">logLevel</span><span class="p">);</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><h3 id="resources-api">Resources API</h3>
+
+<h6 id="applications">Applications</h6>
+
+<p><a href="/lib/api/applications.html">API</a> | <a href="/lib/cli/applications.html">CLI</a> | <a href="https://disqus.com/api/docs/applications/">Disqus</a></p></div></div><div class="code"><div class="wrapper">  <span class="k">this</span><span class="p">.</span><span class="nx">applications</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Applications</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">config</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">logger</span><span class="p">);</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><h6 id="blacklists">Blacklists</h6>
+
+<p><a href="/lib/api/blacklists.html">API</a> | <a href="/lib/cli/blacklists.html">CLI</a> | <a href="https://disqus.com/api/docs/blacklists/">Disqus</a></p></div></div><div class="code"><div class="wrapper">  <span class="k">this</span><span class="p">.</span><span class="nx">blacklists</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Blacklists</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">config</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">logger</span><span class="p">);</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><h6 id="categories">Categories</h6>
+
+<p><a href="/lib/api/categories.html">API</a> | <a href="/lib/cli/categories.html">CLI</a> | <a href="https://disqus.com/api/docs/categories/">Disqus</a></p></div></div><div class="code"><div class="wrapper">  <span class="k">this</span><span class="p">.</span><span class="nx">categories</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Categories</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">config</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">logger</span><span class="p">);</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><h6 id="exports">Exports</h6>
+
+<p><a href="/lib/api/exports.html">API</a> | <a href="/lib/cli/exports.html">CLI</a> | <a href="https://disqus.com/api/docs/exports/">Disqus</a></p></div></div><div class="code"><div class="wrapper">  <span class="k">this</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Exports</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">config</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">logger</span><span class="p">);</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><h6 id="imports">Imports</h6>
+
+<p><a href="/lib/api/imports.html">API</a> | <a href="/lib/cli/imports.html">CLI</a> | <a href="https://disqus.com/api/docs/imports/">Disqus</a></p></div></div><div class="code"><div class="wrapper">  <span class="k">this</span><span class="p">.</span><span class="nx">imports</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Imports</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">config</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">logger</span><span class="p">);</span>
+
+  <span class="k">this</span><span class="p">.</span><span class="nx">logger</span><span class="p">.</span><span class="nx">debug</span><span class="p">(</span><span class="s1">&#39;Instantiated Disqus&#39;</span><span class="p">,</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">config</span><span class="p">));</span>
+<span class="p">}</span>
+
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="nx">Disqus</span><span class="p">;</span></div></div></div></div></body></html>

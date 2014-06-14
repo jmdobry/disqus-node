@@ -1,0 +1,50 @@
+<!DOCTYPE html><html lang="en"><head><title>lib/api/exports</title></head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"><meta name="groc-relative-root" content="../../"><meta name="groc-document-path" content="lib/api/exports"><meta name="groc-project-path" content="lib/api/exports.js"><link rel="stylesheet" type="text/css" media="all" href="../../assets/style.css"><script type="text/javascript" src="../../assets/behavior.js"></script><body><div id="meta"><div class="file-path">lib/api/exports.js</div></div><div id="document"><div class="segment"><div class="comments "><div class="wrapper"><p><a href="/lib/index.html">Up one level</a></p>
+
+<h3 id="exports-api">Exports API</h3>
+
+<p>See the disqus-node <a href="/lib/cli/exports.html">Exports CLI</a>.</p>
+
+<p>See the <a href="https://disqus.com/api/docs/exports/">Exports API on Disqus.com</a>.</p></div></div><div class="code"><div class="wrapper"><span class="kd">var</span> <span class="nx">util</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;../util&#39;</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">methods</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">exportForum</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">resource</span><span class="o">:</span> <span class="s1">&#39;exports&#39;</span><span class="p">,</span>
+    <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;exportForum&#39;</span><span class="p">,</span>
+    <span class="nx">method</span><span class="o">:</span> <span class="s1">&#39;POST&#39;</span><span class="p">,</span>
+    <span class="nx">requiredOptions</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;api_secret&#39;</span><span class="p">,</span> <span class="s1">&#39;access_token&#39;</span><span class="p">,</span> <span class="s1">&#39;forum&#39;</span><span class="p">],</span>
+    <span class="nx">availableOptions</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;format&#39;</span><span class="p">]</span>
+  <span class="p">}</span>
+<span class="p">};</span>
+
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="kd">function</span> <span class="nx">Exports</span><span class="p">(</span><span class="nx">config</span><span class="p">,</span> <span class="nx">logger</span><span class="p">)</span> <span class="p">{</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><h3 id="exportforum">exportForum</h3>
+
+<p>Exports a forum.</p>
+
+<p>Signature:</p>
+
+<pre><code class="js">Disqus#exports.exportForum(options[, cb])
+</code></pre>
+
+<p>Usage:</p>
+
+<pre><code class="js">// Node-style
+disqus.exports.exportForum({
+    forum: '',
+    // defaults shown
+    format: 'xml'
+}, function (err, result) {...})
+
+// Promise-style
+disqus.exports.exportForum({
+    forum: '',
+    api_secret: 'asdfghkj', // can be set globally
+    access_token: '12345678', // can be set globally
+    // defaults shown
+    format: 'xml'
+})
+.then(function (result) {...})
+.catch(function (err) {...})
+.error(function (err) {...});
+</code></pre></div></div><div class="code"><div class="wrapper">  <span class="k">this</span><span class="p">.</span><span class="nx">exportForum</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="nx">cb</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">util</span><span class="p">.</span><span class="nx">executeAPIMethod</span><span class="p">(</span><span class="nx">methods</span><span class="p">.</span><span class="nx">exportForum</span><span class="p">,</span> <span class="nx">options</span><span class="p">,</span> <span class="nx">config</span><span class="p">,</span> <span class="nx">logger</span><span class="p">,</span> <span class="nx">cb</span><span class="p">);</span>
+  <span class="p">};</span>
+<span class="p">};</span></div></div></div></div></body></html>

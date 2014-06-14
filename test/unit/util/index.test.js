@@ -1,8 +1,13 @@
 var assert = require('chai').assert;
-var requireHelper = require('../../requireHelper');
-var util = requireHelper('util');
+var container = require('../container');
 
 describe('util', function () {
+
+  var util;
+
+  beforeEach(function () {
+    util = container.get('util');
+  });
 
   describe('parse', function () {
     it('should parse a response', function () {

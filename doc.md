@@ -25,12 +25,12 @@ Copyright © 2014 Jason Dobry
 - Categories
 - Exports
 - Imports
+- Topics
 
 ## Not Yet Implemented
 - Forums
 - Posts
 - Threads
-- Topics
 - Trends
 - Users
 - Whitelists

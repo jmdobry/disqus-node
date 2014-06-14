@@ -13,6 +13,20 @@
   <span class="k">return</span> <span class="nx">qs</span><span class="p">;</span>
 <span class="p">}</span>
 
+<span class="kd">function</span> <span class="nx">applyRequiredOptions</span><span class="p">(</span><span class="nx">requiredOpts</span><span class="p">,</span> <span class="nx">options</span><span class="p">,</span> <span class="nx">config</span><span class="p">,</span> <span class="nx">qs</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">requiredOpts</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">option</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">option</span> <span class="k">in</span> <span class="nx">options</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">qs</span><span class="p">[</span><span class="nx">option</span><span class="p">]</span> <span class="o">=</span> <span class="nx">options</span><span class="p">[</span><span class="nx">option</span><span class="p">];</span>
+    <span class="p">}</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">option</span> <span class="k">in</span> <span class="nx">config</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">qs</span><span class="p">[</span><span class="nx">option</span><span class="p">]</span> <span class="o">=</span> <span class="nx">config</span><span class="p">[</span><span class="nx">option</span><span class="p">];</span>
+    <span class="p">}</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="nx">option</span> <span class="k">in</span> <span class="nx">qs</span><span class="p">))</span> <span class="p">{</span>
+      <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="nx">option</span> <span class="o">+</span> <span class="s1">&#39; is required!&#39;</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">});</span>
+<span class="p">}</span>
+
 <span class="kd">function</span> <span class="nx">applyOptions</span><span class="p">(</span><span class="nx">availableOpts</span><span class="p">,</span> <span class="nx">options</span><span class="p">,</span> <span class="nx">config</span><span class="p">,</span> <span class="nx">qs</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">availableOpts</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">option</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">option</span> <span class="k">in</span> <span class="nx">options</span><span class="p">)</span> <span class="p">{</span>
@@ -38,7 +52,8 @@
     <span class="k">return</span> <span class="nx">Promise</span><span class="p">.</span><span class="nx">resolve</span><span class="p">({})</span>
       <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">qs</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">options</span> <span class="o">=</span> <span class="nx">options</span> <span class="o">||</span> <span class="p">{};</span>
-        <span class="nx">applyOptions</span><span class="p">(</span><span class="nx">method</span><span class="p">.</span><span class="nx">availableOptions</span><span class="p">[</span><span class="nx">method</span><span class="p">.</span><span class="nx">name</span><span class="p">],</span> <span class="nx">options</span><span class="p">,</span> <span class="nx">config</span><span class="p">,</span> <span class="nx">qs</span><span class="p">);</span>
+        <span class="nx">applyRequiredOptions</span><span class="p">(</span><span class="nx">method</span><span class="p">.</span><span class="nx">requiredOptions</span><span class="p">,</span> <span class="nx">options</span><span class="p">,</span> <span class="nx">config</span><span class="p">,</span> <span class="nx">qs</span><span class="p">);</span>
+        <span class="nx">applyOptions</span><span class="p">(</span><span class="nx">method</span><span class="p">.</span><span class="nx">availableOptions</span><span class="p">,</span> <span class="nx">options</span><span class="p">,</span> <span class="nx">config</span><span class="p">,</span> <span class="nx">qs</span><span class="p">);</span>
 
         <span class="kd">var</span> <span class="nx">opts</span> <span class="o">=</span> <span class="p">{</span>
           <span class="nx">method</span><span class="o">:</span> <span class="nx">method</span><span class="p">.</span><span class="nx">method</span><span class="p">,</span>
@@ -48,5 +63,14 @@
         <span class="nx">logger</span><span class="p">.</span><span class="nx">debug</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">opts</span><span class="p">));</span>
         <span class="k">return</span> <span class="nx">request</span><span class="p">(</span><span class="nx">opts</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="nx">parse</span><span class="p">);</span>
       <span class="p">}).</span><span class="nx">nodeify</span><span class="p">(</span><span class="nx">cb</span><span class="p">);</span>
+  <span class="p">},</span>
+
+  <span class="nx">printCliResult</span><span class="o">:</span> <span class="kd">function</span> <span class="nx">printCliResult</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span>
+      <span class="nx">process</span><span class="p">.</span><span class="nx">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">result</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span> <span class="mi">2</span><span class="p">));</span>
+    <span class="p">}</span>
   <span class="p">}</span>
 <span class="p">};</span></div></div></div></div></body></html>

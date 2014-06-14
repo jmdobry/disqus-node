@@ -39,6 +39,22 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
               "type": "heading",
               "data": {
                 "level": 2,
+                "title": "Functional",
+                "slug": "functional"
+              },
+              "depth": 2
+            }, {
+              "type": "heading",
+              "data": {
+                "level": 2,
+                "title": "Not Yet Implemented",
+                "slug": "not-yet-implemented"
+              },
+              "depth": 2
+            }, {
+              "type": "heading",
+              "data": {
+                "level": 2,
                 "title": "Documentation",
                 "slug": "documentation"
               },
@@ -64,6 +80,22 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
             "level": 2,
             "title": "Status",
             "slug": "status"
+          },
+          "depth": 2
+        }, {
+          "type": "heading",
+          "data": {
+            "level": 2,
+            "title": "Functional",
+            "slug": "functional"
+          },
+          "depth": 2
+        }, {
+          "type": "heading",
+          "data": {
+            "level": 2,
+            "title": "Not Yet Implemented",
+            "slug": "not-yet-implemented"
           },
           "depth": 2
         }, {
@@ -128,6 +160,14 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
                     "slug": "applications-api"
                   },
                   "depth": 3
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "listUsage",
+                    "slug": "listusage"
+                  },
+                  "depth": 3
                 }
               ]
             }, {
@@ -156,6 +196,30 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
                     "level": 3,
                     "title": "Blacklists API",
                     "slug": "blacklists-api"
+                  },
+                  "depth": 3
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "add",
+                    "slug": "add"
+                  },
+                  "depth": 3
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "list",
+                    "slug": "list"
+                  },
+                  "depth": 3
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "remove",
+                    "slug": "remove"
                   },
                   "depth": 3
                 }
@@ -826,6 +890,14 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
                     "slug": "applications-cli"
                   },
                   "depth": 3
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "listUsage",
+                    "slug": "listusage"
+                  },
+                  "depth": 3
                 }
               ]
             }, {
@@ -854,6 +926,30 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
                     "level": 3,
                     "title": "Blacklists CLI",
                     "slug": "blacklists-cli"
+                  },
+                  "depth": 3
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "add",
+                    "slug": "add"
+                  },
+                  "depth": 3
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "list",
+                    "slug": "list"
+                  },
+                  "depth": 3
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "remove",
+                    "slug": "remove"
                   },
                   "depth": 3
                 }
@@ -1070,46 +1166,6 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
                     "slug": "blacklists"
                   },
                   "depth": 6
-                }, {
-                  "type": "heading",
-                  "data": {
-                    "level": 6,
-                    "title": "Category",
-                    "slug": "category"
-                  },
-                  "depth": 6
-                }, {
-                  "type": "heading",
-                  "data": {
-                    "level": 6,
-                    "title": "Exports",
-                    "slug": "exports"
-                  },
-                  "depth": 6
-                }, {
-                  "type": "heading",
-                  "data": {
-                    "level": 6,
-                    "title": "Forums",
-                    "slug": "forums"
-                  },
-                  "depth": 6
-                }, {
-                  "type": "heading",
-                  "data": {
-                    "level": 6,
-                    "title": "Imports",
-                    "slug": "imports"
-                  },
-                  "depth": 6
-                }, {
-                  "type": "heading",
-                  "data": {
-                    "level": 6,
-                    "title": "Trends",
-                    "slug": "trends"
-                  },
-                  "depth": 6
                 }
               ]
             }, {
@@ -1266,6 +1322,60 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
                   "foldPrefix": "^",
                   "name": "JavaScript"
                 },
+                "sourcePath": "/Users/jason/codetrain/disqus-node/lib/cli/topics.js",
+                "projectPath": "lib/cli/topics.js",
+                "targetPath": "lib/cli/topics",
+                "pageTitle": "lib/cli/topics",
+                "title": "topics"
+              },
+              "depth": 3,
+              "outline": [
+                {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "Topics CLI",
+                    "slug": "topics-cli"
+                  },
+                  "depth": 3
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "follow",
+                    "slug": "follow"
+                  },
+                  "depth": 3
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "listFollowers",
+                    "slug": "listfollowers"
+                  },
+                  "depth": 3
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "unfollow",
+                    "slug": "unfollow"
+                  },
+                  "depth": 3
+                }
+              ]
+            }, {
+              "type": "file",
+              "data": {
+                "language": {
+                  "nameMatchers": [".js"],
+                  "pygmentsLexer": "javascript",
+                  "multiLineComment": ["/*", "*", "*/"],
+                  "singleLineComment": ["//"],
+                  "ignorePrefix": "}",
+                  "foldPrefix": "^",
+                  "name": "JavaScript"
+                },
                 "sourcePath": "/Users/jason/codetrain/disqus-node/lib/cli/trends.js",
                 "projectPath": "lib/cli/trends.js",
                 "targetPath": "lib/cli/trends",
@@ -1388,86 +1498,6 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
                     "level": 6,
                     "title": "Blacklists",
                     "slug": "blacklists"
-                  },
-                  "depth": 6
-                }, {
-                  "type": "heading",
-                  "data": {
-                    "level": 6,
-                    "title": "Category",
-                    "slug": "category"
-                  },
-                  "depth": 6
-                }, {
-                  "type": "heading",
-                  "data": {
-                    "level": 6,
-                    "title": "Exports",
-                    "slug": "exports"
-                  },
-                  "depth": 6
-                }, {
-                  "type": "heading",
-                  "data": {
-                    "level": 6,
-                    "title": "Forums",
-                    "slug": "forums"
-                  },
-                  "depth": 6
-                }, {
-                  "type": "heading",
-                  "data": {
-                    "level": 6,
-                    "title": "Imports",
-                    "slug": "imports"
-                  },
-                  "depth": 6
-                }, {
-                  "type": "heading",
-                  "data": {
-                    "level": 6,
-                    "title": "Posts",
-                    "slug": "posts"
-                  },
-                  "depth": 6
-                }, {
-                  "type": "heading",
-                  "data": {
-                    "level": 6,
-                    "title": "Threads",
-                    "slug": "threads"
-                  },
-                  "depth": 6
-                }, {
-                  "type": "heading",
-                  "data": {
-                    "level": 6,
-                    "title": "Topics",
-                    "slug": "topics"
-                  },
-                  "depth": 6
-                }, {
-                  "type": "heading",
-                  "data": {
-                    "level": 6,
-                    "title": "Trends",
-                    "slug": "trends"
-                  },
-                  "depth": 6
-                }, {
-                  "type": "heading",
-                  "data": {
-                    "level": 6,
-                    "title": "Users",
-                    "slug": "users"
-                  },
-                  "depth": 6
-                }, {
-                  "type": "heading",
-                  "data": {
-                    "level": 6,
-                    "title": "Whitelists",
-                    "slug": "whitelists"
                   },
                   "depth": 6
                 }

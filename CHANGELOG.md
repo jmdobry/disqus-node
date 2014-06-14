@@ -1,3 +1,8 @@
+##### 0.9.0 - 14 June 2014
+
+###### Backwards compatible API changes
+- #10 - Implemented Topics
+
 ##### 0.8.0 - 13 June 2014
 
 ###### Backwards compatible API changes

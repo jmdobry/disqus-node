@@ -1,3 +1,8 @@
+##### 0.8.0 - 13 June 2014
+
+###### Backwards compatible API changes
+- #7 - Implemented Imports
+
 ##### 0.7.0 - 13 June 2014
 
 ###### Backwards compatible API changes

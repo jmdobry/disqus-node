@@ -1198,6 +1198,14 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
                     "slug": "exports"
                   },
                   "depth": 6
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 6,
+                    "title": "Imports",
+                    "slug": "imports"
+                  },
+                  "depth": 6
                 }
               ]
             }, {
@@ -1546,6 +1554,14 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
                     "level": 6,
                     "title": "Exports",
                     "slug": "exports"
+                  },
+                  "depth": 6
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 6,
+                    "title": "Imports",
+                    "slug": "imports"
                   },
                   "depth": 6
                 }

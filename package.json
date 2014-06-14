@@ -1,8 +1,8 @@
 {
   "name": "disqus-node",
-  "version": "0.7.0",
+  "version": "0.8.0",
   "description": "Disqus API bindings and CLI for NodeJS http://disqus.com/api/",
-  "main": "lib/index.js",
+  "main": "./lib/index.js",
   "bin": {
     "disqus": "./bin/disqus"
   },
@@ -28,7 +28,7 @@
   "bugs": {
     "url": "https://github.com/jmdobry/disqus-node/issues"
   },
-  "homepage": "https://github.com/jmdobry/disqus-node",
+  "homepage": "http://disqus-node.pseudobry.com",
   "dependencies": {
     "bluebird": "^2.1.1",
     "request": "^2.36.0",

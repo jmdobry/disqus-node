@@ -10,13 +10,15 @@
     <span class="nx">resource</span><span class="o">:</span> <span class="s1">&#39;imports&#39;</span><span class="p">,</span>
     <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;details&#39;</span><span class="p">,</span>
     <span class="nx">method</span><span class="o">:</span> <span class="s1">&#39;GET&#39;</span><span class="p">,</span>
-    <span class="nx">availableOptions</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;api_secret&#39;</span><span class="p">,</span> <span class="s1">&#39;api_key&#39;</span><span class="p">,</span> <span class="s1">&#39;access_token&#39;</span><span class="p">,</span> <span class="s1">&#39;group&#39;</span><span class="p">,</span> <span class="s1">&#39;forum&#39;</span><span class="p">]</span>
+    <span class="nx">requiredOptions</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;api_secret&#39;</span><span class="p">,</span> <span class="s1">&#39;access_token&#39;</span><span class="p">,</span> <span class="s1">&#39;forum&#39;</span><span class="p">,</span> <span class="s1">&#39;group&#39;</span><span class="p">],</span>
+    <span class="nx">availableOptions</span><span class="o">:</span> <span class="p">[]</span>
   <span class="p">},</span>
   <span class="nx">list</span><span class="o">:</span> <span class="p">{</span>
     <span class="nx">resource</span><span class="o">:</span> <span class="s1">&#39;imports&#39;</span><span class="p">,</span>
     <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;list&#39;</span><span class="p">,</span>
     <span class="nx">method</span><span class="o">:</span> <span class="s1">&#39;GET&#39;</span><span class="p">,</span>
-    <span class="nx">availableOptions</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;api_secret&#39;</span><span class="p">,</span> <span class="s1">&#39;api_key&#39;</span><span class="p">,</span> <span class="s1">&#39;access_token&#39;</span><span class="p">,</span> <span class="s1">&#39;forum&#39;</span><span class="p">,</span> <span class="s1">&#39;cursor&#39;</span><span class="p">]</span>
+    <span class="nx">requiredOptions</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;api_secret&#39;</span><span class="p">,</span> <span class="s1">&#39;access_token&#39;</span><span class="p">,</span> <span class="s1">&#39;forum&#39;</span><span class="p">],</span>
+    <span class="nx">availableOptions</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;cursor&#39;</span><span class="p">]</span>
   <span class="p">}</span>
 <span class="p">};</span>
 
@@ -33,14 +35,16 @@
 
 <pre><code class="js">// Node-style
 disqus.imports.details({
-    forum: 'forumId',
-    group: 'groupId'
+    forum: '',
+    group: '',
+    api_secret: 'asdfghkj', // can be set globally
+    access_token: '12345678' // can be set globally
 }, function (err, result) {...})
 
 // Promise-style
 disqus.imports.details({
-    forum: 'forumId',
-    group: 'groupId'
+    forum: '',
+    group: ''
 })
 .then(function (result) {...})
 .catch(function (err) {...})
@@ -61,12 +65,16 @@ disqus.imports.details({
 <pre><code class="js">// Node-style
 disqus.imports.list({
     forum: 'forumId',
+    // defaults shown
     cursor: null
 }, function (err, result) {...})
 
 // Promise-style
 disqus.imports.list({
-    forum: 'forumId',
+    forum: '',
+    api_secret: 'asdfghkj', // can be set globally
+    access_token: '12345678', // can be set globally
+    // defaults shown
     cursor: null
 })
 .then(function (result) {...})

@@ -12,9 +12,9 @@ Copyright © 2014 Jason Dobry
 - Applications
 - Blacklists
 - Categories
+- Exports
 
 ## Not Yet Implemented
-- Exports
 - Forums
 - Imports
 - Posts

@@ -1,6 +1,6 @@
 {
   "name": "disqus-node",
-  "version": "0.6.0",
+  "version": "0.7.0",
   "description": "Disqus API bindings and CLI for NodeJS http://disqus.com/api/",
   "main": "lib/index.js",
   "bin": {
@@ -14,7 +14,8 @@
     "url": "git://github.com/jmdobry/disqus-node.git"
   },
   "keywords": [
-    "disqus"
+    "disqus",
+    "cli"
   ],
   "readmeFilename": "README.md",
   "author": "Jason Dobry <jason.dobry@gmail.com> (http://www.pseudobry.com/)",

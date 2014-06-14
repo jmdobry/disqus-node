@@ -27,5 +27,4 @@ node_modules
 .idea/
 *.iml
 
-./test.js
-./*.js
+mytest/

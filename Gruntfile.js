@@ -45,10 +45,12 @@ module.exports = function (grunt) {
 
     groc: {
       javascript: [
-        'lib/**/*.js', 'README.md'
+        'lib/**/*.js', 'doc.md'
       ],
       options: {
-        'out': 'doc/'
+        'out': 'doc/',
+        'index': 'doc.md',
+        'repository-url': 'https://github.com/jmdobry/disqus-node'
       }
     },
 

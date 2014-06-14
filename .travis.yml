@@ -6,5 +6,4 @@ before_install:
   - npm install -g grunt-cli
 script:
   - grunt coverage
-  - grunt doc
   - grunt coveralls || true

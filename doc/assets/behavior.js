@@ -144,11 +144,11 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
                   "foldPrefix": "^",
                   "name": "JavaScript"
                 },
-                "sourcePath": "/Users/jason/codetrain/disqus-node/lib/api/applications.js",
-                "projectPath": "lib/api/applications.js",
-                "targetPath": "lib/api/applications",
-                "pageTitle": "lib/api/applications",
-                "title": "applications"
+                "sourcePath": "/Users/jason/codetrain/disqus-node/lib/api/Applications.js",
+                "projectPath": "lib/api/Applications.js",
+                "targetPath": "lib/api/Applications",
+                "pageTitle": "lib/api/Applications",
+                "title": "Applications"
               },
               "depth": 3,
               "outline": [
@@ -182,11 +182,11 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
                   "foldPrefix": "^",
                   "name": "JavaScript"
                 },
-                "sourcePath": "/Users/jason/codetrain/disqus-node/lib/api/blacklists.js",
-                "projectPath": "lib/api/blacklists.js",
-                "targetPath": "lib/api/blacklists",
-                "pageTitle": "lib/api/blacklists",
-                "title": "blacklists"
+                "sourcePath": "/Users/jason/codetrain/disqus-node/lib/api/Blacklists.js",
+                "projectPath": "lib/api/Blacklists.js",
+                "targetPath": "lib/api/Blacklists",
+                "pageTitle": "lib/api/Blacklists",
+                "title": "Blacklists"
               },
               "depth": 3,
               "outline": [
@@ -236,11 +236,11 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
                   "foldPrefix": "^",
                   "name": "JavaScript"
                 },
-                "sourcePath": "/Users/jason/codetrain/disqus-node/lib/api/categories.js",
-                "projectPath": "lib/api/categories.js",
-                "targetPath": "lib/api/categories",
-                "pageTitle": "lib/api/categories",
-                "title": "categories"
+                "sourcePath": "/Users/jason/codetrain/disqus-node/lib/api/Categories.js",
+                "projectPath": "lib/api/Categories.js",
+                "targetPath": "lib/api/Categories",
+                "pageTitle": "lib/api/Categories",
+                "title": "Categories"
               },
               "depth": 3,
               "outline": [
@@ -306,11 +306,11 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
                   "foldPrefix": "^",
                   "name": "JavaScript"
                 },
-                "sourcePath": "/Users/jason/codetrain/disqus-node/lib/api/exports.js",
-                "projectPath": "lib/api/exports.js",
-                "targetPath": "lib/api/exports",
-                "pageTitle": "lib/api/exports",
-                "title": "exports"
+                "sourcePath": "/Users/jason/codetrain/disqus-node/lib/api/Exports.js",
+                "projectPath": "lib/api/Exports.js",
+                "targetPath": "lib/api/Exports",
+                "pageTitle": "lib/api/Exports",
+                "title": "Exports"
               },
               "depth": 3,
               "outline": [
@@ -344,11 +344,11 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
                   "foldPrefix": "^",
                   "name": "JavaScript"
                 },
-                "sourcePath": "/Users/jason/codetrain/disqus-node/lib/api/imports.js",
-                "projectPath": "lib/api/imports.js",
-                "targetPath": "lib/api/imports",
-                "pageTitle": "lib/api/imports",
-                "title": "imports"
+                "sourcePath": "/Users/jason/codetrain/disqus-node/lib/api/Imports.js",
+                "projectPath": "lib/api/Imports.js",
+                "targetPath": "lib/api/Imports",
+                "pageTitle": "lib/api/Imports",
+                "title": "Imports"
               },
               "depth": 3,
               "outline": [
@@ -390,11 +390,11 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
                   "foldPrefix": "^",
                   "name": "JavaScript"
                 },
-                "sourcePath": "/Users/jason/codetrain/disqus-node/lib/api/topics.js",
-                "projectPath": "lib/api/topics.js",
-                "targetPath": "lib/api/topics",
-                "pageTitle": "lib/api/topics",
-                "title": "topics"
+                "sourcePath": "/Users/jason/codetrain/disqus-node/lib/api/Topics.js",
+                "projectPath": "lib/api/Topics.js",
+                "targetPath": "lib/api/Topics",
+                "pageTitle": "lib/api/Topics",
+                "title": "Topics"
               },
               "depth": 3,
               "outline": [

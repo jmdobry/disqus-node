@@ -42,14 +42,16 @@
 
 <pre><code class="js">// Node-style
 disqus.topics.follow({
-    target: '',
-    api_secret: 'asdfghkj', // can be set globally
-    access_token: '12345678' // can be set globally
+    target: '', // required
+    api_secret: 'asdfghkj', // required, can be set globally
+    access_token: '12345678' // required, can be set globally
 }, function (err, result) {...})
 
 // Promise-style
 disqus.topics.follow({
-    target: ''
+    target: '', // required
+    api_secret: 'asdfghkj', // required, can be set globally
+    access_token: '12345678' // required, can be set globally
 })
 .then(function (result) {...})
 .catch(function (err) {...})
@@ -69,8 +71,9 @@ disqus.topics.follow({
 
 <pre><code class="js">// Node-style
 disqus.topics.listFollowers({
-    topic: '',
-    // defaults shown
+    topic: '', // required
+    api_secret: 'asdfghkj', // required, can be set globally
+    // optional, defaults shown
     cursor: null,
     since_id: null,
     limit: 25,
@@ -79,9 +82,9 @@ disqus.topics.listFollowers({
 
 // Promise-style
 disqus.topics.listFollowers({
-    topic: '',
-    api_secret: 'asdfghkj', // can be set globally
-    // defaults shown
+    topic: '', // required
+    api_secret: 'asdfghkj', // required, can be set globally
+    // optional, defaults shown
     cursor: null,
     since_id: null,
     limit: 25,
@@ -105,14 +108,16 @@ disqus.topics.listFollowers({
 
 <pre><code class="js">// Node-style
 disqus.topics.unfollow({
-    target: '',
-    api_secret: 'asdfghkj', // can be set globally
-    access_token: '12345678' // can be set globally
+    target: '', // required
+    api_secret: 'asdfghkj', // required, can be set globally
+    access_token: '12345678' // required, can be set globally
 }, function (err, result) {...})
 
 // Promise-style
 disqus.topics.unfollow({
-    target: ''
+    target: '', // required
+    api_secret: 'asdfghkj', // required, can be set globally
+    access_token: '12345678' // required, can be set globally
 })
 .then(function (result) {...})
 .catch(function (err) {...})

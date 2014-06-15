@@ -344,6 +344,156 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
                   "foldPrefix": "^",
                   "name": "JavaScript"
                 },
+                "sourcePath": "/Users/jason/codetrain/disqus-node/lib/api/Forums.js",
+                "projectPath": "lib/api/Forums.js",
+                "targetPath": "lib/api/Forums",
+                "pageTitle": "lib/api/Forums",
+                "title": "Forums"
+              },
+              "depth": 3,
+              "outline": [
+                {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "Forums API",
+                    "slug": "forums-api"
+                  },
+                  "depth": 3
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "addModerator",
+                    "slug": "addmoderator"
+                  },
+                  "depth": 3
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "create",
+                    "slug": "create"
+                  },
+                  "depth": 3
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "details",
+                    "slug": "details"
+                  },
+                  "depth": 3
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "follow",
+                    "slug": "follow"
+                  },
+                  "depth": 3
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "installed",
+                    "slug": "installed"
+                  },
+                  "depth": 3
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "listCategories",
+                    "slug": "listcategories"
+                  },
+                  "depth": 3
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "listFollowers",
+                    "slug": "listfollowers"
+                  },
+                  "depth": 3
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "listModerators",
+                    "slug": "listmoderators"
+                  },
+                  "depth": 3
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "listMostActiveUsers",
+                    "slug": "listmostactiveusers"
+                  },
+                  "depth": 3
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "listMostLikedUsers",
+                    "slug": "listmostlikedusers"
+                  },
+                  "depth": 3
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "listPosts",
+                    "slug": "listposts"
+                  },
+                  "depth": 3
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "listThreads",
+                    "slug": "listthreads"
+                  },
+                  "depth": 3
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "listUsers",
+                    "slug": "listusers"
+                  },
+                  "depth": 3
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "removeModerator",
+                    "slug": "removemoderator"
+                  },
+                  "depth": 3
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "unfollow",
+                    "slug": "unfollow"
+                  },
+                  "depth": 3
+                }
+              ]
+            }, {
+              "type": "file",
+              "data": {
+                "language": {
+                  "nameMatchers": [".js"],
+                  "pygmentsLexer": "javascript",
+                  "multiLineComment": ["/*", "*", "*/"],
+                  "singleLineComment": ["//"],
+                  "ignorePrefix": "}",
+                  "foldPrefix": "^",
+                  "name": "JavaScript"
+                },
                 "sourcePath": "/Users/jason/codetrain/disqus-node/lib/api/Imports.js",
                 "projectPath": "lib/api/Imports.js",
                 "targetPath": "lib/api/Imports",
@@ -746,6 +896,156 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
                   "foldPrefix": "^",
                   "name": "JavaScript"
                 },
+                "sourcePath": "/Users/jason/codetrain/disqus-node/lib/cli/forums.js",
+                "projectPath": "lib/cli/forums.js",
+                "targetPath": "lib/cli/forums",
+                "pageTitle": "lib/cli/forums",
+                "title": "forums"
+              },
+              "depth": 3,
+              "outline": [
+                {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "Forums CLI",
+                    "slug": "forums-cli"
+                  },
+                  "depth": 3
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "addModerator",
+                    "slug": "addmoderator"
+                  },
+                  "depth": 3
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "create",
+                    "slug": "create"
+                  },
+                  "depth": 3
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "details",
+                    "slug": "details"
+                  },
+                  "depth": 3
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "follow",
+                    "slug": "follow"
+                  },
+                  "depth": 3
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "installed",
+                    "slug": "installed"
+                  },
+                  "depth": 3
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "listCategories",
+                    "slug": "listcategories"
+                  },
+                  "depth": 3
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "listFollowers",
+                    "slug": "listfollowers"
+                  },
+                  "depth": 3
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "listModerators",
+                    "slug": "listmoderators"
+                  },
+                  "depth": 3
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "listMostActiveUsers",
+                    "slug": "listmostactiveusers"
+                  },
+                  "depth": 3
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "listMostLikedUsers",
+                    "slug": "listmostlikedusers"
+                  },
+                  "depth": 3
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "listPosts",
+                    "slug": "listposts"
+                  },
+                  "depth": 3
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "listThreads",
+                    "slug": "listthreads"
+                  },
+                  "depth": 3
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "listUsers",
+                    "slug": "listusers"
+                  },
+                  "depth": 3
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "removeModerator",
+                    "slug": "removemoderator"
+                  },
+                  "depth": 3
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "unfollow",
+                    "slug": "unfollow"
+                  },
+                  "depth": 3
+                }
+              ]
+            }, {
+              "type": "file",
+              "data": {
+                "language": {
+                  "nameMatchers": [".js"],
+                  "pygmentsLexer": "javascript",
+                  "multiLineComment": ["/*", "*", "*/"],
+                  "singleLineComment": ["//"],
+                  "ignorePrefix": "}",
+                  "foldPrefix": "^",
+                  "name": "JavaScript"
+                },
                 "sourcePath": "/Users/jason/codetrain/disqus-node/lib/cli/imports.js",
                 "projectPath": "lib/cli/imports.js",
                 "targetPath": "lib/cli/imports",
@@ -830,6 +1130,14 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
                     "level": 6,
                     "title": "Exports",
                     "slug": "exports"
+                  },
+                  "depth": 6
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 6,
+                    "title": "Forums",
+                    "slug": "forums"
                   },
                   "depth": 6
                 }, {
@@ -1160,6 +1468,14 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
                     "level": 6,
                     "title": "Exports",
                     "slug": "exports"
+                  },
+                  "depth": 6
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 6,
+                    "title": "Forums",
+                    "slug": "forums"
                   },
                   "depth": 6
                 }, {

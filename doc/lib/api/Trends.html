@@ -28,8 +28,8 @@
 
 <pre><code class="js">// Node-style
 disqus.trends.listThreads({
-    api_secret: 'asdfghkj', // can be set globally
-    // defaults shown
+    api_secret: 'asdfghkj', // required, can be set globally
+    // optional, defaults shown
     limit: 10,
     related: [],
     forum: null
@@ -37,7 +37,7 @@ disqus.trends.listThreads({
 
 // Promise-style
 disqus.trends.listThreads({
-    // defaults shown
+    // optional, defaults shown
     limit: 10,
     related: [],
     forum: null

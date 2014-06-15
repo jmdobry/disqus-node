@@ -21,9 +21,9 @@
 
  -h, --help                   output usage information
  -A, --access_token &lt;string&gt;  Your access token.
- -e --email [array]           Defaults to []. Email address (defined by RFC 5322).
- -f --forum &lt;string&gt;          Looks up a forum by ID (aka short name).
- -H --https [boolean]         Whether to use https. Defaults to true.
+ -e, --email [array]           Defaults to []. Email address (defined by RFC 5322).
+ -f, --forum &lt;string&gt;          Looks up a forum by ID (aka short name).
+ -H, --https [boolean]         Whether to use https. Defaults to true.
  -L, --logLevel [string]      Output log level. Choices: debug, info, notice, warning, error, critical, alert, emergency.
  -n, --notes [string]         Defaults to "". Maximum length of 50.
  -S, --api_secret &lt;string&gt;    Your application's api_secret.
@@ -32,9 +32,9 @@
   <span class="p">.</span><span class="nx">command</span><span class="p">(</span><span class="s1">&#39;add&#39;</span><span class="p">)</span>
   <span class="p">.</span><span class="nx">description</span><span class="p">(</span><span class="s1">&#39;Adds an entry to the whitelist.&#39;</span><span class="p">)</span>
   <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-A, --access_token &lt;string&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;Your access token.&#39;</span><span class="p">)</span>
-  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-e --email [array]&#39;</span><span class="p">,</span> <span class="s1">&#39;Defaults to []. Email address (defined by RFC 5322).&#39;</span><span class="p">,</span> <span class="p">[])</span>
-  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-f --forum &lt;string&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;Looks up a forum by ID (aka short name).&#39;</span><span class="p">)</span>
-  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-H --https [boolean]&#39;</span><span class="p">,</span> <span class="s1">&#39;Whether to use https. Defaults to true.&#39;</span><span class="p">,</span> <span class="kc">true</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-e, --email [array]&#39;</span><span class="p">,</span> <span class="s1">&#39;Defaults to []. Email address (defined by RFC 5322).&#39;</span><span class="p">,</span> <span class="p">[])</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-f, --forum &lt;string&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;Looks up a forum by ID (aka short name).&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-H, --https [boolean]&#39;</span><span class="p">,</span> <span class="s1">&#39;Whether to use https. Defaults to true.&#39;</span><span class="p">,</span> <span class="kc">true</span><span class="p">)</span>
   <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-L, --logLevel [string]&#39;</span><span class="p">,</span> <span class="s1">&#39;Output log level. Choices: debug, info, notice, warning, error, critical, alert, emergency.&#39;</span><span class="p">,</span> <span class="s1">&#39;info&#39;</span><span class="p">)</span>
   <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-n, --notes [string]&#39;</span><span class="p">,</span> <span class="s1">&#39;Defaults to &quot;&quot;. Maximum length of 50.&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
   <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-S, --api_secret &lt;string&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;Your application\&#39;s api_secret.&#39;</span><span class="p">)</span>
@@ -54,11 +54,11 @@
 
  -h, --help                   output usage information
  -A, --access_token &lt;string&gt;  Your access token.
- -c --cursor [string]         Defaults to null.
- -f --forum &lt;string&gt;          Looks up a forum by ID (aka short name).
- -H --https [boolean]         Whether to use https. Defaults to true.
+ -c, --cursor [string]         Defaults to null.
+ -f, --forum &lt;string&gt;          Looks up a forum by ID (aka short name).
+ -H, --https [boolean]         Whether to use https. Defaults to true.
  -i, --since_id [string]      Defaults to null.
- -l --limit [number]          Defaults to 25. Maximum value of 100.
+ -l, --limit [number]          Defaults to 25. Maximum value of 100.
  -L, --logLevel [string]      Output log level. Choices: debug, info, notice, warning, error, critical, alert, emergency.
  -o, --order [string]         Defaults to "asc". Choices: asc, desc.
  -q, --query [string]         Defaults to null.
@@ -70,11 +70,11 @@
   <span class="p">.</span><span class="nx">command</span><span class="p">(</span><span class="s1">&#39;list&#39;</span><span class="p">)</span>
   <span class="p">.</span><span class="nx">description</span><span class="p">(</span><span class="s1">&#39;Returns a list of all whitelist entries.&#39;</span><span class="p">)</span>
   <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-A, --access_token &lt;string&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;Your access token.&#39;</span><span class="p">)</span>
-  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-c --cursor [string]&#39;</span><span class="p">,</span> <span class="s1">&#39;Defaults to null.&#39;</span><span class="p">,</span> <span class="kc">null</span><span class="p">)</span>
-  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-f --forum &lt;string&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;Looks up a forum by ID (aka short name).&#39;</span><span class="p">)</span>
-  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-H --https [boolean]&#39;</span><span class="p">,</span> <span class="s1">&#39;Whether to use https. Defaults to true.&#39;</span><span class="p">,</span> <span class="kc">true</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-c, --cursor [string]&#39;</span><span class="p">,</span> <span class="s1">&#39;Defaults to null.&#39;</span><span class="p">,</span> <span class="kc">null</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-f, --forum &lt;string&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;Looks up a forum by ID (aka short name).&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-H, --https [boolean]&#39;</span><span class="p">,</span> <span class="s1">&#39;Whether to use https. Defaults to true.&#39;</span><span class="p">,</span> <span class="kc">true</span><span class="p">)</span>
   <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-i, --since_id [string]&#39;</span><span class="p">,</span> <span class="s1">&#39;Defaults to null.&#39;</span><span class="p">,</span> <span class="kc">null</span><span class="p">)</span>
-  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-l --limit [number]&#39;</span><span class="p">,</span> <span class="s1">&#39;Defaults to 25. Maximum value of 100.&#39;</span><span class="p">,</span> <span class="mi">25</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-l, --limit [number]&#39;</span><span class="p">,</span> <span class="s1">&#39;Defaults to 25. Maximum value of 100.&#39;</span><span class="p">,</span> <span class="mi">25</span><span class="p">)</span>
   <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-L, --logLevel [string]&#39;</span><span class="p">,</span> <span class="s1">&#39;Output log level. Choices: debug, info, notice, warning, error, critical, alert, emergency.&#39;</span><span class="p">,</span> <span class="s1">&#39;info&#39;</span><span class="p">)</span>
   <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-o, --order [string]&#39;</span><span class="p">,</span> <span class="s1">&#39;Defaults to &quot;asc&quot;. Choices: asc, desc.&#39;</span><span class="p">,</span> <span class="s1">&#39;asc&#39;</span><span class="p">)</span>
   <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-q, --query [string]&#39;</span><span class="p">,</span> <span class="s1">&#39;Defaults to null.&#39;</span><span class="p">,</span> <span class="kc">null</span><span class="p">)</span>
@@ -97,9 +97,9 @@
 
  -h, --help                   output usage information
  -A, --access_token &lt;string&gt;  Your access token.
- -e --email [array]           Defaults to []. Email address (defined by RFC 5322).
- -f --forum &lt;string&gt;          Looks up a forum by ID (aka short name).
- -H --https [boolean]         Whether to use https. Defaults to true.
+ -e, --email [array]           Defaults to []. Email address (defined by RFC 5322).
+ -f, --forum &lt;string&gt;          Looks up a forum by ID (aka short name).
+ -H, --https [boolean]         Whether to use https. Defaults to true.
  -L, --logLevel [string]      Output log level. Choices: debug, info, notice, warning, error, critical, alert, emergency.
  -S, --api_secret &lt;string&gt;    Your application's api_secret.
  -u, --user [array]           Defaults to [].
@@ -107,9 +107,9 @@
   <span class="p">.</span><span class="nx">command</span><span class="p">(</span><span class="s1">&#39;remove&#39;</span><span class="p">)</span>
   <span class="p">.</span><span class="nx">description</span><span class="p">(</span><span class="s1">&#39;Removes an entry from the blacklist.&#39;</span><span class="p">)</span>
   <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-A, --access_token &lt;string&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;Your access token.&#39;</span><span class="p">)</span>
-  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-e --email [array]&#39;</span><span class="p">,</span> <span class="s1">&#39;Defaults to []. Email address (defined by RFC 5322).&#39;</span><span class="p">,</span> <span class="p">[])</span>
-  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-f --forum &lt;string&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;Looks up a forum by ID (aka short name).&#39;</span><span class="p">)</span>
-  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-H --https [boolean]&#39;</span><span class="p">,</span> <span class="s1">&#39;Whether to use https. Defaults to true.&#39;</span><span class="p">,</span> <span class="kc">true</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-e, --email [array]&#39;</span><span class="p">,</span> <span class="s1">&#39;Defaults to []. Email address (defined by RFC 5322).&#39;</span><span class="p">,</span> <span class="p">[])</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-f, --forum &lt;string&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;Looks up a forum by ID (aka short name).&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-H, --https [boolean]&#39;</span><span class="p">,</span> <span class="s1">&#39;Whether to use https. Defaults to true.&#39;</span><span class="p">,</span> <span class="kc">true</span><span class="p">)</span>
   <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-L, --logLevel [string]&#39;</span><span class="p">,</span> <span class="s1">&#39;Output log level. Choices: debug, info, notice, warning, error, critical, alert, emergency.&#39;</span><span class="p">,</span> <span class="s1">&#39;info&#39;</span><span class="p">)</span>
   <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-S, --api_secret &lt;string&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;Your application\&#39;s api_secret.&#39;</span><span class="p">)</span>
   <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-u, --user [array]&#39;</span><span class="p">,</span> <span class="s1">&#39;Defaults to [].&#39;</span><span class="p">,</span> <span class="p">[])</span>

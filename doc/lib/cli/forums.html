@@ -1,0 +1,479 @@
+<!DOCTYPE html><html lang="en"><head><title>lib/cli/forums</title></head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"><meta name="groc-relative-root" content="../../"><meta name="groc-document-path" content="lib/cli/forums"><meta name="groc-project-path" content="lib/cli/forums.js"><link rel="stylesheet" type="text/css" media="all" href="../../assets/style.css"><script type="text/javascript" src="../../assets/behavior.js"></script><body><div id="meta"><div class="file-path">lib/cli/forums.js</div></div><div id="document"><div class="segment"><div class="comments "><div class="wrapper"><p><a href="/lib/index.html">Up one level</a></p>
+
+<h3 id="forums-cli">Forums CLI</h3>
+
+<p>See the disqus-node <a href="/lib/api/forums.html">Forums API</a>.</p>
+
+<p>See the <a href="https://disqus.com/api/docs/forums/">Forums API on Disqus.com</a>.</p></div></div><div class="code"><div class="wrapper"><span class="kd">var</span> <span class="nx">container</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;../container&#39;</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">Command</span> <span class="o">=</span> <span class="nx">container</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;commander&#39;</span><span class="p">).</span><span class="nx">Command</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">forums</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Command</span><span class="p">(</span><span class="s1">&#39;disqus forums&#39;</span><span class="p">);</span>
+
+<span class="nx">forums</span>
+  <span class="p">.</span><span class="nx">usage</span><span class="p">(</span><span class="s1">&#39;&lt;cmd&gt; [options]&#39;</span><span class="p">);</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><h3 id="addmoderator">addModerator</h3>
+
+<p>Adds a moderator to a forum.</p>
+
+<p>Output of <code>disqus forums addModerator --help</code>:</p>
+
+<pre><code> Usage: disqus forums addModerator [options]
+
+ Options:
+
+ -h, --help                   output usage information
+ -A, --access_token &lt;string&gt;  Your access token.
+ -f, --forum &lt;string&gt;         Looks up a forum by ID (aka short name). You must be a moderator on the selected forum.
+ -H, --https [boolean]        Whether to use https. Defaults to true.
+ -L, --logLevel [string]      Output log level. Choices: debug, info, notice, warning, error, critical, alert, emergency.
+ -S, --api_secret &lt;string&gt;    Your application's api_secret.
+ -u, --user &lt;string&gt;          Looks up a user by ID. You may look up a user by username using the "username" query type.
+</code></pre></div></div><div class="code"><div class="wrapper"><span class="nx">forums</span>
+  <span class="p">.</span><span class="nx">command</span><span class="p">(</span><span class="s1">&#39;addModerator&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">description</span><span class="p">(</span><span class="s1">&#39;Adds a moderator to a forum.&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-A, --access_token &lt;string&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;Your access token.&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-f, --forum &lt;string&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;Looks up a forum by ID (aka short name). You must be a moderator on the selected forum.&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-H, --https [boolean]&#39;</span><span class="p">,</span> <span class="s1">&#39;Whether to use https. Defaults to true.&#39;</span><span class="p">,</span> <span class="kc">true</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-L, --logLevel [string]&#39;</span><span class="p">,</span> <span class="s1">&#39;Output log level. Choices: debug, info, notice, warning, error, critical, alert, emergency.&#39;</span><span class="p">,</span> <span class="s1">&#39;info&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-S, --api_secret &lt;string&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;Your application\&#39;s api_secret.&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-u, --user &lt;string&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;Looks up a user by ID. You may look up a user by username using the &quot;username&quot; query type.&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">action</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">options</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">Disqus</span> <span class="o">=</span> <span class="nx">container</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;Disqus&#39;</span><span class="p">);</span>
+    <span class="k">new</span> <span class="nx">Disqus</span><span class="p">(</span><span class="nx">options</span><span class="p">).</span><span class="nx">forums</span><span class="p">.</span><span class="nx">addModerator</span><span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="nx">container</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;util&#39;</span><span class="p">).</span><span class="nx">printCliResult</span><span class="p">);</span>
+  <span class="p">});</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><h3 id="create">create</h3>
+
+<p>Creates a new forum.</p>
+
+<p>Output of <code>disqus forums create --help</code>:</p>
+
+<pre><code> Usage: disqus forums create [options]
+
+ Options:
+
+ -h, --help                   output usage information
+ -A, --access_token &lt;string&gt;  Your access token.
+ -H, --https [boolean]        Whether to use https. Defaults to true.
+ -L, --logLevel [string]      Output log level. Choices: debug, info, notice, warning, error, critical, alert, emergency.
+ -n, --name &lt;string&gt;          Name of new forum.
+ -s, --short_name &lt;string&gt;    Short name of new forum.
+ -S, --api_secret &lt;string&gt;    Your application's api_secret.
+ -w, --website &lt;string&gt;       URL (defined by RFC 3986).
+</code></pre></div></div><div class="code"><div class="wrapper"><span class="nx">forums</span>
+  <span class="p">.</span><span class="nx">command</span><span class="p">(</span><span class="s1">&#39;create&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">description</span><span class="p">(</span><span class="s1">&#39;Creates a new forum.&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-A, --access_token &lt;string&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;Your access token.&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-H, --https [boolean]&#39;</span><span class="p">,</span> <span class="s1">&#39;Whether to use https. Defaults to true.&#39;</span><span class="p">,</span> <span class="kc">true</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-L, --logLevel [string]&#39;</span><span class="p">,</span> <span class="s1">&#39;Output log level. Choices: debug, info, notice, warning, error, critical, alert, emergency.&#39;</span><span class="p">,</span> <span class="s1">&#39;info&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-n, --name &lt;string&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;Name of new forum.&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-s, --short_name &lt;string&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;Short name of new forum.&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-S, --api_secret &lt;string&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;Your application\&#39;s api_secret.&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-w, --website &lt;string&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;URL (defined by RFC 3986).&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">action</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">options</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">Disqus</span> <span class="o">=</span> <span class="nx">container</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;Disqus&#39;</span><span class="p">);</span>
+    <span class="k">new</span> <span class="nx">Disqus</span><span class="p">(</span><span class="nx">options</span><span class="p">).</span><span class="nx">forums</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="nx">container</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;util&#39;</span><span class="p">).</span><span class="nx">printCliResult</span><span class="p">);</span>
+  <span class="p">});</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><h3 id="details">details</h3>
+
+<p>Returns forum details.</p>
+
+<p>Output of <code>disqus forums details --help</code>:</p>
+
+<pre><code> Usage: disqus forums details [options]
+
+ Options:
+
+ -h, --help                   output usage information
+ -A, --access_token &lt;string&gt;  Your access token.
+ -f, --forum &lt;string&gt;         Looks up a forum by ID (aka short name).
+ -H, --https [boolean]        Whether to use https. Defaults to true.
+ -L, --logLevel [string]      Output log level. Choices: debug, info, notice, warning, error, critical, alert, emergency.
+ -r, --related [array]        Defaults to []. You may specify relations to include with your response. Choices: author.
+ -S, --api_secret &lt;string&gt;    Your application's api_secret.
+</code></pre></div></div><div class="code"><div class="wrapper"><span class="nx">forums</span>
+  <span class="p">.</span><span class="nx">command</span><span class="p">(</span><span class="s1">&#39;details&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">description</span><span class="p">(</span><span class="s1">&#39;Returns forum details.&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-A, --access_token &lt;string&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;Your access token.&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-f, --forum &lt;string&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;Looks up a forum by ID (aka short name).&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-H, --https [boolean]&#39;</span><span class="p">,</span> <span class="s1">&#39;Whether to use https. Defaults to true.&#39;</span><span class="p">,</span> <span class="kc">true</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-L, --logLevel [string]&#39;</span><span class="p">,</span> <span class="s1">&#39;Output log level. Choices: debug, info, notice, warning, error, critical, alert, emergency.&#39;</span><span class="p">,</span> <span class="s1">&#39;info&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-r, --related [array]&#39;</span><span class="p">,</span> <span class="s1">&#39;Defaults to []. You may specify relations to include with your response. Choices: author.&#39;</span><span class="p">,</span> <span class="p">[])</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-S, --api_secret &lt;string&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;Your application\&#39;s api_secret.&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">action</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">options</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">Disqus</span> <span class="o">=</span> <span class="nx">container</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;Disqus&#39;</span><span class="p">);</span>
+    <span class="k">new</span> <span class="nx">Disqus</span><span class="p">(</span><span class="nx">options</span><span class="p">).</span><span class="nx">forums</span><span class="p">.</span><span class="nx">details</span><span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="nx">container</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;util&#39;</span><span class="p">).</span><span class="nx">printCliResult</span><span class="p">);</span>
+  <span class="p">});</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><h3 id="follow">follow</h3>
+
+<p>Follow a forum.</p>
+
+<p>Output of <code>disqus forums follow --help</code>:</p>
+
+<pre><code> Usage: disqus forums follow [options]
+
+ Options:
+
+ -h, --help                   output usage information
+ -A, --access_token &lt;string&gt;  Your access token.
+ -H, --https [boolean]        Whether to use https. Defaults to true.
+ -L, --logLevel [string]      Output log level. Choices: debug, info, notice, warning, error, critical, alert, emergency.
+ -S, --api_secret &lt;string&gt;    Your application's api_secret.
+ -t, --target &lt;string&gt;        Looks up a forum by ID (aka short name).
+</code></pre></div></div><div class="code"><div class="wrapper"><span class="nx">forums</span>
+  <span class="p">.</span><span class="nx">command</span><span class="p">(</span><span class="s1">&#39;follow&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">description</span><span class="p">(</span><span class="s1">&#39;Follow a forum.&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-A, --access_token &lt;string&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;Your access token.&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-H, --https [boolean]&#39;</span><span class="p">,</span> <span class="s1">&#39;Whether to use https. Defaults to true.&#39;</span><span class="p">,</span> <span class="kc">true</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-L, --logLevel [string]&#39;</span><span class="p">,</span> <span class="s1">&#39;Output log level. Choices: debug, info, notice, warning, error, critical, alert, emergency.&#39;</span><span class="p">,</span> <span class="s1">&#39;info&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-S, --api_secret &lt;string&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;Your application\&#39;s api_secret.&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-t, --target &lt;string&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;Looks up a forum by ID (aka short name).&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">action</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">options</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">Disqus</span> <span class="o">=</span> <span class="nx">container</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;Disqus&#39;</span><span class="p">);</span>
+    <span class="k">new</span> <span class="nx">Disqus</span><span class="p">(</span><span class="nx">options</span><span class="p">).</span><span class="nx">forums</span><span class="p">.</span><span class="nx">follow</span><span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="nx">container</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;util&#39;</span><span class="p">).</span><span class="nx">printCliResult</span><span class="p">);</span>
+  <span class="p">});</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><h3 id="installed">installed</h3>
+
+<p>Returns true if forum has one or more views.</p>
+
+<p>Output of <code>disqus forums installed --help</code>:</p>
+
+<pre><code> Usage: disqus forums installed [options]
+
+ Options:
+
+ -h, --help                   output usage information
+ -A, --access_token &lt;string&gt;  Your access token.
+ -f, --forum &lt;string&gt;         Looks up a forum by ID (aka short name).
+ -H, --https [boolean]        Whether to use https. Defaults to true.
+ -L, --logLevel [string]      Output log level. Choices: debug, info, notice, warning, error, critical, alert, emergency.
+ -S, --api_secret &lt;string&gt;    Your application's api_secret.
+</code></pre></div></div><div class="code"><div class="wrapper"><span class="nx">forums</span>
+  <span class="p">.</span><span class="nx">command</span><span class="p">(</span><span class="s1">&#39;installed&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">description</span><span class="p">(</span><span class="s1">&#39;Returns true if forum has one or more views.&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-A, --access_token &lt;string&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;Your access token.&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-f, --forum &lt;string&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;Looks up a forum by ID (aka short name).&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-H, --https [boolean]&#39;</span><span class="p">,</span> <span class="s1">&#39;Whether to use https. Defaults to true.&#39;</span><span class="p">,</span> <span class="kc">true</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-L, --logLevel [string]&#39;</span><span class="p">,</span> <span class="s1">&#39;Output log level. Choices: debug, info, notice, warning, error, critical, alert, emergency.&#39;</span><span class="p">,</span> <span class="s1">&#39;info&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-S, --api_secret &lt;string&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;Your application\&#39;s api_secret.&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">action</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">options</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">Disqus</span> <span class="o">=</span> <span class="nx">container</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;Disqus&#39;</span><span class="p">);</span>
+    <span class="k">new</span> <span class="nx">Disqus</span><span class="p">(</span><span class="nx">options</span><span class="p">).</span><span class="nx">forums</span><span class="p">.</span><span class="nx">installed</span><span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="nx">container</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;util&#39;</span><span class="p">).</span><span class="nx">printCliResult</span><span class="p">);</span>
+  <span class="p">});</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><h3 id="listcategories">listCategories</h3>
+
+<p>Returns a list of categories within a forum.</p>
+
+<p>Output of <code>disqus forums listCategories --help</code>:</p>
+
+<pre><code> Usage: disqus forums listCategories [options]
+
+ Options:
+
+ -h, --help                 output usage information
+ -c, --cursor [cursor]      Defaults to null,
+ -f, --forum &lt;string&gt;       Looks up a forum by ID (aka short name).
+ -H, --https [boolean]      Whether to use https. Defaults to true.
+ -l, --limit [number]       Maximum value of 100. Defaults to 25.
+ -L, --logLevel [string]    Output log level. Choices: debug, info, notice, warning, error, critical, alert, emergency.
+ -o, --order [string]       Choices: asc, desc. Defaults to "asc".
+ -s, --since_id [string]    Defaults to null.
+ -S, --api_secret &lt;string&gt;  Your application's api_secret.
+</code></pre></div></div><div class="code"><div class="wrapper"><span class="nx">forums</span>
+  <span class="p">.</span><span class="nx">command</span><span class="p">(</span><span class="s1">&#39;listCategories&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">description</span><span class="p">(</span><span class="s1">&#39;Returns a list of categories within a forum.&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-c, --cursor [cursor]&#39;</span><span class="p">,</span> <span class="s1">&#39;Defaults to null,&#39;</span><span class="p">,</span> <span class="kc">null</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-f, --forum &lt;string&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;Looks up a forum by ID (aka short name).&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-H, --https [boolean]&#39;</span><span class="p">,</span> <span class="s1">&#39;Whether to use https. Defaults to true.&#39;</span><span class="p">,</span> <span class="kc">true</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-l, --limit [number]&#39;</span><span class="p">,</span> <span class="s1">&#39;Maximum value of 100. Defaults to 25.&#39;</span><span class="p">,</span> <span class="nb">parseInt</span><span class="p">,</span> <span class="mi">25</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-L, --logLevel [string]&#39;</span><span class="p">,</span> <span class="s1">&#39;Output log level. Choices: debug, info, notice, warning, error, critical, alert, emergency.&#39;</span><span class="p">,</span> <span class="s1">&#39;info&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-o, --order [string]&#39;</span><span class="p">,</span> <span class="s1">&#39;Choices: asc, desc. Defaults to &quot;asc&quot;.&#39;</span><span class="p">,</span> <span class="s1">&#39;asc&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-s, --since_id [string]&#39;</span><span class="p">,</span> <span class="s1">&#39;Defaults to null.&#39;</span><span class="p">,</span> <span class="kc">null</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-S, --api_secret &lt;string&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;Your application\&#39;s api_secret.&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">action</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">options</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">Disqus</span> <span class="o">=</span> <span class="nx">container</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;Disqus&#39;</span><span class="p">);</span>
+    <span class="k">new</span> <span class="nx">Disqus</span><span class="p">(</span><span class="nx">options</span><span class="p">).</span><span class="nx">forums</span><span class="p">.</span><span class="nx">listCategories</span><span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="nx">container</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;util&#39;</span><span class="p">).</span><span class="nx">printCliResult</span><span class="p">);</span>
+  <span class="p">});</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><h3 id="listfollowers">listFollowers</h3>
+
+<p>Returns a list of users following a forum.</p>
+
+<p>Output of <code>disqus forums listFollowers --help</code>:</p>
+
+<pre><code> Usage: disqus forums listFollowers [options]
+
+ Options:
+
+ -h, --help                 output usage information
+ -c, --cursor [cursor]      Defaults to null,
+ -f, --forum &lt;string&gt;       Looks up a forum by ID (aka short name).
+ -H, --https [boolean]      Whether to use https. Defaults to true.
+ -l, --limit [number]       Maximum value of 100. Defaults to 25.
+ -L, --logLevel [string]    Output log level. Choices: debug, info, notice, warning, error, critical, alert, emergency.
+ -o, --order [string]       Choices: asc, desc. Defaults to "asc".
+ -s, --since_id [string]    Defaults to null.
+ -S, --api_secret &lt;string&gt;  Your application's api_secret.
+</code></pre></div></div><div class="code"><div class="wrapper"><span class="nx">forums</span>
+  <span class="p">.</span><span class="nx">command</span><span class="p">(</span><span class="s1">&#39;listFollowers&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">description</span><span class="p">(</span><span class="s1">&#39;Returns a list of users following a forum.&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-c, --cursor [cursor]&#39;</span><span class="p">,</span> <span class="s1">&#39;Defaults to null,&#39;</span><span class="p">,</span> <span class="kc">null</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-f, --forum &lt;string&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;Looks up a forum by ID (aka short name).&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-H, --https [boolean]&#39;</span><span class="p">,</span> <span class="s1">&#39;Whether to use https. Defaults to true.&#39;</span><span class="p">,</span> <span class="kc">true</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-l, --limit [number]&#39;</span><span class="p">,</span> <span class="s1">&#39;Maximum value of 100. Defaults to 25.&#39;</span><span class="p">,</span> <span class="nb">parseInt</span><span class="p">,</span> <span class="mi">25</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-L, --logLevel [string]&#39;</span><span class="p">,</span> <span class="s1">&#39;Output log level. Choices: debug, info, notice, warning, error, critical, alert, emergency.&#39;</span><span class="p">,</span> <span class="s1">&#39;info&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-o, --order [string]&#39;</span><span class="p">,</span> <span class="s1">&#39;Choices: asc, desc. Defaults to &quot;asc&quot;.&#39;</span><span class="p">,</span> <span class="s1">&#39;asc&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-s, --since_id [string]&#39;</span><span class="p">,</span> <span class="s1">&#39;Defaults to null.&#39;</span><span class="p">,</span> <span class="kc">null</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-S, --api_secret &lt;string&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;Your application\&#39;s api_secret.&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">action</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">options</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">Disqus</span> <span class="o">=</span> <span class="nx">container</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;Disqus&#39;</span><span class="p">);</span>
+    <span class="k">new</span> <span class="nx">Disqus</span><span class="p">(</span><span class="nx">options</span><span class="p">).</span><span class="nx">forums</span><span class="p">.</span><span class="nx">listFollowers</span><span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="nx">container</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;util&#39;</span><span class="p">).</span><span class="nx">printCliResult</span><span class="p">);</span>
+  <span class="p">});</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><h3 id="listmoderators">listModerators</h3>
+
+<p>Returns a list of all moderators on a forum.</p>
+
+<p>Output of <code>disqus forums listModerators --help</code>:</p>
+
+<pre><code> Usage: disqus forums listModerators [options]
+
+ Options:
+
+ -h, --help                 output usage information
+ -A, --access_token &lt;string&gt;  Your access token.
+ -f, --forum &lt;string&gt;       Looks up a forum by ID (aka short name).
+ -H, --https [boolean]      Whether to use https. Defaults to true.
+ -L, --logLevel [string]    Output log level. Choices: debug, info, notice, warning, error, critical, alert, emergency.
+ -S, --api_secret &lt;string&gt;  Your application's api_secret.
+</code></pre></div></div><div class="code"><div class="wrapper"><span class="nx">forums</span>
+  <span class="p">.</span><span class="nx">command</span><span class="p">(</span><span class="s1">&#39;listModerators&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">description</span><span class="p">(</span><span class="s1">&#39;Returns a list of all moderators on a forum.&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-A, --access_token &lt;string&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;Your access token.&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-f, --forum &lt;string&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;Looks up a forum by ID (aka short name).&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-H, --https [boolean]&#39;</span><span class="p">,</span> <span class="s1">&#39;Whether to use https. Defaults to true.&#39;</span><span class="p">,</span> <span class="kc">true</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-L, --logLevel [string]&#39;</span><span class="p">,</span> <span class="s1">&#39;Output log level. Choices: debug, info, notice, warning, error, critical, alert, emergency.&#39;</span><span class="p">,</span> <span class="s1">&#39;info&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-S, --api_secret &lt;string&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;Your application\&#39;s api_secret.&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">action</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">options</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">Disqus</span> <span class="o">=</span> <span class="nx">container</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;Disqus&#39;</span><span class="p">);</span>
+    <span class="k">new</span> <span class="nx">Disqus</span><span class="p">(</span><span class="nx">options</span><span class="p">).</span><span class="nx">forums</span><span class="p">.</span><span class="nx">listModerators</span><span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="nx">container</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;util&#39;</span><span class="p">).</span><span class="nx">printCliResult</span><span class="p">);</span>
+  <span class="p">});</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><h3 id="listmostactiveusers">listMostActiveUsers</h3>
+
+<p>Returns a list of users active within a forum ordered by most comments made.</p>
+
+<p>Output of <code>disqus forums listMostActiveUsers --help</code>:</p>
+
+<pre><code> Usage: disqus forums listMostActiveUsers [options]
+
+ Options:
+
+ -h, --help                 output usage information
+ -c, --cursor [cursor]      Defaults to null,
+ -f, --forum &lt;string&gt;       Looks up a forum by ID (aka short name).
+ -H, --https [boolean]      Whether to use https. Defaults to true.
+ -l, --limit [number]       Maximum value of 100. Defaults to 25.
+ -L, --logLevel [string]    Output log level. Choices: debug, info, notice, warning, error, critical, alert, emergency.
+ -o, --order [string]       Choices: asc, desc. Defaults to "asc".
+ -S, --api_secret &lt;string&gt;  Your application's api_secret.
+</code></pre></div></div><div class="code"><div class="wrapper"><span class="nx">forums</span>
+  <span class="p">.</span><span class="nx">command</span><span class="p">(</span><span class="s1">&#39;listMostActiveUsers&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">description</span><span class="p">(</span><span class="s1">&#39;Returns a list of users active within a forum ordered by most comments made.&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-c, --cursor [cursor]&#39;</span><span class="p">,</span> <span class="s1">&#39;Defaults to null,&#39;</span><span class="p">,</span> <span class="kc">null</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-f, --forum &lt;string&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;Looks up a forum by ID (aka short name).&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-H, --https [boolean]&#39;</span><span class="p">,</span> <span class="s1">&#39;Whether to use https. Defaults to true.&#39;</span><span class="p">,</span> <span class="kc">true</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-l, --limit [number]&#39;</span><span class="p">,</span> <span class="s1">&#39;Maximum value of 100. Defaults to 25.&#39;</span><span class="p">,</span> <span class="nb">parseInt</span><span class="p">,</span> <span class="mi">25</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-L, --logLevel [string]&#39;</span><span class="p">,</span> <span class="s1">&#39;Output log level. Choices: debug, info, notice, warning, error, critical, alert, emergency.&#39;</span><span class="p">,</span> <span class="s1">&#39;info&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-o, --order [string]&#39;</span><span class="p">,</span> <span class="s1">&#39;Choices: desc. Defaults to &quot;desc&quot;.&#39;</span><span class="p">,</span> <span class="s1">&#39;desc&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-S, --api_secret &lt;string&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;Your application\&#39;s api_secret.&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">action</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">options</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">Disqus</span> <span class="o">=</span> <span class="nx">container</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;Disqus&#39;</span><span class="p">);</span>
+    <span class="k">new</span> <span class="nx">Disqus</span><span class="p">(</span><span class="nx">options</span><span class="p">).</span><span class="nx">forums</span><span class="p">.</span><span class="nx">listMostActiveUsers</span><span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="nx">container</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;util&#39;</span><span class="p">).</span><span class="nx">printCliResult</span><span class="p">);</span>
+  <span class="p">});</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><h3 id="listmostlikedusers">listMostLikedUsers</h3>
+
+<p>Returns a list of users active within a forum ordered by most likes received.</p>
+
+<p>Output of <code>disqus forums listMostLikedUsers --help</code>:</p>
+
+<pre><code> Usage: disqus forums listMostLikedUsers [options]
+
+ Options:
+
+ -h, --help                 output usage information
+ -c, --cursor [cursor]      Defaults to null,
+ -f, --forum &lt;string&gt;       Looks up a forum by ID (aka short name).
+ -H, --https [boolean]      Whether to use https. Defaults to true.
+ -l, --limit [number]       Maximum value of 100. Defaults to 25.
+ -L, --logLevel [string]    Output log level. Choices: debug, info, notice, warning, error, critical, alert, emergency.
+ -o, --order [string]       Choices: asc, desc. Defaults to "asc".
+ -S, --api_secret &lt;string&gt;  Your application's api_secret.
+</code></pre></div></div><div class="code"><div class="wrapper"><span class="nx">forums</span>
+  <span class="p">.</span><span class="nx">command</span><span class="p">(</span><span class="s1">&#39;listMostLikedUsers&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">description</span><span class="p">(</span><span class="s1">&#39;Returns a list of users active within a forum ordered by most likes received.&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-c, --cursor [cursor]&#39;</span><span class="p">,</span> <span class="s1">&#39;Defaults to null,&#39;</span><span class="p">,</span> <span class="kc">null</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-f, --forum &lt;string&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;Looks up a forum by ID (aka short name).&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-H, --https [boolean]&#39;</span><span class="p">,</span> <span class="s1">&#39;Whether to use https. Defaults to true.&#39;</span><span class="p">,</span> <span class="kc">true</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-l, --limit [number]&#39;</span><span class="p">,</span> <span class="s1">&#39;Maximum value of 100. Defaults to 25.&#39;</span><span class="p">,</span> <span class="nb">parseInt</span><span class="p">,</span> <span class="mi">25</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-L, --logLevel [string]&#39;</span><span class="p">,</span> <span class="s1">&#39;Output log level. Choices: debug, info, notice, warning, error, critical, alert, emergency.&#39;</span><span class="p">,</span> <span class="s1">&#39;info&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-o, --order [string]&#39;</span><span class="p">,</span> <span class="s1">&#39;Choices: desc. Defaults to &quot;desc&quot;.&#39;</span><span class="p">,</span> <span class="s1">&#39;desc&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-S, --api_secret &lt;string&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;Your application\&#39;s api_secret.&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">action</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">options</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">Disqus</span> <span class="o">=</span> <span class="nx">container</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;Disqus&#39;</span><span class="p">);</span>
+    <span class="k">new</span> <span class="nx">Disqus</span><span class="p">(</span><span class="nx">options</span><span class="p">).</span><span class="nx">forums</span><span class="p">.</span><span class="nx">listMostLikedUsers</span><span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="nx">container</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;util&#39;</span><span class="p">).</span><span class="nx">printCliResult</span><span class="p">);</span>
+  <span class="p">});</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><h3 id="listposts">listPosts</h3>
+
+<p>Returns a list of posts within a forum.</p>
+
+<p>Output of <code>disqus forums listPosts --help</code>:</p>
+
+<pre><code> Usage: disqus forums listPosts [options]
+
+ Options:
+
+ -h, --help                 output usage information
+ -c, --cursor [cursor]      Defaults to null,
+ -f, --forum &lt;string&gt;       Looks up a forum by ID (aka short name).
+ -H, --https [boolean]      Whether to use https. Defaults to true.
+ -i, --include [array]      Defaults to ["approved"]. Choices: unapproved, approved, spam, deleted, flagged, highlighted.
+ -l, --limit [number]       Maximum number of posts to return. Maximum value of 100. Defaults to 25.
+ -L, --logLevel [string]    Output log level. Choices: debug, info, notice, warning, error, critical, alert, emergency.
+ -o, --order [string]       Choices: asc, desc. Defaults to "desc".
+ -q, --query [string]       Defaults to null.
+ -r, --related [array]      You may specify relations to include with your response. Choices: thread.
+ -s, --since [string]       Unix timestamp (or ISO datetime standard).
+ -S, --api_secret &lt;string&gt;  Your application's api_secret.
+</code></pre></div></div><div class="code"><div class="wrapper"><span class="nx">forums</span>
+  <span class="p">.</span><span class="nx">command</span><span class="p">(</span><span class="s1">&#39;listPosts&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">description</span><span class="p">(</span><span class="s1">&#39;Returns a list of posts within a forum.&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-c, --cursor [cursor]&#39;</span><span class="p">,</span> <span class="s1">&#39;Defaults to null,&#39;</span><span class="p">,</span> <span class="kc">null</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-f, --forum &lt;string&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;Looks up a forum by ID (aka short name).&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-H, --https [boolean]&#39;</span><span class="p">,</span> <span class="s1">&#39;Whether to use https. Defaults to true.&#39;</span><span class="p">,</span> <span class="kc">true</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-i, --include [array]&#39;</span><span class="p">,</span> <span class="s1">&#39;Defaults to [&quot;approved&quot;]. Choices: unapproved, approved, spam, deleted, flagged, highlighted.&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;approved&#39;</span><span class="p">])</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-l, --limit [number]&#39;</span><span class="p">,</span> <span class="s1">&#39;Maximum number of posts to return. Maximum value of 100. Defaults to 25.&#39;</span><span class="p">,</span> <span class="nb">parseInt</span><span class="p">,</span> <span class="mi">25</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-L, --logLevel [string]&#39;</span><span class="p">,</span> <span class="s1">&#39;Output log level. Choices: debug, info, notice, warning, error, critical, alert, emergency.&#39;</span><span class="p">,</span> <span class="s1">&#39;info&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-o, --order [string]&#39;</span><span class="p">,</span> <span class="s1">&#39;Choices: asc, desc. Defaults to &quot;desc&quot;.&#39;</span><span class="p">,</span> <span class="s1">&#39;desc&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-q, --query [string]&#39;</span><span class="p">,</span> <span class="s1">&#39;Defaults to null.&#39;</span><span class="p">,</span> <span class="kc">null</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-r, --related [array]&#39;</span><span class="p">,</span> <span class="s1">&#39;You may specify relations to include with your response. Choices: thread.&#39;</span><span class="p">,</span> <span class="p">[])</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-s, --since [string]&#39;</span><span class="p">,</span> <span class="s1">&#39;Unix timestamp (or ISO datetime standard).&#39;</span><span class="p">,</span> <span class="kc">null</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-S, --api_secret &lt;string&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;Your application\&#39;s api_secret.&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">action</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">options</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">Disqus</span> <span class="o">=</span> <span class="nx">container</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;Disqus&#39;</span><span class="p">);</span>
+    <span class="k">new</span> <span class="nx">Disqus</span><span class="p">(</span><span class="nx">options</span><span class="p">).</span><span class="nx">forums</span><span class="p">.</span><span class="nx">listPosts</span><span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="nx">container</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;util&#39;</span><span class="p">).</span><span class="nx">printCliResult</span><span class="p">);</span>
+  <span class="p">});</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><h3 id="listthreads">listThreads</h3>
+
+<p>Returns a list of posts within a forum.</p>
+
+<p>Output of <code>disqus forums listThreads --help</code>:</p>
+
+<pre><code> Usage: disqus forums listThreads [options]
+
+ Options:
+
+ -h, --help                 output usage information
+ -c, --cursor [cursor]      Defaults to null,
+ -f, --forum &lt;string&gt;       Looks up a forum by ID (aka short name).
+ -H, --https [boolean]      Whether to use https. Defaults to true.
+ -i, --include [array]      Defaults to ["approved"]. Choices: open, closed, killed.
+ -l, --limit [number]       Maximum number of posts to return. Maximum value of 100. Defaults to 25.
+ -L, --logLevel [string]    Output log level. Choices: debug, info, notice, warning, error, critical, alert, emergency.
+ -o, --order [string]       Choices: asc, desc. Defaults to "desc".
+ -q, --query [string]       Defaults to null.
+ -r, --related [array]      You may specify relations to include with your response. Choices: thread.
+ -s, --since [string]       Unix timestamp (or ISO datetime standard).
+ -S, --api_secret &lt;string&gt;  Your application's api_secret.
+ -t, --thread [array]       Looks up a thread by ID. You may pass us the "ident" query type instead of an ID by including "forum". You may pass us the "link" query type to filter by URL. You must pass the "forum" if you do not have the Pro API Access addon.
+</code></pre></div></div><div class="code"><div class="wrapper"><span class="nx">forums</span>
+  <span class="p">.</span><span class="nx">command</span><span class="p">(</span><span class="s1">&#39;listThreads&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">description</span><span class="p">(</span><span class="s1">&#39;Returns a list of posts within a forum.&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-c, --cursor [cursor]&#39;</span><span class="p">,</span> <span class="s1">&#39;Defaults to null,&#39;</span><span class="p">,</span> <span class="kc">null</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-f, --forum &lt;string&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;Looks up a forum by ID (aka short name).&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-H, --https [boolean]&#39;</span><span class="p">,</span> <span class="s1">&#39;Whether to use https. Defaults to true.&#39;</span><span class="p">,</span> <span class="kc">true</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-i, --include [array]&#39;</span><span class="p">,</span> <span class="s1">&#39;Defaults to [&quot;approved&quot;]. Choices: open, closed, killed.&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;open&#39;</span><span class="p">,</span> <span class="s1">&#39;closed&#39;</span><span class="p">])</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-l, --limit [number]&#39;</span><span class="p">,</span> <span class="s1">&#39;Maximum number of posts to return. Maximum value of 100. Defaults to 25.&#39;</span><span class="p">,</span> <span class="nb">parseInt</span><span class="p">,</span> <span class="mi">25</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-L, --logLevel [string]&#39;</span><span class="p">,</span> <span class="s1">&#39;Output log level. Choices: debug, info, notice, warning, error, critical, alert, emergency.&#39;</span><span class="p">,</span> <span class="s1">&#39;info&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-o, --order [string]&#39;</span><span class="p">,</span> <span class="s1">&#39;Choices: asc, desc. Defaults to &quot;desc&quot;.&#39;</span><span class="p">,</span> <span class="s1">&#39;desc&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-q, --query [string]&#39;</span><span class="p">,</span> <span class="s1">&#39;Defaults to null.&#39;</span><span class="p">,</span> <span class="kc">null</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-r, --related [array]&#39;</span><span class="p">,</span> <span class="s1">&#39;You may specify relations to include with your response. Choices: thread.&#39;</span><span class="p">,</span> <span class="p">[])</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-s, --since [string]&#39;</span><span class="p">,</span> <span class="s1">&#39;Unix timestamp (or ISO datetime standard).&#39;</span><span class="p">,</span> <span class="kc">null</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-S, --api_secret &lt;string&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;Your application\&#39;s api_secret.&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-t, --thread [array]&#39;</span><span class="p">,</span> <span class="s1">&#39;Looks up a thread by ID. You may pass us the &quot;ident&quot; query type instead of an ID by including &quot;forum&quot;. You may pass us the &quot;link&quot; query type to filter by URL. You must pass the &quot;forum&quot; if you do not have the Pro API Access addon.&#39;</span><span class="p">,</span> <span class="kc">null</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">action</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">options</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">Disqus</span> <span class="o">=</span> <span class="nx">container</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;Disqus&#39;</span><span class="p">);</span>
+    <span class="k">new</span> <span class="nx">Disqus</span><span class="p">(</span><span class="nx">options</span><span class="p">).</span><span class="nx">forums</span><span class="p">.</span><span class="nx">listThreads</span><span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="nx">container</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;util&#39;</span><span class="p">).</span><span class="nx">printCliResult</span><span class="p">);</span>
+  <span class="p">});</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><h3 id="listusers">listUsers</h3>
+
+<p>Returns a list of users active within a forum.</p>
+
+<p>Output of <code>disqus forums listUsers --help</code>:</p>
+
+<pre><code> Usage: disqus forums listUsers [options]
+
+ Options:
+
+ -h, --help                 output usage information
+ -c, --cursor [cursor]      Defaults to null,
+ -f, --forum &lt;string&gt;       Looks up a forum by ID (aka short name).
+ -H, --https [boolean]      Whether to use https. Defaults to true.
+ -l, --limit [number]       Maximum value of 100. Defaults to 25.
+ -L, --logLevel [string]    Output log level. Choices: debug, info, notice, warning, error, critical, alert, emergency.
+ -o, --order [string]       Choices: desc. Defaults to "desc".
+ -s, --since_id [string]    Defaults to null.
+ -S, --api_secret &lt;string&gt;  Your application's api_secret.
+</code></pre></div></div><div class="code"><div class="wrapper"><span class="nx">forums</span>
+  <span class="p">.</span><span class="nx">command</span><span class="p">(</span><span class="s1">&#39;listUsers&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">description</span><span class="p">(</span><span class="s1">&#39;Returns a list of users active within a forum.&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-c, --cursor [cursor]&#39;</span><span class="p">,</span> <span class="s1">&#39;Defaults to null,&#39;</span><span class="p">,</span> <span class="kc">null</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-f, --forum &lt;string&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;Looks up a forum by ID (aka short name).&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-H, --https [boolean]&#39;</span><span class="p">,</span> <span class="s1">&#39;Whether to use https. Defaults to true.&#39;</span><span class="p">,</span> <span class="kc">true</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-l, --limit [number]&#39;</span><span class="p">,</span> <span class="s1">&#39;Maximum value of 100. Defaults to 25.&#39;</span><span class="p">,</span> <span class="nb">parseInt</span><span class="p">,</span> <span class="mi">25</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-L, --logLevel [string]&#39;</span><span class="p">,</span> <span class="s1">&#39;Output log level. Choices: debug, info, notice, warning, error, critical, alert, emergency.&#39;</span><span class="p">,</span> <span class="s1">&#39;info&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-o, --order [string]&#39;</span><span class="p">,</span> <span class="s1">&#39;Choices: desc. Defaults to &quot;desc&quot;.&#39;</span><span class="p">,</span> <span class="s1">&#39;desc&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-s, --since_id [string]&#39;</span><span class="p">,</span> <span class="s1">&#39;Defaults to null.&#39;</span><span class="p">,</span> <span class="kc">null</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-S, --api_secret &lt;string&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;Your application\&#39;s api_secret.&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">action</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">options</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">Disqus</span> <span class="o">=</span> <span class="nx">container</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;Disqus&#39;</span><span class="p">);</span>
+    <span class="k">new</span> <span class="nx">Disqus</span><span class="p">(</span><span class="nx">options</span><span class="p">).</span><span class="nx">forums</span><span class="p">.</span><span class="nx">listUsers</span><span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="nx">container</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;util&#39;</span><span class="p">).</span><span class="nx">printCliResult</span><span class="p">);</span>
+  <span class="p">});</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><h3 id="removemoderator">removeModerator</h3>
+
+<p>Removes a moderator from a forum.</p>
+
+<p>Output of <code>disqus forums removeModerator --help</code>:</p>
+
+<pre><code> Usage: disqus forums removeModerator [options]
+
+ Options:
+
+ -h, --help                   output usage information
+ -A, --access_token &lt;string&gt;  Your access token.
+ -H, --https [boolean]        Whether to use https. Defaults to true.
+ -L, --logLevel [string]      Output log level. Choices: debug, info, notice, warning, error, critical, alert, emergency.
+ -m, --moderator &lt;string&gt;     Looks up a moderator by ID.
+ -S, --api_secret &lt;string&gt;    Your application's api_secret.
+</code></pre></div></div><div class="code"><div class="wrapper"><span class="nx">forums</span>
+  <span class="p">.</span><span class="nx">command</span><span class="p">(</span><span class="s1">&#39;removeModerator&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">description</span><span class="p">(</span><span class="s1">&#39;Removes a moderator from a forum.&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-A, --access_token &lt;string&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;Your access token.&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-H, --https [boolean]&#39;</span><span class="p">,</span> <span class="s1">&#39;Whether to use https. Defaults to true.&#39;</span><span class="p">,</span> <span class="kc">true</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-L, --logLevel [string]&#39;</span><span class="p">,</span> <span class="s1">&#39;Output log level. Choices: debug, info, notice, warning, error, critical, alert, emergency.&#39;</span><span class="p">,</span> <span class="s1">&#39;info&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-m, --moderator &lt;string&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;Looks up a moderator by ID.&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-S, --api_secret &lt;string&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;Your application\&#39;s api_secret.&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">action</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">options</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">Disqus</span> <span class="o">=</span> <span class="nx">container</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;Disqus&#39;</span><span class="p">);</span>
+    <span class="k">new</span> <span class="nx">Disqus</span><span class="p">(</span><span class="nx">options</span><span class="p">).</span><span class="nx">forums</span><span class="p">.</span><span class="nx">removeModerator</span><span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="nx">container</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;util&#39;</span><span class="p">).</span><span class="nx">printCliResult</span><span class="p">);</span>
+  <span class="p">});</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><h3 id="unfollow">unfollow</h3>
+
+<p>Unfollow a forum.</p>
+
+<p>Output of <code>disqus forums unfollow --help</code>:</p>
+
+<pre><code> Usage: disqus forums unfollow [options]
+
+ Options:
+
+ -h, --help                   output usage information
+ -A, --access_token &lt;string&gt;  Your access token.
+ -H, --https [boolean]        Whether to use https. Defaults to true.
+ -L, --logLevel [string]      Output log level. Choices: debug, info, notice, warning, error, critical, alert, emergency.
+ -S, --api_secret &lt;string&gt;    Your application's api_secret.
+ -t, --target &lt;string&gt;        Looks up a forum by ID (aka short name).
+</code></pre></div></div><div class="code"><div class="wrapper"><span class="nx">forums</span>
+  <span class="p">.</span><span class="nx">command</span><span class="p">(</span><span class="s1">&#39;unfollow&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">description</span><span class="p">(</span><span class="s1">&#39;Unfollow a forum.&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-A, --access_token &lt;string&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;Your access token.&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-H, --https [boolean]&#39;</span><span class="p">,</span> <span class="s1">&#39;Whether to use https. Defaults to true.&#39;</span><span class="p">,</span> <span class="kc">true</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-L, --logLevel [string]&#39;</span><span class="p">,</span> <span class="s1">&#39;Output log level. Choices: debug, info, notice, warning, error, critical, alert, emergency.&#39;</span><span class="p">,</span> <span class="s1">&#39;info&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-S, --api_secret &lt;string&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;Your application\&#39;s api_secret.&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-t, --target &lt;string&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;Looks up a forum by ID (aka short name).&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">action</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">options</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">Disqus</span> <span class="o">=</span> <span class="nx">container</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;Disqus&#39;</span><span class="p">);</span>
+    <span class="k">new</span> <span class="nx">Disqus</span><span class="p">(</span><span class="nx">options</span><span class="p">).</span><span class="nx">forums</span><span class="p">.</span><span class="nx">unfollow</span><span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="nx">container</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;util&#39;</span><span class="p">).</span><span class="nx">printCliResult</span><span class="p">);</span>
+  <span class="p">});</span>
+
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="nx">forums</span><span class="p">;</span></div></div></div></div></body></html>

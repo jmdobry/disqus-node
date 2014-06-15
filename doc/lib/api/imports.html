@@ -35,16 +35,18 @@
 
 <pre><code class="js">// Node-style
 disqus.imports.details({
-    forum: '',
-    group: '',
-    api_secret: 'asdfghkj', // can be set globally
-    access_token: '12345678' // can be set globally
+    forum: '', // required
+    group: '', // required
+    api_secret: 'asdfghkj', // required, can be set globally
+    access_token: '12345678' // required, can be set globally
 }, function (err, result) {...})
 
 // Promise-style
 disqus.imports.details({
-    forum: '',
-    group: ''
+    forum: '', // required
+    group: '', // required
+    api_secret: 'asdfghkj', // required, can be set globally
+    access_token: '12345678' // required, can be set globally
 })
 .then(function (result) {...})
 .catch(function (err) {...})
@@ -64,17 +66,19 @@ disqus.imports.details({
 
 <pre><code class="js">// Node-style
 disqus.imports.list({
-    forum: 'forumId',
-    // defaults shown
+    forum: '', // required
+    api_secret: 'asdfghkj', // required, can be set globally
+    access_token: '12345678', // required, can be set globally
+    // optional, defaults shown
     cursor: null
 }, function (err, result) {...})
 
 // Promise-style
 disqus.imports.list({
-    forum: '',
-    api_secret: 'asdfghkj', // can be set globally
-    access_token: '12345678', // can be set globally
-    // defaults shown
+    forum: '', // required
+    api_secret: 'asdfghkj', // required, can be set globally
+    access_token: '12345678', // required, can be set globally
+    // optional, defaults shown
     cursor: null
 })
 .then(function (result) {...})

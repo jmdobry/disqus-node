@@ -56,18 +56,19 @@
 
 <pre><code class="js">// Node-style
 disqus.category.create({
-    forum: '',
-    title: '',
-    api_secret: 'asdfghkj', // can be set globally
-    // defaults shown
+    forum: '', // required
+    title: '', // required
+    api_secret: 'asdfghkj', // required, can be set globally
+    // optional, defaults shown
     default: false
 }, function (err, result) {...})
 
 // Promise-style
 disqus.category.create({
-    forum: '',
-    title: '',
-    // defaults shown
+    forum: '', // required
+    title: '', // required
+    api_secret: 'asdfghkj', // required, can be set globally
+    // optional, defaults shown
     default: false
 })
 .then(function (result) {...})
@@ -88,13 +89,14 @@ disqus.category.create({
 
 <pre><code class="js">// Node-style
 disqus.category.details({
-    category: ''
+    category: '', // required
+    api_secret: 'asdfghkj' // required, can be set globally
 }, function (err, result) {...})
 
 // Promise-style
 disqus.category.details({
-    category: '',
-    api_secret: 'asdfghkj' // can be set globally
+    category: '', // required
+    api_secret: 'asdfghkj' // required, can be set globally
 })
 .then(function (result) {...})
 .catch(function (err) {...})
@@ -114,8 +116,9 @@ disqus.category.details({
 
 <pre><code class="js">// Node-style
 disqus.category.list({
-    forum: '',
-    // defaults shown
+    forum: '', // required
+    api_secret: 'asdfghkj', // required, can be set globally
+    // optional, defaults shown
     since_id: null,
     cursor: null,
     limit: 25,
@@ -124,9 +127,9 @@ disqus.category.list({
 
 // Promise-style
 disqus.category.list({
-    forum: '',
-    api_secret: 'asdfghkj', // can be set globally
-    // defaults shown
+    forum: '', // required
+    api_secret: 'asdfghkj', // required, can be set globally
+    // optional, defaults shown
     since_id: null,
     cursor: null,
     limit: 25,
@@ -150,9 +153,9 @@ disqus.category.list({
 
 <pre><code class="js">// Node-style
 disqus.category.listPosts({
-    category: '',
-    api_secret: 'asdfghkj', // can be set globally
-    // defaults shown
+    category: '', // required
+    api_secret: 'asdfghkj', // required, can be set globally
+    // optional, defaults shown
     since: null,
     related: [],
     cursor: null,
@@ -164,8 +167,9 @@ disqus.category.listPosts({
 
 // Promise-style
 disqus.category.listPosts({
-    category: '',
-    // defaults shown
+    category: '', // required
+    api_secret: 'asdfghkj', // required, can be set globally
+    // optional, defaults shown
     since: null,
     related: [],
     cursor: null,
@@ -192,8 +196,9 @@ disqus.category.listPosts({
 
 <pre><code class="js">// Node-style
 disqus.category.listThreads({
-    category: '',
-    // defaults shown
+    category: '', // required
+    api_secret: 'asdfghkj', // required, can be set globally
+    // optional, defaults shown
     since: null,
     related: [],
     cursor: null,
@@ -203,9 +208,9 @@ disqus.category.listThreads({
 
 // Promise-style
 disqus.category.listThreads({
-    category: '',
-    api_secret: 'asdfghkj', // can be set globally
-    // defaults shown
+    category: '', // required
+    api_secret: 'asdfghkj', // required, can be set globally
+    // optional, defaults shown
     since: null,
     related: [],
     cursor: null,

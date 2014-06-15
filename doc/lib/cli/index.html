@@ -1,9 +1,75 @@
 <!DOCTYPE html><html lang="en"><head><title>lib/cli/index</title></head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"><meta name="groc-relative-root" content="../../"><meta name="groc-document-path" content="lib/cli/index"><meta name="groc-project-path" content="lib/cli/index.js"><link rel="stylesheet" type="text/css" media="all" href="../../assets/style.css"><script type="text/javascript" src="../../assets/behavior.js"></script><body><div id="meta"><div class="file-path">lib/cli/index.js</div></div><div id="document"><div class="segment"><div class="code"><div class="wrapper"><span class="kd">var</span> <span class="nx">commander</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;commander&#39;</span><span class="p">);</span>
 <span class="kd">var</span> <span class="nx">disqus</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">commander</span><span class="p">.</span><span class="nx">Command</span><span class="p">(</span><span class="s1">&#39;disqus&#39;</span><span class="p">);</span>
-<span class="kd">var</span> <span class="nx">pkg</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;../../package.json&#39;</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">pkg</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;../../package.json&#39;</span><span class="p">);</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>```
+ MBP:~ jason$ npm install -g disqus-node</p>
 
-<span class="nx">disqus</span>
-  <span class="p">.</span><span class="nx">version</span><span class="p">(</span><span class="nx">pkg</span><span class="p">.</span><span class="nx">version</span><span class="p">);</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><h6 id="applications">Applications</h6>
+<p>npm http GET https://registry.npmjs.org/disqus-node
+ ...
+ disqus-node@0.11.0 usr/local/lib/node_modules/disqus-node</p>
+
+<p>MBP:~ jason$ disqus -h</p>
+
+<p>Usage: disqus <cmd> <subCmd> [options]</p>
+
+<p>Commands:</p>
+
+<p>applications <cmd> [options] Execute command for the Applications resource.
+ blacklists <cmd> [options] Execute command for the Blacklists resource.
+ categories <cmd> [options] Execute command for the Categories resource.
+ exports <cmd> [options] Execute command for the Exports resource.
+ forums <cmd> [options] Execute command for the Forums resource.
+ imports <cmd> [options] Execute command for the Imports resource.
+ topics <cmd> [options] Execute command for the Topics resource.
+ trends <cmd> [options] Execute command for the Trends resource.
+ whitelists <cmd> [options] Execute command for the Whitelists resource.</p>
+
+<p>Options:</p>
+
+<p>-h, --help     output usage information
+ -V, --version  output the version number</p>
+
+<p>MBP:~ jason$ disqus forums -h</p>
+
+<p>Usage: disqus forums <cmd> [options]</p>
+
+<p>Commands:</p>
+
+<p>addModerator [options]  Adds a moderator to a forum.
+ create [options]       Creates a new forum.
+ details [options]      Returns forum details.
+ follow [options]       Follow a forum.
+ installed [options]    Returns true if forum has one or more views.
+ listCategories [options]  Returns a list of categories within a forum.
+ listFollowers [options]   Returns a list of users following a forum.
+ listModerators [options]  Returns a list of all moderators on a forum.
+ listMostActiveUsers [options]  Returns a list of users active within a forum ordered by most comments made.
+ listMostLikedUsers [options]   Returns a list of users active within a forum ordered by most likes received.
+ listPosts [options]     Returns a list of posts within a forum.
+ listThreads [options]   Returns a list of threads within a forum sorted by the date created.
+ listUsers [options]     Returns a list of users active within a forum.
+ removeModerator [options]      Removes a moderator from a forum.
+ unfollow [options]      Unfollow a forum.</p>
+
+<p>Options:</p>
+
+<p>-h, --help  output usage information</p>
+
+<p>MBP:~ jason$ disqus forums listPosts -f pseudobry -S '1234abcd' -l 3</p>
+
+<p>{
+   "cursor": {...},
+   "code": 0,
+   "response": [
+     {...},
+     {...},
+     {...}
+   ]
+ }</p>
+
+<p>MBP:~ jason$
+```</p></div></div><div class="code"><div class="wrapper"><span class="nx">disqus</span>
+  <span class="p">.</span><span class="nx">version</span><span class="p">(</span><span class="nx">pkg</span><span class="p">.</span><span class="nx">version</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">usage</span><span class="p">(</span><span class="s1">&#39;&lt;cmd&gt; &lt;subCmd&gt; [options]&#39;</span><span class="p">);</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><h6 id="applications">Applications</h6>
 
 <p><a href="/lib/api/applications.html">API</a> | <a href="/lib/cli/applications.html">CLI</a> | <a href="https://disqus.com/api/docs/applications/">Disqus</a></p></div></div><div class="code"><div class="wrapper"><span class="nx">disqus</span>
   <span class="p">.</span><span class="nx">command</span><span class="p">(</span><span class="s1">&#39;applications &lt;cmd&gt; [options]&#39;</span><span class="p">)</span>
@@ -19,7 +85,11 @@
 
 <p><a href="/lib/api/exports.html">API</a> | <a href="/lib/cli/exports.html">CLI</a> | <a href="https://disqus.com/api/docs/exports/">Disqus</a></p></div></div><div class="code"><div class="wrapper"><span class="nx">disqus</span>
   <span class="p">.</span><span class="nx">command</span><span class="p">(</span><span class="s1">&#39;exports &lt;cmd&gt; [options]&#39;</span><span class="p">)</span>
-  <span class="p">.</span><span class="nx">description</span><span class="p">(</span><span class="s1">&#39;Execute command for the Exports resource.&#39;</span><span class="p">);</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><h6 id="imports">Imports</h6>
+  <span class="p">.</span><span class="nx">description</span><span class="p">(</span><span class="s1">&#39;Execute command for the Exports resource.&#39;</span><span class="p">);</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><h6 id="forums">Forums</h6>
+
+<p><a href="/lib/api/forums.html">API</a> | <a href="/lib/cli/forums.html">CLI</a> | <a href="https://disqus.com/api/docs/forums/">Disqus</a></p></div></div><div class="code"><div class="wrapper"><span class="nx">disqus</span>
+  <span class="p">.</span><span class="nx">command</span><span class="p">(</span><span class="s1">&#39;forums &lt;cmd&gt; [options]&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">description</span><span class="p">(</span><span class="s1">&#39;Execute command for the Forums resource.&#39;</span><span class="p">);</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><h6 id="imports">Imports</h6>
 
 <p><a href="/lib/api/imports.html">API</a> | <a href="/lib/cli/imports.html">CLI</a> | <a href="https://disqus.com/api/docs/imports/">Disqus</a></p></div></div><div class="code"><div class="wrapper"><span class="nx">disqus</span>
   <span class="p">.</span><span class="nx">command</span><span class="p">(</span><span class="s1">&#39;imports &lt;cmd&gt; [options]&#39;</span><span class="p">)</span>
@@ -45,6 +115,7 @@
     <span class="k">case</span> <span class="s1">&#39;blacklists&#39;</span><span class="o">:</span>
     <span class="k">case</span> <span class="s1">&#39;categories&#39;</span><span class="o">:</span>
     <span class="k">case</span> <span class="s1">&#39;exports&#39;</span><span class="o">:</span>
+    <span class="k">case</span> <span class="s1">&#39;forums&#39;</span><span class="o">:</span>
     <span class="k">case</span> <span class="s1">&#39;imports&#39;</span><span class="o">:</span>
     <span class="k">case</span> <span class="s1">&#39;topics&#39;</span><span class="o">:</span>
     <span class="k">case</span> <span class="s1">&#39;trends&#39;</span><span class="o">:</span>

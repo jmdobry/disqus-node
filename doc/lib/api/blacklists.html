@@ -42,8 +42,10 @@
 
 <pre><code class="js">// Node-style
 disqus.blacklists.add({
-    forum: '',
-    // defaults shown
+    forum: '', // required
+    api_secret: 'asdfghkj', // required, can be set globally
+    access_token: '12345678', // required, can be set globally
+    // optional, defaults shown
     domain: [],
     word: [],
     retroactive: false,
@@ -55,10 +57,10 @@ disqus.blacklists.add({
 
 // Promise-style
 disqus.blacklists.add({
-    forum: '',
-    api_secret: 'asdfghkj', // can be set globally
-    access_token: '12345678', // can be set globally
-    // defaults shown
+    forum: '', // required
+    api_secret: 'asdfghkj', // required, can be set globally
+    access_token: '12345678', // required, can be set globally
+    // optional, defaults shown
     domain: [],
     word: [],
     retroactive: false,
@@ -86,7 +88,9 @@ disqus.blacklists.add({
 <pre><code class="js">// Node-style
 disqus.blacklists.list({
     forum: '', // required
-    // defaults shown
+    api_secret: 'asdfghkj', // required, can be set globally
+    access_token: '12345678', // required, can be set globally
+    // optional, defaults shown
     since: null,
     related: [],
     cursor: null,
@@ -100,9 +104,9 @@ disqus.blacklists.list({
 // Promise-style
 disqus.blacklists.list({
     forum: '', // required
-    api_secret: 'asdfghkj', // can be set globally
-    access_token: '12345678', // can be set globally
-    // defaults shown
+    api_secret: 'asdfghkj', // required, can be set globally
+    access_token: '12345678', // required, can be set globally
+    // optional, defaults shown
     since: null,
     related: [],
     cursor: null,
@@ -131,9 +135,9 @@ disqus.blacklists.list({
 <pre><code class="js">// Node-style
 disqus.blacklists.remove({
     forum: '', // required
-    api_secret: 'asdfghkj', // can be set globally
-    access_token: '12345678', // can be set globally
-    // defaults shown
+    api_secret: 'asdfghkj', // required, can be set globally
+    access_token: '12345678', // required, can be set globally
+    // optional, defaults shown
     domain: [],
     word: [],
     ip: [],
@@ -144,7 +148,9 @@ disqus.blacklists.remove({
 // Promise-style
 disqus.blacklists.remove({
     forum: '', // required
-    // defaults shown
+    api_secret: 'asdfghkj', // required, can be set globally
+    access_token: '12345678', // required, can be set globally
+    // optional, defaults shown
     domain: [],
     word: [],
     ip: [],

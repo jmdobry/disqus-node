@@ -1,0 +1,629 @@
+<!DOCTYPE html><html lang="en"><head><title>lib/api/Forums</title></head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"><meta name="groc-relative-root" content="../../"><meta name="groc-document-path" content="lib/api/Forums"><meta name="groc-project-path" content="lib/api/Forums.js"><link rel="stylesheet" type="text/css" media="all" href="../../assets/style.css"><script type="text/javascript" src="../../assets/behavior.js"></script><body><div id="meta"><div class="file-path">lib/api/Forums.js</div></div><div id="document"><div class="segment"><div class="comments "><div class="wrapper"><p><a href="/lib/index.html">Up one level</a></p>
+
+<h3 id="forums-api">Forums API</h3>
+
+<p>See the disqus-node <a href="/lib/cli/forums.html">Forums CLI</a>.</p>
+
+<p>See the <a href="https://disqus.com/api/docs/forums/">Forums API on Disqus.com</a>.</p></div></div><div class="code"><div class="wrapper"><span class="kd">var</span> <span class="nx">methods</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">addModerator</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">resource</span><span class="o">:</span> <span class="s1">&#39;forums&#39;</span><span class="p">,</span>
+    <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;addModerator&#39;</span><span class="p">,</span>
+    <span class="nx">method</span><span class="o">:</span> <span class="s1">&#39;POST&#39;</span><span class="p">,</span>
+    <span class="nx">requiredOptions</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;api_secret&#39;</span><span class="p">,</span> <span class="s1">&#39;access_token&#39;</span><span class="p">,</span> <span class="s1">&#39;user&#39;</span><span class="p">,</span> <span class="s1">&#39;forum&#39;</span><span class="p">],</span>
+    <span class="nx">availableOptions</span><span class="o">:</span> <span class="p">[]</span>
+  <span class="p">},</span>
+  <span class="nx">create</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">resource</span><span class="o">:</span> <span class="s1">&#39;forums&#39;</span><span class="p">,</span>
+    <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;create&#39;</span><span class="p">,</span>
+    <span class="nx">method</span><span class="o">:</span> <span class="s1">&#39;POST&#39;</span><span class="p">,</span>
+    <span class="nx">requiredOptions</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;api_secret&#39;</span><span class="p">,</span> <span class="s1">&#39;access_token&#39;</span><span class="p">,</span> <span class="s1">&#39;website&#39;</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="s1">&#39;short_name&#39;</span><span class="p">],</span>
+    <span class="nx">availableOptions</span><span class="o">:</span> <span class="p">[]</span>
+  <span class="p">},</span>
+  <span class="nx">details</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">resource</span><span class="o">:</span> <span class="s1">&#39;forums&#39;</span><span class="p">,</span>
+    <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;details&#39;</span><span class="p">,</span>
+    <span class="nx">method</span><span class="o">:</span> <span class="s1">&#39;GET&#39;</span><span class="p">,</span>
+    <span class="nx">requiredOptions</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;api_secret&#39;</span><span class="p">,</span> <span class="s1">&#39;forum&#39;</span><span class="p">],</span>
+    <span class="nx">availableOptions</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;related&#39;</span><span class="p">]</span>
+  <span class="p">},</span>
+  <span class="nx">follow</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">resource</span><span class="o">:</span> <span class="s1">&#39;forums&#39;</span><span class="p">,</span>
+    <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;follow&#39;</span><span class="p">,</span>
+    <span class="nx">method</span><span class="o">:</span> <span class="s1">&#39;POST&#39;</span><span class="p">,</span>
+    <span class="nx">requiredOptions</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;api_secret&#39;</span><span class="p">,</span> <span class="s1">&#39;access_token&#39;</span><span class="p">,</span> <span class="s1">&#39;target&#39;</span><span class="p">],</span>
+    <span class="nx">availableOptions</span><span class="o">:</span> <span class="p">[]</span>
+  <span class="p">},</span>
+  <span class="nx">installed</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">resource</span><span class="o">:</span> <span class="s1">&#39;forums&#39;</span><span class="p">,</span>
+    <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;installed&#39;</span><span class="p">,</span>
+    <span class="nx">method</span><span class="o">:</span> <span class="s1">&#39;GET&#39;</span><span class="p">,</span>
+    <span class="nx">requiredOptions</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;api_secret&#39;</span><span class="p">,</span> <span class="s1">&#39;access_token&#39;</span><span class="p">,</span> <span class="s1">&#39;forum&#39;</span><span class="p">],</span>
+    <span class="nx">availableOptions</span><span class="o">:</span> <span class="p">[]</span>
+  <span class="p">},</span>
+  <span class="nx">listCategories</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">resource</span><span class="o">:</span> <span class="s1">&#39;forums&#39;</span><span class="p">,</span>
+    <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;listCategories&#39;</span><span class="p">,</span>
+    <span class="nx">method</span><span class="o">:</span> <span class="s1">&#39;GET&#39;</span><span class="p">,</span>
+    <span class="nx">requiredOptions</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;api_secret&#39;</span><span class="p">,</span> <span class="s1">&#39;forum&#39;</span><span class="p">],</span>
+    <span class="nx">availableOptions</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;since_id&#39;</span><span class="p">,</span> <span class="s1">&#39;cursor&#39;</span><span class="p">,</span> <span class="s1">&#39;limit&#39;</span><span class="p">,</span> <span class="s1">&#39;order&#39;</span><span class="p">]</span>
+  <span class="p">},</span>
+  <span class="nx">listFollowers</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">resource</span><span class="o">:</span> <span class="s1">&#39;forums&#39;</span><span class="p">,</span>
+    <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;listFollowers&#39;</span><span class="p">,</span>
+    <span class="nx">method</span><span class="o">:</span> <span class="s1">&#39;GET&#39;</span><span class="p">,</span>
+    <span class="nx">requiredOptions</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;api_secret&#39;</span><span class="p">,</span> <span class="s1">&#39;forum&#39;</span><span class="p">],</span>
+    <span class="nx">availableOptions</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;since_id&#39;</span><span class="p">,</span> <span class="s1">&#39;cursor&#39;</span><span class="p">,</span> <span class="s1">&#39;limit&#39;</span><span class="p">,</span> <span class="s1">&#39;order&#39;</span><span class="p">]</span>
+  <span class="p">},</span>
+  <span class="nx">listModerators</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">resource</span><span class="o">:</span> <span class="s1">&#39;forums&#39;</span><span class="p">,</span>
+    <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;listModerators&#39;</span><span class="p">,</span>
+    <span class="nx">method</span><span class="o">:</span> <span class="s1">&#39;GET&#39;</span><span class="p">,</span>
+    <span class="nx">requiredOptions</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;api_secret&#39;</span><span class="p">,</span> <span class="s1">&#39;access_token&#39;</span><span class="p">,</span> <span class="s1">&#39;forum&#39;</span><span class="p">],</span>
+    <span class="nx">availableOptions</span><span class="o">:</span> <span class="p">[]</span>
+  <span class="p">},</span>
+  <span class="nx">listMostActiveUsers</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">resource</span><span class="o">:</span> <span class="s1">&#39;forums&#39;</span><span class="p">,</span>
+    <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;listMostActiveUsers&#39;</span><span class="p">,</span>
+    <span class="nx">method</span><span class="o">:</span> <span class="s1">&#39;GET&#39;</span><span class="p">,</span>
+    <span class="nx">requiredOptions</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;api_secret&#39;</span><span class="p">,</span> <span class="s1">&#39;forum&#39;</span><span class="p">],</span>
+    <span class="nx">availableOptions</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;cursor&#39;</span><span class="p">,</span> <span class="s1">&#39;limit&#39;</span><span class="p">,</span> <span class="s1">&#39;order&#39;</span><span class="p">]</span>
+  <span class="p">},</span>
+  <span class="nx">listMostLikedUsers</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">resource</span><span class="o">:</span> <span class="s1">&#39;forums&#39;</span><span class="p">,</span>
+    <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;listMostLikedUsers&#39;</span><span class="p">,</span>
+    <span class="nx">method</span><span class="o">:</span> <span class="s1">&#39;GET&#39;</span><span class="p">,</span>
+    <span class="nx">requiredOptions</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;api_secret&#39;</span><span class="p">,</span> <span class="s1">&#39;forum&#39;</span><span class="p">],</span>
+    <span class="nx">availableOptions</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;cursor&#39;</span><span class="p">,</span> <span class="s1">&#39;limit&#39;</span><span class="p">,</span> <span class="s1">&#39;order&#39;</span><span class="p">]</span>
+  <span class="p">},</span>
+  <span class="nx">listPosts</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">resource</span><span class="o">:</span> <span class="s1">&#39;forums&#39;</span><span class="p">,</span>
+    <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;listPosts&#39;</span><span class="p">,</span>
+    <span class="nx">method</span><span class="o">:</span> <span class="s1">&#39;GET&#39;</span><span class="p">,</span>
+    <span class="nx">requiredOptions</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;api_secret&#39;</span><span class="p">,</span> <span class="s1">&#39;forum&#39;</span><span class="p">],</span>
+    <span class="nx">availableOptions</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;since&#39;</span><span class="p">,</span> <span class="s1">&#39;related&#39;</span><span class="p">,</span> <span class="s1">&#39;cursor&#39;</span><span class="p">,</span> <span class="s1">&#39;limit&#39;</span><span class="p">,</span> <span class="s1">&#39;query&#39;</span><span class="p">,</span> <span class="s1">&#39;include&#39;</span><span class="p">,</span> <span class="s1">&#39;order&#39;</span><span class="p">]</span>
+  <span class="p">},</span>
+  <span class="nx">listThreads</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">resource</span><span class="o">:</span> <span class="s1">&#39;forums&#39;</span><span class="p">,</span>
+    <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;listThreads&#39;</span><span class="p">,</span>
+    <span class="nx">method</span><span class="o">:</span> <span class="s1">&#39;GET&#39;</span><span class="p">,</span>
+    <span class="nx">requiredOptions</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;api_secret&#39;</span><span class="p">,</span> <span class="s1">&#39;forum&#39;</span><span class="p">],</span>
+    <span class="nx">availableOptions</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;thread&#39;</span><span class="p">,</span> <span class="s1">&#39;since&#39;</span><span class="p">,</span> <span class="s1">&#39;related&#39;</span><span class="p">,</span> <span class="s1">&#39;cursor&#39;</span><span class="p">,</span> <span class="s1">&#39;limit&#39;</span><span class="p">,</span> <span class="s1">&#39;query&#39;</span><span class="p">,</span> <span class="s1">&#39;include&#39;</span><span class="p">,</span> <span class="s1">&#39;order&#39;</span><span class="p">]</span>
+  <span class="p">},</span>
+  <span class="nx">listUsers</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">resource</span><span class="o">:</span> <span class="s1">&#39;forums&#39;</span><span class="p">,</span>
+    <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;listUsers&#39;</span><span class="p">,</span>
+    <span class="nx">method</span><span class="o">:</span> <span class="s1">&#39;GET&#39;</span><span class="p">,</span>
+    <span class="nx">requiredOptions</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;api_secret&#39;</span><span class="p">,</span> <span class="s1">&#39;forum&#39;</span><span class="p">],</span>
+    <span class="nx">availableOptions</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;since_d&#39;</span><span class="p">,</span> <span class="s1">&#39;cursor&#39;</span><span class="p">,</span> <span class="s1">&#39;limit&#39;</span><span class="p">,</span> <span class="s1">&#39;order&#39;</span><span class="p">]</span>
+  <span class="p">},</span>
+  <span class="nx">removeModerator</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">resource</span><span class="o">:</span> <span class="s1">&#39;forums&#39;</span><span class="p">,</span>
+    <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;removeModerator&#39;</span><span class="p">,</span>
+    <span class="nx">method</span><span class="o">:</span> <span class="s1">&#39;POST&#39;</span><span class="p">,</span>
+    <span class="nx">requiredOptions</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;api_secret&#39;</span><span class="p">,</span> <span class="s1">&#39;access_token&#39;</span><span class="p">,</span> <span class="s1">&#39;moderator&#39;</span><span class="p">],</span>
+    <span class="nx">availableOptions</span><span class="o">:</span> <span class="p">[]</span>
+  <span class="p">},</span>
+  <span class="nx">unfollow</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">resource</span><span class="o">:</span> <span class="s1">&#39;forums&#39;</span><span class="p">,</span>
+    <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;unfollow&#39;</span><span class="p">,</span>
+    <span class="nx">method</span><span class="o">:</span> <span class="s1">&#39;POST&#39;</span><span class="p">,</span>
+    <span class="nx">requiredOptions</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;api_secret&#39;</span><span class="p">,</span> <span class="s1">&#39;access_token&#39;</span><span class="p">,</span> <span class="s1">&#39;target&#39;</span><span class="p">],</span>
+    <span class="nx">availableOptions</span><span class="o">:</span> <span class="p">[]</span>
+  <span class="p">}</span>
+<span class="p">};</span>
+
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">util</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="kd">function</span> <span class="nx">Forums</span><span class="p">(</span><span class="nx">config</span><span class="p">)</span> <span class="p">{</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><h3 id="addmoderator">addModerator</h3>
+
+<p>Adds a moderator to a forum.</p>
+
+<p>Signature:</p>
+
+<pre><code class="js">Disqus#forums.addModerator(options[, cb])
+</code></pre>
+
+<p>Usage:</p>
+
+<pre><code class="js">// Node-style
+disqus.forums.addModerator({
+    user: '', // required
+    forum: '', // required
+    api_secret: 'asdfghkj', // required, can be set globally
+    access_token: '12345678' // required, can be set globally
+}, function (err, result) {...})
+
+// Promise-style
+disqus.forums.addModerator({
+    user: '', // required
+    forum: '', // required
+    api_secret: 'asdfghkj', // required, can be set globally
+    access_token: '12345678' // required, can be set globally
+})
+.then(function (result) {...})
+.catch(function (err) {...})
+.error(function (err) {...});
+</code></pre></div></div><div class="code"><div class="wrapper">    <span class="k">this</span><span class="p">.</span><span class="nx">addModerator</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="nx">cb</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="nx">util</span><span class="p">.</span><span class="nx">executeAPIMethod</span><span class="p">(</span><span class="nx">methods</span><span class="p">.</span><span class="nx">addModerator</span><span class="p">,</span> <span class="nx">options</span><span class="p">,</span> <span class="nx">config</span><span class="p">,</span> <span class="nx">cb</span><span class="p">);</span>
+    <span class="p">};</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><h3 id="create">create</h3>
+
+<p>Creates a new forum.</p>
+
+<p>Signature:</p>
+
+<pre><code class="js">Disqus#forums.create(options[, cb])
+</code></pre>
+
+<p>Usage:</p>
+
+<pre><code class="js">// Node-style
+disqus.forums.create({
+    website: '', // required
+    name: '', // required
+    short_name: '', // required
+    api_secret: 'asdfghkj', // required, can be set globally
+    access_token: '12345678' // required, can be set globally
+}, function (err, result) {...})
+
+// Promise-style
+disqus.forums.create({
+    website: '', // required
+    name: '', // required
+    short_name: '', // required
+    api_secret: 'asdfghkj', // required, can be set globally
+    access_token: '12345678' // required, can be set globally
+})
+.then(function (result) {...})
+.catch(function (err) {...})
+.error(function (err) {...});
+</code></pre></div></div><div class="code"><div class="wrapper">    <span class="k">this</span><span class="p">.</span><span class="nx">create</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="nx">cb</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="nx">util</span><span class="p">.</span><span class="nx">executeAPIMethod</span><span class="p">(</span><span class="nx">methods</span><span class="p">.</span><span class="nx">create</span><span class="p">,</span> <span class="nx">options</span><span class="p">,</span> <span class="nx">config</span><span class="p">,</span> <span class="nx">cb</span><span class="p">);</span>
+    <span class="p">};</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><h3 id="details">details</h3>
+
+<p>Returns forum details.</p>
+
+<p>Signature:</p>
+
+<pre><code class="js">Disqus#forums.details(options[, cb])
+</code></pre>
+
+<p>Usage:</p>
+
+<pre><code class="js">// Node-style
+disqus.forums.details({
+    forum: '', // required
+    api_secret: 'asdfghkj', // required, can be set globally
+    access_token: '12345678', // required, can be set globally
+    // optional, defaults shown
+    related: []
+}, function (err, result) {...})
+
+// Promise-style
+disqus.forums.details({
+    forum: '', // required
+    api_secret: 'asdfghkj', // required, can be set globally
+    access_token: '12345678', // required, can be set globally
+    // optional, defaults shown
+    related: []
+})
+.then(function (result) {...})
+.catch(function (err) {...})
+.error(function (err) {...});
+</code></pre></div></div><div class="code"><div class="wrapper">    <span class="k">this</span><span class="p">.</span><span class="nx">details</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="nx">cb</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="nx">util</span><span class="p">.</span><span class="nx">executeAPIMethod</span><span class="p">(</span><span class="nx">methods</span><span class="p">.</span><span class="nx">details</span><span class="p">,</span> <span class="nx">options</span><span class="p">,</span> <span class="nx">config</span><span class="p">,</span> <span class="nx">cb</span><span class="p">);</span>
+    <span class="p">};</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><h3 id="follow">follow</h3>
+
+<p>Follow a forum.</p>
+
+<p>Signature:</p>
+
+<pre><code class="js">Disqus#forums.follow(options[, cb])
+</code></pre>
+
+<p>Usage:</p>
+
+<pre><code class="js">// Node-style
+disqus.forums.follow({
+    target: '', // required
+    api_secret: 'asdfghkj', // required, can be set globally
+    access_token: '12345678' // required, can be set globally
+}, function (err, result) {...})
+
+// Promise-style
+disqus.forums.follow({
+    target: '', // required
+    api_secret: 'asdfghkj', // required, can be set globally
+    access_token: '12345678' // required, can be set globally
+})
+.then(function (result) {...})
+.catch(function (err) {...})
+.error(function (err) {...});
+</code></pre></div></div><div class="code"><div class="wrapper">    <span class="k">this</span><span class="p">.</span><span class="nx">follow</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="nx">cb</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="nx">util</span><span class="p">.</span><span class="nx">executeAPIMethod</span><span class="p">(</span><span class="nx">methods</span><span class="p">.</span><span class="nx">follow</span><span class="p">,</span> <span class="nx">options</span><span class="p">,</span> <span class="nx">config</span><span class="p">,</span> <span class="nx">cb</span><span class="p">);</span>
+    <span class="p">};</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><h3 id="installed">installed</h3>
+
+<p>Returns true if forum has one or more views.</p>
+
+<p>Signature:</p>
+
+<pre><code class="js">Disqus#forums.installed(options[, cb])
+</code></pre>
+
+<p>Usage:</p>
+
+<pre><code class="js">// Node-style
+disqus.forums.installed({
+    forum: '', // required
+    api_secret: 'asdfghkj', // required, can be set globally
+    access_token: '12345678' // required, can be set globally
+}, function (err, result) {...})
+
+// Promise-style
+disqus.forums.installed({
+    forum: '', // required
+    api_secret: 'asdfghkj', // required, can be set globally
+    access_token: '12345678' // required, can be set globally
+})
+.then(function (result) {...})
+.catch(function (err) {...})
+.error(function (err) {...});
+</code></pre></div></div><div class="code"><div class="wrapper">    <span class="k">this</span><span class="p">.</span><span class="nx">installed</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="nx">cb</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="nx">util</span><span class="p">.</span><span class="nx">executeAPIMethod</span><span class="p">(</span><span class="nx">methods</span><span class="p">.</span><span class="nx">installed</span><span class="p">,</span> <span class="nx">options</span><span class="p">,</span> <span class="nx">config</span><span class="p">,</span> <span class="nx">cb</span><span class="p">);</span>
+    <span class="p">};</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><h3 id="listcategories">listCategories</h3>
+
+<p>Returns a list of categories within a forum.</p>
+
+<p>Signature:</p>
+
+<pre><code class="js">Disqus#forums.listCategories(options[, cb])
+</code></pre>
+
+<p>Usage:</p>
+
+<pre><code class="js">// Node-style
+disqus.forums.listCategories({
+    forum: '', // required
+    api_secret: 'asdfghkj', // required, can be set globally
+    // optional, defaults shown
+    since_id: null,
+    cursor: null,
+    limit: 25,
+    order: 'asc'
+}, function (err, result) {...})
+
+// Promise-style
+disqus.forums.listCategories({
+    forum: '', // required
+    api_secret: 'asdfghkj', // required, can be set globally
+    // optional, defaults shown
+    since_id: null,
+    cursor: null,
+    limit: 25,
+    order: 'asc'
+})
+.then(function (result) {...})
+.catch(function (err) {...})
+.error(function (err) {...});
+</code></pre></div></div><div class="code"><div class="wrapper">    <span class="k">this</span><span class="p">.</span><span class="nx">listCategories</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="nx">cb</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="nx">util</span><span class="p">.</span><span class="nx">executeAPIMethod</span><span class="p">(</span><span class="nx">methods</span><span class="p">.</span><span class="nx">listCategories</span><span class="p">,</span> <span class="nx">options</span><span class="p">,</span> <span class="nx">config</span><span class="p">,</span> <span class="nx">cb</span><span class="p">);</span>
+    <span class="p">};</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><h3 id="listfollowers">listFollowers</h3>
+
+<p>Returns a list of users following a forum.</p>
+
+<p>Signature:</p>
+
+<pre><code class="js">Disqus#forums.listFollowers(options[, cb])
+</code></pre>
+
+<p>Usage:</p>
+
+<pre><code class="js">// Node-style
+disqus.forums.listFollowers({
+    forum: '', // required
+    api_secret: 'asdfghkj', // required, can be set globally
+    // optional, defaults shown
+    since_id: null,
+    cursor: null,
+    limit: 25,
+    order: 'asc'
+}, function (err, result) {...})
+
+// Promise-style
+disqus.forums.listFollowers({
+    forum: '', // required
+    api_secret: 'asdfghkj', // required, can be set globally
+    // optional, defaults shown
+    since_id: null,
+    cursor: null,
+    limit: 25,
+    order: 'asc'
+})
+.then(function (result) {...})
+.catch(function (err) {...})
+.error(function (err) {...});
+</code></pre></div></div><div class="code"><div class="wrapper">    <span class="k">this</span><span class="p">.</span><span class="nx">listFollowers</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="nx">cb</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="nx">util</span><span class="p">.</span><span class="nx">executeAPIMethod</span><span class="p">(</span><span class="nx">methods</span><span class="p">.</span><span class="nx">listFollowers</span><span class="p">,</span> <span class="nx">options</span><span class="p">,</span> <span class="nx">config</span><span class="p">,</span> <span class="nx">cb</span><span class="p">);</span>
+    <span class="p">};</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><h3 id="listmoderators">listModerators</h3>
+
+<p>Returns a list of all moderators on a forum.</p>
+
+<p>Signature:</p>
+
+<pre><code class="js">Disqus#forums.listModerators(options[, cb])
+</code></pre>
+
+<p>Usage:</p>
+
+<pre><code class="js">// Node-style
+disqus.forums.listModerators({
+    forum: '', // required
+    api_secret: 'asdfghkj', // required, can be set globally
+    access_token: '12345678' // required, can be set globally
+}, function (err, result) {...})
+
+// Promise-style
+disqus.forums.listModerators({
+    forum: '', // required
+    api_secret: 'asdfghkj', // required, can be set globally
+    access_token: '12345678' // required, can be set globally
+})
+.then(function (result) {...})
+.catch(function (err) {...})
+.error(function (err) {...});
+</code></pre></div></div><div class="code"><div class="wrapper">    <span class="k">this</span><span class="p">.</span><span class="nx">listModerators</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="nx">cb</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="nx">util</span><span class="p">.</span><span class="nx">executeAPIMethod</span><span class="p">(</span><span class="nx">methods</span><span class="p">.</span><span class="nx">listModerators</span><span class="p">,</span> <span class="nx">options</span><span class="p">,</span> <span class="nx">config</span><span class="p">,</span> <span class="nx">cb</span><span class="p">);</span>
+    <span class="p">};</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><h3 id="listmostactiveusers">listMostActiveUsers</h3>
+
+<p>Returns a list of users active within a forum ordered by most comments made.</p>
+
+<p>Signature:</p>
+
+<pre><code class="js">Disqus#forums.listMostActiveUsers(options[, cb])
+</code></pre>
+
+<p>Usage:</p>
+
+<pre><code class="js">// Node-style
+disqus.forums.listMostActiveUsers({
+    forum: '', // required
+    api_secret: 'asdfghkj', // required, can be set globally
+    // optional, defaults shown
+    cursor: null,
+    limit: 25,
+    order: 'asc'
+}, function (err, result) {...})
+
+// Promise-style
+disqus.forums.listMostActiveUsers({
+    forum: '', // required
+    api_secret: 'asdfghkj', // required, can be set globally
+    // optional, defaults shown
+    cursor: null,
+    limit: 25,
+    order: 'asc'
+})
+.then(function (result) {...})
+.catch(function (err) {...})
+.error(function (err) {...});
+</code></pre></div></div><div class="code"><div class="wrapper">    <span class="k">this</span><span class="p">.</span><span class="nx">listMostActiveUsers</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="nx">cb</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="nx">util</span><span class="p">.</span><span class="nx">executeAPIMethod</span><span class="p">(</span><span class="nx">methods</span><span class="p">.</span><span class="nx">listMostActiveUsers</span><span class="p">,</span> <span class="nx">options</span><span class="p">,</span> <span class="nx">config</span><span class="p">,</span> <span class="nx">cb</span><span class="p">);</span>
+    <span class="p">};</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><h3 id="listmostlikedusers">listMostLikedUsers</h3>
+
+<p>Returns a list of users active within a forum ordered by most likes received.</p>
+
+<p>Signature:</p>
+
+<pre><code class="js">Disqus#forums.listMostLikedUsers(options[, cb])
+</code></pre>
+
+<p>Usage:</p>
+
+<pre><code class="js">// Node-style
+disqus.forums.listMostLikedUsers({
+    forum: '', // required
+    api_secret: 'asdfghkj', // required, can be set globally
+    // optional, defaults shown
+    cursor: null,
+    limit: 25,
+    order: 'asc'
+}, function (err, result) {...})
+
+// Promise-style
+disqus.forums.listMostLikedUsers({
+    forum: '', // required
+    api_secret: 'asdfghkj', // required, can be set globally
+    // optional, defaults shown
+    cursor: null,
+    limit: 25,
+    order: 'asc'
+})
+.then(function (result) {...})
+.catch(function (err) {...})
+.error(function (err) {...});
+</code></pre></div></div><div class="code"><div class="wrapper">    <span class="k">this</span><span class="p">.</span><span class="nx">listMostLikedUsers</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="nx">cb</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="nx">util</span><span class="p">.</span><span class="nx">executeAPIMethod</span><span class="p">(</span><span class="nx">methods</span><span class="p">.</span><span class="nx">listMostLikedUsers</span><span class="p">,</span> <span class="nx">options</span><span class="p">,</span> <span class="nx">config</span><span class="p">,</span> <span class="nx">cb</span><span class="p">);</span>
+    <span class="p">};</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><h3 id="listposts">listPosts</h3>
+
+<p>Returns a list of posts within a forum.</p>
+
+<p>Signature:</p>
+
+<pre><code class="js">Disqus#forums.listPosts(options[, cb])
+</code></pre>
+
+<p>Usage:</p>
+
+<pre><code class="js">// Node-style
+disqus.forums.listPosts({
+    forum: '', // required
+    api_secret: 'asdfghkj', // required, can be set globally
+    // optional, defaults shown
+    since: null,
+    related: [],
+    cursor: null,
+    limit: 25,
+    query: null,
+    include: ['approved'],
+    order: 'desc'
+}, function (err, result) {...})
+
+// Promise-style
+disqus.forums.listPosts({
+    forum: '', // required
+    api_secret: 'asdfghkj', // required, can be set globally
+    // optional, defaults shown
+    since: null,
+    related: [],
+    cursor: null,
+    limit: 25,
+    query: null,
+    include: ['approved'],
+    order: 'desc'
+})
+.then(function (result) {...})
+.catch(function (err) {...})
+.error(function (err) {...});
+</code></pre></div></div><div class="code"><div class="wrapper">    <span class="k">this</span><span class="p">.</span><span class="nx">listPosts</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="nx">cb</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="nx">util</span><span class="p">.</span><span class="nx">executeAPIMethod</span><span class="p">(</span><span class="nx">methods</span><span class="p">.</span><span class="nx">listPosts</span><span class="p">,</span> <span class="nx">options</span><span class="p">,</span> <span class="nx">config</span><span class="p">,</span> <span class="nx">cb</span><span class="p">);</span>
+    <span class="p">};</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><h3 id="listthreads">listThreads</h3>
+
+<p>Returns a list of threads within a forum sorted by the date created.</p>
+
+<p>Signature:</p>
+
+<pre><code class="js">Disqus#forums.listThreads(options[, cb])
+</code></pre>
+
+<p>Usage:</p>
+
+<pre><code class="js">// Node-style
+disqus.forums.listThreads({
+    forum: '', // required
+    api_secret: 'asdfghkj', // required, can be set globally
+    // optional, defaults shown
+    thread: null,
+    since: null,
+    related: [],
+    cursor: null,
+    limit: 25,
+    query: null,
+    include: ['approved'],
+    order: 'desc'
+}, function (err, result) {...})
+
+// Promise-style
+disqus.forums.listThreads({
+    forum: '', // required
+    api_secret: 'asdfghkj', // required, can be set globally
+    // optional, defaults shown
+    thread: null,
+    since: null,
+    related: [],
+    cursor: null,
+    limit: 25,
+    query: null,
+    include: ['approved'],
+    order: 'desc'
+})
+.then(function (result) {...})
+.catch(function (err) {...})
+.error(function (err) {...});
+</code></pre></div></div><div class="code"><div class="wrapper">    <span class="k">this</span><span class="p">.</span><span class="nx">listThreads</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="nx">cb</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="nx">util</span><span class="p">.</span><span class="nx">executeAPIMethod</span><span class="p">(</span><span class="nx">methods</span><span class="p">.</span><span class="nx">listThreads</span><span class="p">,</span> <span class="nx">options</span><span class="p">,</span> <span class="nx">config</span><span class="p">,</span> <span class="nx">cb</span><span class="p">);</span>
+    <span class="p">};</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><h3 id="listusers">listUsers</h3>
+
+<p>Returns a list of users active within a forum.</p>
+
+<p>Signature:</p>
+
+<pre><code class="js">Disqus#forums.listUsers(options[, cb])
+</code></pre>
+
+<p>Usage:</p>
+
+<pre><code class="js">// Node-style
+disqus.forums.listUsers({
+    forum: '', // required
+    api_secret: 'asdfghkj', // required, can be set globally
+    // optional, defaults shown
+    since_id: null,
+    cursor: null,
+    limit: 25,
+    order: 'asc'
+}, function (err, result) {...})
+
+// Promise-style
+disqus.forums.listUsers({
+    forum: '', // required
+    api_secret: 'asdfghkj', // required, can be set globally
+    // optional, defaults shown
+    since_id: null,
+    cursor: null,
+    limit: 25,
+    order: 'asc'
+})
+.then(function (result) {...})
+.catch(function (err) {...})
+.error(function (err) {...});
+</code></pre></div></div><div class="code"><div class="wrapper">    <span class="k">this</span><span class="p">.</span><span class="nx">listUsers</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="nx">cb</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="nx">util</span><span class="p">.</span><span class="nx">executeAPIMethod</span><span class="p">(</span><span class="nx">methods</span><span class="p">.</span><span class="nx">listUsers</span><span class="p">,</span> <span class="nx">options</span><span class="p">,</span> <span class="nx">config</span><span class="p">,</span> <span class="nx">cb</span><span class="p">);</span>
+    <span class="p">};</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><h3 id="removemoderator">removeModerator</h3>
+
+<p>Removes a moderator from a forum.</p>
+
+<p>Signature:</p>
+
+<pre><code class="js">Disqus#forums.removeModerator(options[, cb])
+</code></pre>
+
+<p>Usage:</p>
+
+<pre><code class="js">// Node-style
+disqus.forums.removeModerator({
+    moderator: '', // required
+    api_secret: 'asdfghkj', // required, can be set globally
+    access_token: '12345678' // required, can be set globally
+}, function (err, result) {...})
+
+// Promise-style
+disqus.forums.removeModerator({
+    moderator: '', // required
+    api_secret: 'asdfghkj', // required, can be set globally
+    access_token: '12345678' // required, can be set globally
+})
+.then(function (result) {...})
+.catch(function (err) {...})
+.error(function (err) {...});
+</code></pre></div></div><div class="code"><div class="wrapper">    <span class="k">this</span><span class="p">.</span><span class="nx">removeModerator</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="nx">cb</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="nx">util</span><span class="p">.</span><span class="nx">executeAPIMethod</span><span class="p">(</span><span class="nx">methods</span><span class="p">.</span><span class="nx">removeModerator</span><span class="p">,</span> <span class="nx">options</span><span class="p">,</span> <span class="nx">config</span><span class="p">,</span> <span class="nx">cb</span><span class="p">);</span>
+    <span class="p">};</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><h3 id="unfollow">unfollow</h3>
+
+<p>Unfollow a forum.</p>
+
+<p>Signature:</p>
+
+<pre><code class="js">Disqus#forums.unfollow(options[, cb])
+</code></pre>
+
+<p>Usage:</p>
+
+<pre><code class="js">// Node-style
+disqus.forums.unfollow({
+    target: '', // required
+    api_secret: 'asdfghkj', // required, can be set globally
+    access_token: '12345678' // required, can be set globally
+}, function (err, result) {...})
+
+// Promise-style
+disqus.forums.unfollow({
+    target: '', // required
+    api_secret: 'asdfghkj', // required, can be set globally
+    access_token: '12345678' // required, can be set globally
+})
+.then(function (result) {...})
+.catch(function (err) {...})
+.error(function (err) {...});
+</code></pre></div></div><div class="code"><div class="wrapper">    <span class="k">this</span><span class="p">.</span><span class="nx">unfollow</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="nx">cb</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="nx">util</span><span class="p">.</span><span class="nx">executeAPIMethod</span><span class="p">(</span><span class="nx">methods</span><span class="p">.</span><span class="nx">unfollow</span><span class="p">,</span> <span class="nx">options</span><span class="p">,</span> <span class="nx">config</span><span class="p">,</span> <span class="nx">cb</span><span class="p">);</span>
+    <span class="p">};</span>
+  <span class="p">};</span>
+<span class="p">};</span></div></div></div></div></body></html>

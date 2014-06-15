@@ -21,18 +21,18 @@
 
  -h, --help                   output usage information
  -A, --access_token &lt;string&gt;  Your access token.
- -f --forum &lt;string&gt;          Looks up a forum by ID (aka short name).
- -F --format [string]         Defaults to "xml". Choices: xml.
- -H --https [boolean]         Whether to use https. Defaults to true.
+ -f, --forum &lt;string&gt;          Looks up a forum by ID (aka short name).
+ -F, --format [string]         Defaults to "xml". Choices: xml.
+ -H, --https [boolean]         Whether to use https. Defaults to true.
  -L, --logLevel [string]      Output log level. Choices: debug, info, notice, warning, error, critical, alert, emergency.
  -S, --api_secret &lt;string&gt;    Your application's api_secret.
 </code></pre></div></div><div class="code"><div class="wrapper"><span class="nx">exports</span>
   <span class="p">.</span><span class="nx">command</span><span class="p">(</span><span class="s1">&#39;exportForum&#39;</span><span class="p">)</span>
   <span class="p">.</span><span class="nx">description</span><span class="p">(</span><span class="s1">&#39;Exports a forum.&#39;</span><span class="p">)</span>
   <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-A, --access_token &lt;string&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;Your access token.&#39;</span><span class="p">)</span>
-  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-f --forum &lt;string&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;Looks up a forum by ID (aka short name).&#39;</span><span class="p">)</span>
-  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-F --format [string]&#39;</span><span class="p">,</span> <span class="s1">&#39;Defaults to &quot;xml&quot;. Choices: xml.&#39;</span><span class="p">,</span> <span class="s1">&#39;xml&#39;</span><span class="p">)</span>
-  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-H --https [boolean]&#39;</span><span class="p">,</span> <span class="s1">&#39;Whether to use https. Defaults to true.&#39;</span><span class="p">,</span> <span class="kc">true</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-f, --forum &lt;string&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;Looks up a forum by ID (aka short name).&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-F, --format [string]&#39;</span><span class="p">,</span> <span class="s1">&#39;Defaults to &quot;xml&quot;. Choices: xml.&#39;</span><span class="p">,</span> <span class="s1">&#39;xml&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-H, --https [boolean]&#39;</span><span class="p">,</span> <span class="s1">&#39;Whether to use https. Defaults to true.&#39;</span><span class="p">,</span> <span class="kc">true</span><span class="p">)</span>
   <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-L, --logLevel [string]&#39;</span><span class="p">,</span> <span class="s1">&#39;Output log level. Choices: debug, info, notice, warning, error, critical, alert, emergency.&#39;</span><span class="p">,</span> <span class="s1">&#39;info&#39;</span><span class="p">)</span>
   <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-S, --api_secret &lt;string&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;Your application\&#39;s api_secret.&#39;</span><span class="p">)</span>
   <span class="p">.</span><span class="nx">action</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">options</span><span class="p">)</span> <span class="p">{</span>

@@ -1,3 +1,9 @@
+##### 0.10.0 - 14 June 2014
+
+###### Backwards compatible API changes
+- #11 - Implemented Trends
+- #13 - Implemented Whitelists
+
 ##### 0.9.0 - 14 June 2014
 
 ###### Backwards compatible API changes

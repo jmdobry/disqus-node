@@ -26,14 +26,14 @@ Copyright © 2014 Jason Dobry
 - Exports
 - Imports
 - Topics
+- Trends
+- Whitelists
 
 ## Not Yet Implemented
 - Forums
 - Posts
 - Threads
-- Trends
 - Users
-- Whitelists
 
 ## License
 [Apache License Version 2.0](https://github.com/jmdobry/disqus-node/blob/master/LICENSE)

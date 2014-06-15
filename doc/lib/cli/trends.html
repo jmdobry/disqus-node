@@ -1,0 +1,47 @@
+<!DOCTYPE html><html lang="en"><head><title>lib/cli/trends</title></head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"><meta name="groc-relative-root" content="../../"><meta name="groc-document-path" content="lib/cli/trends"><meta name="groc-project-path" content="lib/cli/trends.js"><link rel="stylesheet" type="text/css" media="all" href="../../assets/style.css"><script type="text/javascript" src="../../assets/behavior.js"></script><body><div id="meta"><div class="file-path">lib/cli/trends.js</div></div><div id="document"><div class="segment"><div class="comments "><div class="wrapper"><p><a href="/lib/index.html">Up one level</a></p>
+
+<h3 id="trends-cli">Trends CLI</h3>
+
+<p>See the disqus-node <a href="/lib/api/trends.html">Trends API</a>.</p>
+
+<p>See the <a href="https://disqus.com/api/docs/trends/">Trends API on Disqus.com</a>.</p></div></div><div class="code"><div class="wrapper"><span class="kd">var</span> <span class="nx">container</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;../container&#39;</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">Command</span> <span class="o">=</span> <span class="nx">container</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;commander&#39;</span><span class="p">).</span><span class="nx">Command</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">trends</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Command</span><span class="p">(</span><span class="s1">&#39;disqus trends&#39;</span><span class="p">);</span>
+
+<span class="nx">trends</span>
+  <span class="p">.</span><span class="nx">usage</span><span class="p">(</span><span class="s1">&#39;&lt;cmd&gt; [options]&#39;</span><span class="p">);</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><h3 id="listthreads">listThreads</h3>
+
+<p>Returns a list of trending threads.</p>
+
+<p>Output of <code>disqus trends listThreads --help</code>:</p>
+
+<pre><code> Usage: disqus trends listThreads [options]
+
+ Options:
+
+ -h, --help                   output usage information
+ -A, --access_token &lt;string&gt;  Your access token.
+ -f, --forum [string]         Defaults to null.
+ -H, --https [boolean]        Whether to use https. Defaults to true.
+ -l, --limit [number]         Defaults to 10. Maximum value of 10.
+ -L, --logLevel [string]      Output log level. Choices: debug, info, notice, warning, error, critical, alert, emergency.
+ -r, --related [array]        Defaults to []. You may specify relations to include with your response. Choices: forum, author, category
+ -S, --api_secret &lt;string&gt;    Your application's api_secret.
+ -t, --target &lt;string&gt;        Looks up a topic by ID (slug).
+</code></pre></div></div><div class="code"><div class="wrapper"><span class="nx">trends</span>
+  <span class="p">.</span><span class="nx">command</span><span class="p">(</span><span class="s1">&#39;listThreads&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">description</span><span class="p">(</span><span class="s1">&#39;Returns a list of trending threads.&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-A, --access_token &lt;string&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;Your access token.&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-f, --forum [string]&#39;</span><span class="p">,</span> <span class="s1">&#39;Defaults to null.&#39;</span><span class="p">,</span> <span class="kc">null</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-H, --https [boolean]&#39;</span><span class="p">,</span> <span class="s1">&#39;Whether to use https. Defaults to true.&#39;</span><span class="p">,</span> <span class="kc">true</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-l, --limit [number]&#39;</span><span class="p">,</span> <span class="s1">&#39;Defaults to 10. Maximum value of 10.&#39;</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-L, --logLevel [string]&#39;</span><span class="p">,</span> <span class="s1">&#39;Output log level. Choices: debug, info, notice, warning, error, critical, alert, emergency.&#39;</span><span class="p">,</span> <span class="s1">&#39;info&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-r, --related [array]&#39;</span><span class="p">,</span> <span class="s1">&#39;Defaults to []. You may specify relations to include with your response. Choices: forum, author, category&#39;</span><span class="p">,</span> <span class="p">[])</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-S, --api_secret &lt;string&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;Your application\&#39;s api_secret.&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-t, --target &lt;string&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;Looks up a topic by ID (slug).&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">action</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">options</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">Disqus</span> <span class="o">=</span> <span class="nx">container</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;Disqus&#39;</span><span class="p">);</span>
+    <span class="k">new</span> <span class="nx">Disqus</span><span class="p">(</span><span class="nx">options</span><span class="p">).</span><span class="nx">trends</span><span class="p">.</span><span class="nx">listThreads</span><span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="nx">container</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;util&#39;</span><span class="p">).</span><span class="nx">printCliResult</span><span class="p">);</span>
+  <span class="p">});</span>
+
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="nx">trends</span><span class="p">;</span></div></div></div></div></body></html>

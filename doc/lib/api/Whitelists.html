@@ -1,71 +1,63 @@
-<!DOCTYPE html><html lang="en"><head><title>lib/api/Blacklists</title></head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"><meta name="groc-relative-root" content="../../"><meta name="groc-document-path" content="lib/api/Blacklists"><meta name="groc-project-path" content="lib/api/Blacklists.js"><link rel="stylesheet" type="text/css" media="all" href="../../assets/style.css"><script type="text/javascript" src="../../assets/behavior.js"></script><body><div id="meta"><div class="file-path">lib/api/Blacklists.js</div></div><div id="document"><div class="segment"><div class="comments "><div class="wrapper"><p><a href="/lib/index.html">Up one level</a></p>
+<!DOCTYPE html><html lang="en"><head><title>lib/api/Whitelists</title></head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"><meta name="groc-relative-root" content="../../"><meta name="groc-document-path" content="lib/api/Whitelists"><meta name="groc-project-path" content="lib/api/Whitelists.js"><link rel="stylesheet" type="text/css" media="all" href="../../assets/style.css"><script type="text/javascript" src="../../assets/behavior.js"></script><body><div id="meta"><div class="file-path">lib/api/Whitelists.js</div></div><div id="document"><div class="segment"><div class="comments "><div class="wrapper"><p><a href="/lib/index.html">Up one level</a></p>
 
-<h3 id="blacklists-api">Blacklists API</h3>
+<h3 id="whitelists-api">Whitelists API</h3>
 
-<p>See the disqus-node <a href="/lib/cli/blacklists.html">Blacklists CLI</a>.</p>
+<p>See the disqus-node <a href="/lib/cli/whitelists.html">Whitelists CLI</a>.</p>
 
-<p>See the <a href="https://disqus.com/api/docs/blacklists/">Blacklists API on Disqus.com</a>.</p></div></div><div class="code"><div class="wrapper"><span class="kd">var</span> <span class="nx">methods</span> <span class="o">=</span> <span class="p">{</span>
+<p>See the <a href="https://disqus.com/api/docs/whitelists/">Whitelists API on Disqus.com</a>.</p></div></div><div class="code"><div class="wrapper"><span class="kd">var</span> <span class="nx">methods</span> <span class="o">=</span> <span class="p">{</span>
   <span class="nx">add</span><span class="o">:</span> <span class="p">{</span>
-    <span class="nx">resource</span><span class="o">:</span> <span class="s1">&#39;blacklists&#39;</span><span class="p">,</span>
+    <span class="nx">resource</span><span class="o">:</span> <span class="s1">&#39;whitelists&#39;</span><span class="p">,</span>
     <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;add&#39;</span><span class="p">,</span>
     <span class="nx">method</span><span class="o">:</span> <span class="s1">&#39;POST&#39;</span><span class="p">,</span>
     <span class="nx">requiredOptions</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;api_secret&#39;</span><span class="p">,</span> <span class="s1">&#39;access_token&#39;</span><span class="p">,</span> <span class="s1">&#39;forum&#39;</span><span class="p">],</span>
-    <span class="nx">availableOptions</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;domain&#39;</span><span class="p">,</span> <span class="s1">&#39;word&#39;</span><span class="p">,</span> <span class="s1">&#39;retroactive&#39;</span><span class="p">,</span> <span class="s1">&#39;notes&#39;</span><span class="p">,</span> <span class="s1">&#39;ip&#39;</span><span class="p">,</span> <span class="s1">&#39;user&#39;</span><span class="p">,</span> <span class="s1">&#39;email&#39;</span><span class="p">]</span>
+    <span class="nx">availableOptions</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;notes&#39;</span><span class="p">,</span> <span class="s1">&#39;email&#39;</span><span class="p">,</span> <span class="s1">&#39;user&#39;</span><span class="p">]</span>
   <span class="p">},</span>
   <span class="nx">list</span><span class="o">:</span> <span class="p">{</span>
-    <span class="nx">resource</span><span class="o">:</span> <span class="s1">&#39;blacklists&#39;</span><span class="p">,</span>
+    <span class="nx">resource</span><span class="o">:</span> <span class="s1">&#39;whitelists&#39;</span><span class="p">,</span>
     <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;list&#39;</span><span class="p">,</span>
     <span class="nx">method</span><span class="o">:</span> <span class="s1">&#39;GET&#39;</span><span class="p">,</span>
     <span class="nx">requiredOptions</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;api_secret&#39;</span><span class="p">,</span> <span class="s1">&#39;access_token&#39;</span><span class="p">,</span> <span class="s1">&#39;forum&#39;</span><span class="p">],</span>
     <span class="nx">availableOptions</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;since&#39;</span><span class="p">,</span> <span class="s1">&#39;related&#39;</span><span class="p">,</span> <span class="s1">&#39;cursor&#39;</span><span class="p">,</span> <span class="s1">&#39;limit&#39;</span><span class="p">,</span> <span class="s1">&#39;since_id&#39;</span><span class="p">,</span> <span class="s1">&#39;query&#39;</span><span class="p">,</span> <span class="s1">&#39;type&#39;</span><span class="p">,</span> <span class="s1">&#39;order&#39;</span><span class="p">]</span>
   <span class="p">},</span>
   <span class="nx">remove</span><span class="o">:</span> <span class="p">{</span>
-    <span class="nx">resource</span><span class="o">:</span> <span class="s1">&#39;blacklists&#39;</span><span class="p">,</span>
+    <span class="nx">resource</span><span class="o">:</span> <span class="s1">&#39;whitelists&#39;</span><span class="p">,</span>
     <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;remove&#39;</span><span class="p">,</span>
     <span class="nx">method</span><span class="o">:</span> <span class="s1">&#39;POST&#39;</span><span class="p">,</span>
     <span class="nx">requiredOptions</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;api_secret&#39;</span><span class="p">,</span> <span class="s1">&#39;access_token&#39;</span><span class="p">,</span> <span class="s1">&#39;forum&#39;</span><span class="p">],</span>
-    <span class="nx">availableOptions</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;domain&#39;</span><span class="p">,</span> <span class="s1">&#39;word&#39;</span><span class="p">,</span> <span class="s1">&#39;ip&#39;</span><span class="p">,</span> <span class="s1">&#39;user&#39;</span><span class="p">,</span> <span class="s1">&#39;email&#39;</span><span class="p">]</span>
+    <span class="nx">availableOptions</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;email&#39;</span><span class="p">,</span> <span class="s1">&#39;user&#39;</span><span class="p">]</span>
   <span class="p">}</span>
 <span class="p">};</span>
 
 <span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">util</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">return</span> <span class="kd">function</span> <span class="nx">Blacklists</span><span class="p">(</span><span class="nx">config</span><span class="p">)</span> <span class="p">{</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><h3 id="add">add</h3>
+  <span class="k">return</span> <span class="kd">function</span> <span class="nx">Whitelists</span><span class="p">(</span><span class="nx">config</span><span class="p">)</span> <span class="p">{</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><h3 id="add">add</h3>
 
-<p>Adds an entry to the blacklist.</p>
+<p>Adds an entry to the whitelist.</p>
 
 <p>Signature:</p>
 
-<pre><code class="js">Disqus#blacklists.add(options[, cb])
+<pre><code class="js">Disqus#whitelists.add(options[, cb])
 </code></pre>
 
 <p>Usage:</p>
 
 <pre><code class="js">// Node-style
-disqus.blacklists.add({
-    forum: '',
-    // defaults shown
-    domain: [],
-    word: [],
-    retroactive: false,
-    notes: '',
-    ip: [],
-    user: [],
-    email: []
-}, function (err, result) {...})
-
-// Promise-style
-disqus.blacklists.add({
+disqus.whitelists.add({
     forum: '',
     api_secret: 'asdfghkj', // can be set globally
     access_token: '12345678', // can be set globally
     // defaults shown
-    domain: [],
-    word: [],
-    retroactive: false,
     notes: '',
-    ip: [],
-    user: [],
-    email: []
+    email: [],
+    user: []
+}, function (err, result) {...})
+
+// Promise-style
+disqus.whitelists.add({
+    forum: '',
+    // defaults shown
+    notes: '',
+    email: [],
+    user: []
 })
 .then(function (result) {...})
 .catch(function (err) {...})
@@ -74,18 +66,20 @@ disqus.blacklists.add({
       <span class="k">return</span> <span class="nx">util</span><span class="p">.</span><span class="nx">executeAPIMethod</span><span class="p">(</span><span class="nx">methods</span><span class="p">.</span><span class="nx">add</span><span class="p">,</span> <span class="nx">options</span><span class="p">,</span> <span class="nx">config</span><span class="p">,</span> <span class="nx">cb</span><span class="p">);</span>
     <span class="p">};</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><h3 id="list">list</h3>
 
-<p>Returns a list of all blacklist entries.</p>
+<p>Returns a list of all whitelist entries.</p>
 
 <p>Signature:</p>
 
-<pre><code class="js">Disqus#blacklists.list(options[, cb])
+<pre><code class="js">Disqus#whitelists.list(options[, cb])
 </code></pre>
 
 <p>Usage:</p>
 
 <pre><code class="js">// Node-style
-disqus.blacklists.list({
-    forum: '', // required
+disqus.whitelists.list({
+    forum: '',
+    api_secret: 'asdfghkj', // can be set globally
+    access_token: '12345678', // can be set globally
     // defaults shown
     since: null,
     related: [],
@@ -98,10 +92,8 @@ disqus.blacklists.list({
 }, function (err, result) {...})
 
 // Promise-style
-disqus.blacklists.list({
-    forum: '', // required
-    api_secret: 'asdfghkj', // can be set globally
-    access_token: '12345678', // can be set globally
+disqus.whitelists.list({
+    forum: '',
     // defaults shown
     since: null,
     related: [],
@@ -119,37 +111,31 @@ disqus.blacklists.list({
       <span class="k">return</span> <span class="nx">util</span><span class="p">.</span><span class="nx">executeAPIMethod</span><span class="p">(</span><span class="nx">methods</span><span class="p">.</span><span class="nx">list</span><span class="p">,</span> <span class="nx">options</span><span class="p">,</span> <span class="nx">config</span><span class="p">,</span> <span class="nx">cb</span><span class="p">);</span>
     <span class="p">};</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><h3 id="remove">remove</h3>
 
-<p>Removes an entry from the blacklist.</p>
+<p>Removes an entry from the whitelist.</p>
 
 <p>Signature:</p>
 
-<pre><code class="js">Disqus#blacklists.remove(options[, cb])
+<pre><code class="js">Disqus#whitelists.remove(options[, cb])
 </code></pre>
 
 <p>Usage:</p>
 
 <pre><code class="js">// Node-style
-disqus.blacklists.remove({
-    forum: '', // required
+disqus.whitelists.remove({
+    forum: '',
     api_secret: 'asdfghkj', // can be set globally
     access_token: '12345678', // can be set globally
     // defaults shown
-    domain: [],
-    word: [],
-    ip: [],
-    user: [],
-    email: []
+    email: [],
+    user: []
 }, function (err, result) {...})
 
 // Promise-style
-disqus.blacklists.remove({
-    forum: '', // required
+disqus.whitelists.remove({
+    forum: '',
     // defaults shown
-    domain: [],
-    word: [],
-    ip: [],
-    user: [],
-    email: []
+    email: [],
+    user: []
 })
 .then(function (result) {...})
 .catch(function (err) {...})

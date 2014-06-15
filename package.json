@@ -1,6 +1,6 @@
 {
   "name": "disqus-node",
-  "version": "0.10.0",
+  "version": "0.11.0",
   "description": "Disqus API bindings and CLI for NodeJS http://disqus.com/api/",
   "main": "./lib/index.js",
   "bin": {
@@ -15,7 +15,9 @@
   },
   "keywords": [
     "disqus",
-    "cli"
+    "cli",
+    "api",
+    "commenting"
   ],
   "readmeFilename": "README.md",
   "author": "Jason Dobry <jason.dobry@gmail.com> (http://www.pseudobry.com/)",
@@ -34,7 +36,8 @@
     "request": "^2.36.0",
     "commander": "^2.2.0",
     "log": "^1.4.0",
-    "dependable": "^0.2.5"
+    "dependable": "^0.2.5",
+    "querystring": "^0.2.0"
   },
   "devDependencies": {
     "grunt-cli": "^0.1.13",
@@ -49,6 +52,7 @@
     "grunt-mocha-test": "^0.11.0",
     "grunt-istanbul": "^0.3.0",
     "chai": "^1.9.1",
-    "grunt-karma-coveralls": "^2.5.1"
+    "grunt-karma-coveralls": "^2.5.1",
+    "sinon": "^1.10.2"
   }
 }

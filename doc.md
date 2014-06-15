@@ -24,13 +24,13 @@ Copyright © 2014 Jason Dobry
 - Blacklists
 - Categories
 - Exports
+- Forums
 - Imports
 - Topics
 - Trends
 - Whitelists
 
 ## Not Yet Implemented
-- Forums
 - Posts
 - Threads
 - Users

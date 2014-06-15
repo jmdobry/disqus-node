@@ -1,3 +1,11 @@
+##### 0.11.0 - 15 June 2014
+
+###### Breaking API changes
+- The return value for all API methods is now the actual response from Disqus.
+
+###### Backwards compatible API changes
+- #5 - Implemented Forums
+
 ##### 0.10.0 - 14 June 2014
 
 ###### Backwards compatible API changes

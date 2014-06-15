@@ -1,40 +1,39 @@
 <!DOCTYPE html><html lang="en"><head><title>lib/cli/index</title></head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"><meta name="groc-relative-root" content="../../"><meta name="groc-document-path" content="lib/cli/index"><meta name="groc-project-path" content="lib/cli/index.js"><link rel="stylesheet" type="text/css" media="all" href="../../assets/style.css"><script type="text/javascript" src="../../assets/behavior.js"></script><body><div id="meta"><div class="file-path">lib/cli/index.js</div></div><div id="document"><div class="segment"><div class="code"><div class="wrapper"><span class="kd">var</span> <span class="nx">commander</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;commander&#39;</span><span class="p">);</span>
 <span class="kd">var</span> <span class="nx">disqus</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">commander</span><span class="p">.</span><span class="nx">Command</span><span class="p">(</span><span class="s1">&#39;disqus&#39;</span><span class="p">);</span>
-<span class="kd">var</span> <span class="nx">pkg</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;../../package.json&#39;</span><span class="p">);</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>```
- MBP:~ jason$ npm install -g disqus-node</p>
+<span class="kd">var</span> <span class="nx">pkg</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;../../package.json&#39;</span><span class="p">);</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><pre><code> MBP:~ jason$ npm install -g disqus-node
 
-<p>npm http GET https://registry.npmjs.org/disqus-node
+ npm http GET https://registry.npmjs.org/disqus-node
  ...
- disqus-node@0.11.0 usr/local/lib/node_modules/disqus-node</p>
+ disqus-node@0.11.0 usr/local/lib/node_modules/disqus-node
 
-<p>MBP:~ jason$ disqus -h</p>
+ MBP:~ jason$ disqus -h
 
-<p>Usage: disqus <cmd> <subCmd> [options]</p>
+ Usage: disqus &lt;cmd&gt; &lt;subCmd&gt; [options]
 
-<p>Commands:</p>
+ Commands:
 
-<p>applications <cmd> [options] Execute command for the Applications resource.
- blacklists <cmd> [options] Execute command for the Blacklists resource.
- categories <cmd> [options] Execute command for the Categories resource.
- exports <cmd> [options] Execute command for the Exports resource.
- forums <cmd> [options] Execute command for the Forums resource.
- imports <cmd> [options] Execute command for the Imports resource.
- topics <cmd> [options] Execute command for the Topics resource.
- trends <cmd> [options] Execute command for the Trends resource.
- whitelists <cmd> [options] Execute command for the Whitelists resource.</p>
+ applications &lt;cmd&gt; [options] Execute command for the Applications resource.
+ blacklists &lt;cmd&gt; [options] Execute command for the Blacklists resource.
+ categories &lt;cmd&gt; [options] Execute command for the Categories resource.
+ exports &lt;cmd&gt; [options] Execute command for the Exports resource.
+ forums &lt;cmd&gt; [options] Execute command for the Forums resource.
+ imports &lt;cmd&gt; [options] Execute command for the Imports resource.
+ topics &lt;cmd&gt; [options] Execute command for the Topics resource.
+ trends &lt;cmd&gt; [options] Execute command for the Trends resource.
+ whitelists &lt;cmd&gt; [options] Execute command for the Whitelists resource.
 
-<p>Options:</p>
+ Options:
 
-<p>-h, --help     output usage information
- -V, --version  output the version number</p>
+ -h, --help     output usage information
+ -V, --version  output the version number
 
-<p>MBP:~ jason$ disqus forums -h</p>
+ MBP:~ jason$ disqus forums -h
 
-<p>Usage: disqus forums <cmd> [options]</p>
+ Usage: disqus forums &lt;cmd&gt; [options]
 
-<p>Commands:</p>
+ Commands:
 
-<p>addModerator [options]  Adds a moderator to a forum.
+ addModerator [options]  Adds a moderator to a forum.
  create [options]       Creates a new forum.
  details [options]      Returns forum details.
  follow [options]       Follow a forum.
@@ -48,15 +47,15 @@
  listThreads [options]   Returns a list of threads within a forum sorted by the date created.
  listUsers [options]     Returns a list of users active within a forum.
  removeModerator [options]      Removes a moderator from a forum.
- unfollow [options]      Unfollow a forum.</p>
+ unfollow [options]      Unfollow a forum.
 
-<p>Options:</p>
+ Options:
 
-<p>-h, --help  output usage information</p>
+ -h, --help  output usage information
 
-<p>MBP:~ jason$ disqus forums listPosts -f pseudobry -S '1234abcd' -l 3</p>
+ MBP:~ jason$ disqus forums listPosts -f pseudobry -S '1234abcd' -l 3
 
-<p>{
+ {
    "cursor": {...},
    "code": 0,
    "response": [
@@ -64,10 +63,10 @@
      {...},
      {...}
    ]
- }</p>
+ }
 
-<p>MBP:~ jason$
-```</p></div></div><div class="code"><div class="wrapper"><span class="nx">disqus</span>
+ MBP:~ jason$
+</code></pre></div></div><div class="code"><div class="wrapper"><span class="nx">disqus</span>
   <span class="p">.</span><span class="nx">version</span><span class="p">(</span><span class="nx">pkg</span><span class="p">.</span><span class="nx">version</span><span class="p">)</span>
   <span class="p">.</span><span class="nx">usage</span><span class="p">(</span><span class="s1">&#39;&lt;cmd&gt; &lt;subCmd&gt; [options]&#39;</span><span class="p">);</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><h6 id="applications">Applications</h6>
 

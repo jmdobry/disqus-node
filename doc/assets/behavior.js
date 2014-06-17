@@ -42,7 +42,26 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
                 "title": "Documentation",
                 "slug": "documentation"
               },
-              "depth": 2
+              "depth": 2,
+              "children": [
+                {
+                  "type": "heading",
+                  "data": {
+                    "level": 4,
+                    "title": "API Client Library",
+                    "slug": "api-client-library"
+                  },
+                  "depth": 4
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 4,
+                    "title": "Command-line Interface",
+                    "slug": "command-line-interface"
+                  },
+                  "depth": 4
+                }
+              ]
             }, {
               "type": "heading",
               "data": {
@@ -89,7 +108,26 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
             "title": "Documentation",
             "slug": "documentation"
           },
-          "depth": 2
+          "depth": 2,
+          "children": [
+            {
+              "type": "heading",
+              "data": {
+                "level": 4,
+                "title": "API Client Library",
+                "slug": "api-client-library"
+              },
+              "depth": 4
+            }, {
+              "type": "heading",
+              "data": {
+                "level": 4,
+                "title": "Command-line Interface",
+                "slug": "command-line-interface"
+              },
+              "depth": 4
+            }
+          ]
         }, {
           "type": "heading",
           "data": {
@@ -524,6 +562,132 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
                     "level": 3,
                     "title": "list",
                     "slug": "list"
+                  },
+                  "depth": 3
+                }
+              ]
+            }, {
+              "type": "file",
+              "data": {
+                "language": {
+                  "nameMatchers": [".js"],
+                  "pygmentsLexer": "javascript",
+                  "multiLineComment": ["/*", "*", "*/"],
+                  "singleLineComment": ["//"],
+                  "ignorePrefix": "}",
+                  "foldPrefix": "^",
+                  "name": "JavaScript"
+                },
+                "sourcePath": "/Users/jason/codetrain/disqus-node/lib/api/Posts.js",
+                "projectPath": "lib/api/Posts.js",
+                "targetPath": "lib/api/Posts",
+                "pageTitle": "lib/api/Posts",
+                "title": "Posts"
+              },
+              "depth": 3,
+              "outline": [
+                {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "Posts API",
+                    "slug": "posts-api"
+                  },
+                  "depth": 3
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "approve",
+                    "slug": "approve"
+                  },
+                  "depth": 3
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "create",
+                    "slug": "create"
+                  },
+                  "depth": 3
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "details",
+                    "slug": "details"
+                  },
+                  "depth": 3
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "getContext",
+                    "slug": "getcontext"
+                  },
+                  "depth": 3
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "list",
+                    "slug": "list"
+                  },
+                  "depth": 3
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "listPopular",
+                    "slug": "listpopular"
+                  },
+                  "depth": 3
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "remove",
+                    "slug": "remove"
+                  },
+                  "depth": 3
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "report",
+                    "slug": "report"
+                  },
+                  "depth": 3
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "restore",
+                    "slug": "restore"
+                  },
+                  "depth": 3
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "spam",
+                    "slug": "spam"
+                  },
+                  "depth": 3
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "update",
+                    "slug": "update"
+                  },
+                  "depth": 3
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "vote",
+                    "slug": "vote"
                   },
                   "depth": 3
                 }
@@ -1152,6 +1316,14 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
                   "type": "heading",
                   "data": {
                     "level": 6,
+                    "title": "Posts",
+                    "slug": "posts"
+                  },
+                  "depth": 6
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 6,
                     "title": "Topics",
                     "slug": "topics"
                   },
@@ -1172,6 +1344,132 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
                     "slug": "whitelists"
                   },
                   "depth": 6
+                }
+              ]
+            }, {
+              "type": "file",
+              "data": {
+                "language": {
+                  "nameMatchers": [".js"],
+                  "pygmentsLexer": "javascript",
+                  "multiLineComment": ["/*", "*", "*/"],
+                  "singleLineComment": ["//"],
+                  "ignorePrefix": "}",
+                  "foldPrefix": "^",
+                  "name": "JavaScript"
+                },
+                "sourcePath": "/Users/jason/codetrain/disqus-node/lib/cli/posts.js",
+                "projectPath": "lib/cli/posts.js",
+                "targetPath": "lib/cli/posts",
+                "pageTitle": "lib/cli/posts",
+                "title": "posts"
+              },
+              "depth": 3,
+              "outline": [
+                {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "Posts CLI",
+                    "slug": "posts-cli"
+                  },
+                  "depth": 3
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "approve",
+                    "slug": "approve"
+                  },
+                  "depth": 3
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "create",
+                    "slug": "create"
+                  },
+                  "depth": 3
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "details",
+                    "slug": "details"
+                  },
+                  "depth": 3
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "getContext",
+                    "slug": "getcontext"
+                  },
+                  "depth": 3
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "list",
+                    "slug": "list"
+                  },
+                  "depth": 3
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "listPopular",
+                    "slug": "listpopular"
+                  },
+                  "depth": 3
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "remove",
+                    "slug": "remove"
+                  },
+                  "depth": 3
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "restore",
+                    "slug": "restore"
+                  },
+                  "depth": 3
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "restore",
+                    "slug": "restore"
+                  },
+                  "depth": 3
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "spam",
+                    "slug": "spam"
+                  },
+                  "depth": 3
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "update",
+                    "slug": "update"
+                  },
+                  "depth": 3
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "vote",
+                    "slug": "vote"
+                  },
+                  "depth": 3
                 }
               ]
             }, {
@@ -1484,6 +1782,14 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
                     "level": 6,
                     "title": "Imports",
                     "slug": "imports"
+                  },
+                  "depth": 6
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 6,
+                    "title": "Posts",
+                    "slug": "posts"
                   },
                   "depth": 6
                 }, {

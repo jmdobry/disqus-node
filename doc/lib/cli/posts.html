@@ -1,0 +1,387 @@
+<!DOCTYPE html><html lang="en"><head><title>lib/cli/posts</title></head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"><meta name="groc-relative-root" content="../../"><meta name="groc-document-path" content="lib/cli/posts"><meta name="groc-project-path" content="lib/cli/posts.js"><link rel="stylesheet" type="text/css" media="all" href="../../assets/style.css"><script type="text/javascript" src="../../assets/behavior.js"></script><body><div id="meta"><div class="file-path">lib/cli/posts.js</div></div><div id="document"><div class="segment"><div class="comments "><div class="wrapper"><p><a href="/lib/index.html">Up one level</a></p>
+
+<h3 id="posts-cli">Posts CLI</h3>
+
+<p>See the disqus-node <a href="/lib/api/posts.html">Posts API</a>.</p>
+
+<p>See the <a href="https://disqus.com/api/docs/posts/">Posts API on Disqus.com</a>.</p></div></div><div class="code"><div class="wrapper"><span class="kd">var</span> <span class="nx">container</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;../container&#39;</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">Command</span> <span class="o">=</span> <span class="nx">container</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;commander&#39;</span><span class="p">).</span><span class="nx">Command</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">posts</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Command</span><span class="p">(</span><span class="s1">&#39;disqus posts&#39;</span><span class="p">);</span>
+
+<span class="nx">posts</span>
+  <span class="p">.</span><span class="nx">usage</span><span class="p">(</span><span class="s1">&#39;&lt;cmd&gt; [options]&#39;</span><span class="p">);</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><h3 id="approve">approve</h3>
+
+<p>Approves the requested post(s).</p>
+
+<p>Output of <code>disqus posts approve --help</code>:</p>
+
+<pre><code> Usage: disqus posts approve [options]
+
+ Options:
+
+ -h, --help                   output usage information
+ -A, --access_token &lt;string&gt;  Your access token.
+ -H, --https [boolean]        Whether to use https. Defaults to true.
+ -L, --logLevel [string]      Output log level. Choices: debug, info, notice, warning, error, critical, alert, emergency.
+ -p, --post &lt;string&gt;          Looks up a post by ID. You must be a moderator on the selected post's forum.
+ -S, --api_secret &lt;string&gt;    Your application's api_secret.
+</code></pre></div></div><div class="code"><div class="wrapper"><span class="nx">posts</span>
+  <span class="p">.</span><span class="nx">command</span><span class="p">(</span><span class="s1">&#39;approve&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">description</span><span class="p">(</span><span class="s1">&#39;Approves the requested post(s).&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-A, --access_token &lt;string&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;Your access token.&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-H, --https [boolean]&#39;</span><span class="p">,</span> <span class="s1">&#39;Whether to use https. Defaults to true.&#39;</span><span class="p">,</span> <span class="kc">true</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-L, --logLevel [string]&#39;</span><span class="p">,</span> <span class="s1">&#39;Output log level. Choices: debug, info, notice, warning, error, critical, alert, emergency.&#39;</span><span class="p">,</span> <span class="s1">&#39;info&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-p, --post &lt;string&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;Looks up a post by ID. You must be a moderator on the selected post\&#39;s forum.&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-S, --api_secret &lt;string&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;Your application\&#39;s api_secret.&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">action</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">options</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">Disqus</span> <span class="o">=</span> <span class="nx">container</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;Disqus&#39;</span><span class="p">);</span>
+    <span class="k">new</span> <span class="nx">Disqus</span><span class="p">(</span><span class="nx">options</span><span class="p">).</span><span class="nx">posts</span><span class="p">.</span><span class="nx">approve</span><span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="nx">container</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;util&#39;</span><span class="p">).</span><span class="nx">printCliResult</span><span class="p">);</span>
+  <span class="p">});</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><h3 id="create">create</h3>
+
+<p>Creates a new post.</p>
+
+<p>Output of <code>disqus posts create --help</code>:</p>
+
+<pre><code> Usage: disqus posts create [options]
+
+ Options:
+
+ -h, --help                   output usage information
+ -d, --date [string]          Defaults to null. Unix timestamp (or ISO datetime standard).
+ -e, --author_email [string]  Defaults to null. Email address (defined by RFC 5322).
+ -H, --https [boolean]        Whether to use https. Defaults to true.
+ -i, --ip_address [string]    Defaults to null. IP address (defined by RFC 5322).
+ -L, --logLevel [string]      Output log level. Choices: debug, info, notice, warning, error, critical, alert, emergency.
+ -m, --message &lt;string&gt;       The content of the post.
+ -n, --author_name [string]   Defaults to null.
+ -p, --parent_id [string]     Looks up a post by ID.
+ -S, --api_secret &lt;string&gt;    Your application's api_secret.
+ -t, --thread [string]        Looks up a thread by ID.
+</code></pre></div></div><div class="code"><div class="wrapper"><span class="nx">posts</span>
+  <span class="p">.</span><span class="nx">command</span><span class="p">(</span><span class="s1">&#39;create&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">description</span><span class="p">(</span><span class="s1">&#39;Creates a new post.&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-d, --date [string]&#39;</span><span class="p">,</span> <span class="s1">&#39;Defaults to null. Unix timestamp (or ISO datetime standard).&#39;</span><span class="p">,</span> <span class="kc">null</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-e, --author_email [string]&#39;</span><span class="p">,</span> <span class="s1">&#39;Defaults to null. Email address (defined by RFC 5322).&#39;</span><span class="p">,</span> <span class="kc">null</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-H, --https [boolean]&#39;</span><span class="p">,</span> <span class="s1">&#39;Whether to use https. Defaults to true.&#39;</span><span class="p">,</span> <span class="kc">true</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-i, --ip_address [string]&#39;</span><span class="p">,</span> <span class="s1">&#39;Defaults to null. IP address (defined by RFC 5322).&#39;</span><span class="p">,</span> <span class="kc">null</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-L, --logLevel [string]&#39;</span><span class="p">,</span> <span class="s1">&#39;Output log level. Choices: debug, info, notice, warning, error, critical, alert, emergency.&#39;</span><span class="p">,</span> <span class="s1">&#39;info&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-m, --message &lt;string&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;The content of the post.&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-n, --author_name [string]&#39;</span><span class="p">,</span> <span class="s1">&#39;Defaults to null.&#39;</span><span class="p">,</span> <span class="kc">null</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-p, --parent_id [string]&#39;</span><span class="p">,</span> <span class="s1">&#39;Looks up a post by ID.&#39;</span><span class="p">,</span> <span class="kc">null</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-S, --api_secret &lt;string&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;Your application\&#39;s api_secret.&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-t, --thread [string]&#39;</span><span class="p">,</span> <span class="s1">&#39;Looks up a thread by ID.&#39;</span><span class="p">,</span> <span class="kc">null</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">action</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">options</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">Disqus</span> <span class="o">=</span> <span class="nx">container</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;Disqus&#39;</span><span class="p">);</span>
+    <span class="nx">options</span><span class="p">.</span><span class="nx">parent_id</span> <span class="o">=</span> <span class="nx">options</span><span class="p">.</span><span class="nx">parent</span><span class="p">;</span>
+    <span class="k">delete</span> <span class="nx">options</span><span class="p">.</span><span class="nx">parent_id</span><span class="p">;</span>
+    <span class="k">new</span> <span class="nx">Disqus</span><span class="p">(</span><span class="nx">options</span><span class="p">).</span><span class="nx">posts</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="nx">container</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;util&#39;</span><span class="p">).</span><span class="nx">printCliResult</span><span class="p">);</span>
+  <span class="p">});</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><h3 id="details">details</h3>
+
+<p>Returns information about a post.</p>
+
+<p>Output of <code>disqus posts details --help</code>:</p>
+
+<pre><code> Usage: disqus posts details [options]
+
+ Options:
+
+ -h, --help                 output usage information
+ -H, --https [boolean]      Whether to use https. Defaults to true.
+ -L, --logLevel [string]    Output log level. Choices: debug, info, notice, warning, error, critical, alert, emergency.
+ -p, --post &lt;string&gt;        Looks up a post by ID.
+ -r, --related [array]      You may specify relations to include with your response. Choices: forum, thread.
+ -S, --api_secret &lt;string&gt;  Your application's api_secret.
+</code></pre></div></div><div class="code"><div class="wrapper"><span class="nx">posts</span>
+  <span class="p">.</span><span class="nx">command</span><span class="p">(</span><span class="s1">&#39;details&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">description</span><span class="p">(</span><span class="s1">&#39;Returns information about a post.&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-H, --https [boolean]&#39;</span><span class="p">,</span> <span class="s1">&#39;Whether to use https. Defaults to true.&#39;</span><span class="p">,</span> <span class="kc">true</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-L, --logLevel [string]&#39;</span><span class="p">,</span> <span class="s1">&#39;Output log level. Choices: debug, info, notice, warning, error, critical, alert, emergency.&#39;</span><span class="p">,</span> <span class="s1">&#39;info&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-p, --post &lt;string&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;Looks up a post by ID.&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-r, --related [array]&#39;</span><span class="p">,</span> <span class="s1">&#39;You may specify relations to include with your response. Choices: forum, thread.&#39;</span><span class="p">,</span> <span class="p">[])</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-S, --api_secret &lt;string&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;Your application\&#39;s api_secret.&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">action</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">options</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">Disqus</span> <span class="o">=</span> <span class="nx">container</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;Disqus&#39;</span><span class="p">);</span>
+    <span class="k">new</span> <span class="nx">Disqus</span><span class="p">(</span><span class="nx">options</span><span class="p">).</span><span class="nx">posts</span><span class="p">.</span><span class="nx">details</span><span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="nx">container</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;util&#39;</span><span class="p">).</span><span class="nx">printCliResult</span><span class="p">);</span>
+  <span class="p">});</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><h3 id="getcontext">getContext</h3>
+
+<p>Returns the hierarchal tree of a post (all parents).</p>
+
+<p>Output of <code>disqus posts getContext --help</code>:</p>
+
+<pre><code> Usage: disqus posts getContext [options]
+
+ Options:
+
+ -h, --help                 output usage information
+ -H, --https [boolean]      Whether to use https. Defaults to true.
+ -L, --logLevel [string]    Output log level. Choices: debug, info, notice, warning, error, critical, alert, emergency.
+ -p, --post &lt;string&gt;        Looks up a post by ID.
+ -r, --related [array]      You may specify relations to include with your response. Choices: forum, thread.
+ -S, --api_secret &lt;string&gt;  Your application's api_secret.
+</code></pre></div></div><div class="code"><div class="wrapper"><span class="nx">posts</span>
+  <span class="p">.</span><span class="nx">command</span><span class="p">(</span><span class="s1">&#39;getContext&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">description</span><span class="p">(</span><span class="s1">&#39;Returns the hierarchal tree of a post (all parents).&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-d, --depth [number]&#39;</span><span class="p">,</span> <span class="s1">&#39;Defaults to 10. Minimum value of 1. Maximum value of 10.&#39;</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-H, --https [boolean]&#39;</span><span class="p">,</span> <span class="s1">&#39;Whether to use https. Defaults to true.&#39;</span><span class="p">,</span> <span class="kc">true</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-L, --logLevel [string]&#39;</span><span class="p">,</span> <span class="s1">&#39;Output log level. Choices: debug, info, notice, warning, error, critical, alert, emergency.&#39;</span><span class="p">,</span> <span class="s1">&#39;info&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-p, --post &lt;string&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;Looks up a post by ID.&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-r, --related [array]&#39;</span><span class="p">,</span> <span class="s1">&#39;You may specify relations to include with your response. Choices: forum, thread.&#39;</span><span class="p">,</span> <span class="p">[])</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-S, --api_secret &lt;string&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;Your application\&#39;s api_secret.&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">action</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">options</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">Disqus</span> <span class="o">=</span> <span class="nx">container</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;Disqus&#39;</span><span class="p">);</span>
+    <span class="k">new</span> <span class="nx">Disqus</span><span class="p">(</span><span class="nx">options</span><span class="p">).</span><span class="nx">posts</span><span class="p">.</span><span class="nx">getContext</span><span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="nx">container</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;util&#39;</span><span class="p">).</span><span class="nx">printCliResult</span><span class="p">);</span>
+  <span class="p">});</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><h3 id="list">list</h3>
+
+<p>Returns a list of posts ordered by the date created.</p>
+
+<p>Output of <code>disqus posts list --help</code>:</p>
+
+<pre><code> Usage: disqus posts list [options]
+
+ Options:
+
+ -h, --help                 output usage information
+ -c, --category [string]    Defaults to null. Looks up a category by ID.
+ -C, --cursor [string]      Defaults to null.
+ -f, --forum [string]       Defaults to null. Defaults to all forums you moderate. Use :all to retrieve all forums.
+ -H, --https [boolean]      Whether to use https. Defaults to true.
+ -i, --include [array]      Defaults to ["approved"]. Choices: unapproved, approved, spam, deleted, flagged, highlighted.
+ -l, --limit [number]       Defaults to 25. Maximum value of 100.
+ -L, --logLevel [string]    Output log level. Choices: debug, info, notice, warning, error, critical, alert, emergency.
+ -o, --order [string]       Defaults to "desc". Choices: asc, desc.
+ -q, --query [string]       Defaults to null.
+ -r, --related [array]      You may specify relations to include with your response. Choices: forum, thread.
+ -s, --since [string]       Defaults to null. Unix timestamp (or ISO datetime standard).
+ -S, --api_secret &lt;string&gt;  Your application's api_secret.
+ -r, --thread [string]      Defaults to null. Looks up a thread by ID.
+</code></pre></div></div><div class="code"><div class="wrapper"><span class="nx">posts</span>
+  <span class="p">.</span><span class="nx">command</span><span class="p">(</span><span class="s1">&#39;list&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">description</span><span class="p">(</span><span class="s1">&#39;Returns a list of posts ordered by the date created.&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-c, --category [string]&#39;</span><span class="p">,</span> <span class="s1">&#39;Defaults to null. Looks up a category by ID.&#39;</span><span class="p">,</span> <span class="kc">null</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-C, --cursor [string]&#39;</span><span class="p">,</span> <span class="s1">&#39;Defaults to null.&#39;</span><span class="p">,</span> <span class="kc">null</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-f, --forum [string]&#39;</span><span class="p">,</span> <span class="s1">&#39;Defaults to null. Defaults to all forums you moderate. Use :all to retrieve all forums.&#39;</span><span class="p">,</span> <span class="kc">null</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-H, --https [boolean]&#39;</span><span class="p">,</span> <span class="s1">&#39;Whether to use https. Defaults to true.&#39;</span><span class="p">,</span> <span class="kc">true</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-i, --include [array]&#39;</span><span class="p">,</span> <span class="s1">&#39;Defaults to [&quot;approved&quot;]. Choices: unapproved, approved, spam, deleted, flagged, highlighted.&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;approved&#39;</span><span class="p">])</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-l, --limit [number]&#39;</span><span class="p">,</span> <span class="s1">&#39;Defaults to 25. Maximum value of 100.&#39;</span><span class="p">,</span> <span class="mi">25</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-L, --logLevel [string]&#39;</span><span class="p">,</span> <span class="s1">&#39;Output log level. Choices: debug, info, notice, warning, error, critical, alert, emergency.&#39;</span><span class="p">,</span> <span class="s1">&#39;info&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-o, --order [string]&#39;</span><span class="p">,</span> <span class="s1">&#39;Defaults to &quot;desc&quot;. Choices: asc, desc.&#39;</span><span class="p">,</span> <span class="s1">&#39;desc&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-q, --query [string]&#39;</span><span class="p">,</span> <span class="s1">&#39;Defaults to null.&#39;</span><span class="p">,</span> <span class="kc">null</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-r, --related [array]&#39;</span><span class="p">,</span> <span class="s1">&#39;You may specify relations to include with your response. Choices: forum, thread.&#39;</span><span class="p">,</span> <span class="p">[])</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-s, --since [string]&#39;</span><span class="p">,</span> <span class="s1">&#39;Defaults to null. Unix timestamp (or ISO datetime standard).&#39;</span><span class="p">,</span> <span class="kc">null</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-S, --api_secret &lt;string&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;Your application\&#39;s api_secret.&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-r, --thread [string]&#39;</span><span class="p">,</span> <span class="s1">&#39;Defaults to null. Looks up a thread by ID.&#39;</span><span class="p">,</span> <span class="kc">null</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">action</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">options</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">Disqus</span> <span class="o">=</span> <span class="nx">container</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;Disqus&#39;</span><span class="p">);</span>
+    <span class="k">new</span> <span class="nx">Disqus</span><span class="p">(</span><span class="nx">options</span><span class="p">).</span><span class="nx">posts</span><span class="p">.</span><span class="nx">list</span><span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="nx">container</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;util&#39;</span><span class="p">).</span><span class="nx">printCliResult</span><span class="p">);</span>
+  <span class="p">});</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><h3 id="listpopular">listPopular</h3>
+
+<p>Returns a list of posts ordered by the number of likes recently.</p>
+
+<p>Output of <code>disqus posts listPopular --help</code>:</p>
+
+<pre><code> Usage: disqus posts listPopular [options]
+
+ Options:
+
+ -h, --help                 output usage information
+ -c, --category [string]    Defaults to null. Looks up a category by ID.
+ -f, --forum [string]       Defaults to null. Defaults to all forums you moderate. Use :all to retrieve all forums.
+ -H, --https [boolean]      Whether to use https. Defaults to true.
+ -i, --include [array]      Defaults to ["approved"]. Choices: unapproved, approved, spam, deleted, flagged, highlighted.
+ -I, --interval [string]    Defaults to "7d". Choices: 1h, 6h, 12h, 1d, 3d, 7d, 30d, 60d, 90d.
+ -l, --limit [number]       Defaults to 25. Maximum value of 100.
+ -L, --logLevel [string]    Output log level. Choices: debug, info, notice, warning, error, critical, alert, emergency.
+ -o, --order [string]       Defaults to "popular". Choices: popular, best.
+ -O, --offset [number]      Defaults to 0.
+ -q, --query [string]       Defaults to null.
+ -r, --related [array]      You may specify relations to include with your response. Choices: forum, thread.
+ -S, --api_secret &lt;string&gt;  Your application's api_secret.
+ -r, --thread [string]      Defaults to null. Looks up a thread by ID.
+</code></pre></div></div><div class="code"><div class="wrapper"><span class="nx">posts</span>
+  <span class="p">.</span><span class="nx">command</span><span class="p">(</span><span class="s1">&#39;listPopular&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">description</span><span class="p">(</span><span class="s1">&#39;Returns a list of posts ordered by the number of likes recently.&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-c, --category [string]&#39;</span><span class="p">,</span> <span class="s1">&#39;Defaults to null. Looks up a category by ID.&#39;</span><span class="p">,</span> <span class="kc">null</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-f, --forum [string]&#39;</span><span class="p">,</span> <span class="s1">&#39;Defaults to null. Defaults to all forums you moderate. Use :all to retrieve all forums.&#39;</span><span class="p">,</span> <span class="kc">null</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-H, --https [boolean]&#39;</span><span class="p">,</span> <span class="s1">&#39;Whether to use https. Defaults to true.&#39;</span><span class="p">,</span> <span class="kc">true</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-i, --include [array]&#39;</span><span class="p">,</span> <span class="s1">&#39;Defaults to [&quot;approved&quot;]. Choices: unapproved, approved, spam, deleted, flagged, highlighted.&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;approved&#39;</span><span class="p">])</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-I, --interval [string]&#39;</span><span class="p">,</span> <span class="s1">&#39;Defaults to &quot;7d&quot;. Choices: 1h, 6h, 12h, 1d, 3d, 7d, 30d, 60d, 90d.&#39;</span><span class="p">,</span> <span class="s1">&#39;7d&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-l, --limit [number]&#39;</span><span class="p">,</span> <span class="s1">&#39;Defaults to 25. Maximum value of 100.&#39;</span><span class="p">,</span> <span class="mi">25</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-L, --logLevel [string]&#39;</span><span class="p">,</span> <span class="s1">&#39;Output log level. Choices: debug, info, notice, warning, error, critical, alert, emergency.&#39;</span><span class="p">,</span> <span class="s1">&#39;info&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-o, --order [string]&#39;</span><span class="p">,</span> <span class="s1">&#39;Defaults to &quot;popular&quot;. Choices: popular, best.&#39;</span><span class="p">,</span> <span class="s1">&#39;popular&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-O, --offset [number]&#39;</span><span class="p">,</span> <span class="s1">&#39;Defaults to 0.&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-q, --query [string]&#39;</span><span class="p">,</span> <span class="s1">&#39;Defaults to null.&#39;</span><span class="p">,</span> <span class="kc">null</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-r, --related [array]&#39;</span><span class="p">,</span> <span class="s1">&#39;You may specify relations to include with your response. Choices: forum, thread.&#39;</span><span class="p">,</span> <span class="p">[])</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-S, --api_secret &lt;string&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;Your application\&#39;s api_secret.&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-r, --thread [string]&#39;</span><span class="p">,</span> <span class="s1">&#39;Defaults to null. Looks up a thread by ID.&#39;</span><span class="p">,</span> <span class="kc">null</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">action</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">options</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">Disqus</span> <span class="o">=</span> <span class="nx">container</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;Disqus&#39;</span><span class="p">);</span>
+    <span class="k">new</span> <span class="nx">Disqus</span><span class="p">(</span><span class="nx">options</span><span class="p">).</span><span class="nx">posts</span><span class="p">.</span><span class="nx">listPopular</span><span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="nx">container</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;util&#39;</span><span class="p">).</span><span class="nx">printCliResult</span><span class="p">);</span>
+  <span class="p">});</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><h3 id="remove">remove</h3>
+
+<p>Deletes the requested post(s).</p>
+
+<p>Output of <code>disqus posts remove --help</code>:</p>
+
+<pre><code> Usage: disqus posts remove [options]
+
+ Options:
+
+ -h, --help                   output usage information
+ -A, --access_token &lt;string&gt;  Your access token.
+ -H, --https [boolean]        Whether to use https. Defaults to true.
+ -L, --logLevel [string]      Output log level. Choices: debug, info, notice, warning, error, critical, alert, emergency.
+ -p, --post &lt;string&gt;          Looks up a post by ID.
+ -S, --api_secret &lt;string&gt;    Your application's api_secret.
+</code></pre></div></div><div class="code"><div class="wrapper"><span class="nx">posts</span>
+  <span class="p">.</span><span class="nx">command</span><span class="p">(</span><span class="s1">&#39;remove&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">description</span><span class="p">(</span><span class="s1">&#39;Deletes the requested post(s).&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-A, --access_token &lt;string&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;Your access token.&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-H, --https [boolean]&#39;</span><span class="p">,</span> <span class="s1">&#39;Whether to use https. Defaults to true.&#39;</span><span class="p">,</span> <span class="kc">true</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-L, --logLevel [string]&#39;</span><span class="p">,</span> <span class="s1">&#39;Output log level. Choices: debug, info, notice, warning, error, critical, alert, emergency.&#39;</span><span class="p">,</span> <span class="s1">&#39;info&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-p, --post &lt;string&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;Looks up a post by ID.&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-S, --api_secret &lt;string&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;Your application\&#39;s api_secret.&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">action</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">options</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">Disqus</span> <span class="o">=</span> <span class="nx">container</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;Disqus&#39;</span><span class="p">);</span>
+    <span class="k">new</span> <span class="nx">Disqus</span><span class="p">(</span><span class="nx">options</span><span class="p">).</span><span class="nx">posts</span><span class="p">.</span><span class="nx">remove</span><span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="nx">container</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;util&#39;</span><span class="p">).</span><span class="nx">printCliResult</span><span class="p">);</span>
+  <span class="p">});</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><h3 id="restore">restore</h3>
+
+<p>Undeletes the requested post(s).</p>
+
+<p>Output of <code>disqus posts restore --help</code>:</p>
+
+<pre><code> Usage: disqus posts restore [options]
+
+ Options:
+
+ -h, --help                   output usage information
+ -A, --access_token &lt;string&gt;  Your access token.
+ -H, --https [boolean]        Whether to use https. Defaults to true.
+ -L, --logLevel [string]      Output log level. Choices: debug, info, notice, warning, error, critical, alert, emergency.
+ -p, --post &lt;string&gt;          Looks up a post by ID.
+ -S, --api_secret &lt;string&gt;    Your application's api_secret.
+</code></pre></div></div><div class="code"><div class="wrapper"><span class="nx">posts</span>
+  <span class="p">.</span><span class="nx">command</span><span class="p">(</span><span class="s1">&#39;restore&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">description</span><span class="p">(</span><span class="s1">&#39;Undeletes the requested post(s).&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-A, --access_token &lt;string&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;Your access token.&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-H, --https [boolean]&#39;</span><span class="p">,</span> <span class="s1">&#39;Whether to use https. Defaults to true.&#39;</span><span class="p">,</span> <span class="kc">true</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-L, --logLevel [string]&#39;</span><span class="p">,</span> <span class="s1">&#39;Output log level. Choices: debug, info, notice, warning, error, critical, alert, emergency.&#39;</span><span class="p">,</span> <span class="s1">&#39;info&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-p, --post &lt;string&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;Looks up a post by ID.&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-S, --api_secret &lt;string&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;Your application\&#39;s api_secret.&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">action</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">options</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">Disqus</span> <span class="o">=</span> <span class="nx">container</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;Disqus&#39;</span><span class="p">);</span>
+    <span class="k">new</span> <span class="nx">Disqus</span><span class="p">(</span><span class="nx">options</span><span class="p">).</span><span class="nx">posts</span><span class="p">.</span><span class="nx">restore</span><span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="nx">container</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;util&#39;</span><span class="p">).</span><span class="nx">printCliResult</span><span class="p">);</span>
+  <span class="p">});</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><h3 id="restore">restore</h3>
+
+<p>Undeletes the requested post(s).</p>
+
+<p>Output of <code>disqus posts restore --help</code>:</p>
+
+<pre><code> Usage: disqus posts restore [options]
+
+ Options:
+
+ -h, --help                   output usage information
+ -A, --access_token &lt;string&gt;  Your access token.
+ -H, --https [boolean]        Whether to use https. Defaults to true.
+ -L, --logLevel [string]      Output log level. Choices: debug, info, notice, warning, error, critical, alert, emergency.
+ -p, --post &lt;string&gt;          Looks up a post by ID.
+ -S, --api_secret &lt;string&gt;    Your application's api_secret.
+</code></pre></div></div><div class="code"><div class="wrapper"><span class="nx">posts</span>
+  <span class="p">.</span><span class="nx">command</span><span class="p">(</span><span class="s1">&#39;restore&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">description</span><span class="p">(</span><span class="s1">&#39;Undeletes the requested post(s).&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-A, --access_token &lt;string&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;Your access token.&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-H, --https [boolean]&#39;</span><span class="p">,</span> <span class="s1">&#39;Whether to use https. Defaults to true.&#39;</span><span class="p">,</span> <span class="kc">true</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-L, --logLevel [string]&#39;</span><span class="p">,</span> <span class="s1">&#39;Output log level. Choices: debug, info, notice, warning, error, critical, alert, emergency.&#39;</span><span class="p">,</span> <span class="s1">&#39;info&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-p, --post &lt;string&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;Looks up a post by ID.&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-S, --api_secret &lt;string&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;Your application\&#39;s api_secret.&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">action</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">options</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">Disqus</span> <span class="o">=</span> <span class="nx">container</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;Disqus&#39;</span><span class="p">);</span>
+    <span class="k">new</span> <span class="nx">Disqus</span><span class="p">(</span><span class="nx">options</span><span class="p">).</span><span class="nx">posts</span><span class="p">.</span><span class="nx">restore</span><span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="nx">container</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;util&#39;</span><span class="p">).</span><span class="nx">printCliResult</span><span class="p">);</span>
+  <span class="p">});</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><h3 id="spam">spam</h3>
+
+<p>Marks the requested post(s) as spam.</p>
+
+<p>Output of <code>disqus posts spam --help</code>:</p>
+
+<pre><code> Usage: disqus posts spam [options]
+
+ Options:
+
+ -h, --help                   output usage information
+ -A, --access_token &lt;string&gt;  Your access token.
+ -H, --https [boolean]        Whether to use https. Defaults to true.
+ -L, --logLevel [string]      Output log level. Choices: debug, info, notice, warning, error, critical, alert, emergency.
+ -p, --post &lt;string&gt;          Looks up a post by ID. You must be a moderator on the selected post's forum.
+ -S, --api_secret &lt;string&gt;    Your application's api_secret.
+</code></pre></div></div><div class="code"><div class="wrapper"><span class="nx">posts</span>
+  <span class="p">.</span><span class="nx">command</span><span class="p">(</span><span class="s1">&#39;spam&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">description</span><span class="p">(</span><span class="s1">&#39;Marks the requested post(s) as spam.&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-A, --access_token &lt;string&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;Your access token.&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-H, --https [boolean]&#39;</span><span class="p">,</span> <span class="s1">&#39;Whether to use https. Defaults to true.&#39;</span><span class="p">,</span> <span class="kc">true</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-L, --logLevel [string]&#39;</span><span class="p">,</span> <span class="s1">&#39;Output log level. Choices: debug, info, notice, warning, error, critical, alert, emergency.&#39;</span><span class="p">,</span> <span class="s1">&#39;info&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-p, --post &lt;string&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;Looks up a post by ID. You must be a moderator on the selected post\&#39;s forum.&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-S, --api_secret &lt;string&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;Your application\&#39;s api_secret.&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">action</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">options</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">Disqus</span> <span class="o">=</span> <span class="nx">container</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;Disqus&#39;</span><span class="p">);</span>
+    <span class="k">new</span> <span class="nx">Disqus</span><span class="p">(</span><span class="nx">options</span><span class="p">).</span><span class="nx">posts</span><span class="p">.</span><span class="nx">spam</span><span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="nx">container</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;util&#39;</span><span class="p">).</span><span class="nx">printCliResult</span><span class="p">);</span>
+  <span class="p">});</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><h3 id="update">update</h3>
+
+<p>Updates information on a post.</p>
+
+<p>Output of <code>disqus posts update --help</code>:</p>
+
+<pre><code> Usage: disqus posts update [options]
+
+ Options:
+
+ -h, --help                   output usage information
+ -A, --access_token &lt;string&gt;  Your access token.
+ -H, --https [boolean]        Whether to use https. Defaults to true.
+ -L, --logLevel [string]      Output log level. Choices: debug, info, notice, warning, error, critical, alert, emergency.
+ -m, --message &lt;string&gt;       The updated content of the post.
+ -p, --post &lt;string&gt;          Looks up a post by ID. You must be a moderator on the selected post's forum.
+ -S, --api_secret &lt;string&gt;    Your application's api_secret.
+</code></pre></div></div><div class="code"><div class="wrapper"><span class="nx">posts</span>
+  <span class="p">.</span><span class="nx">command</span><span class="p">(</span><span class="s1">&#39;update&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">description</span><span class="p">(</span><span class="s1">&#39;Updates information on a post.&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-A, --access_token &lt;string&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;Your access token.&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-H, --https [boolean]&#39;</span><span class="p">,</span> <span class="s1">&#39;Whether to use https. Defaults to true.&#39;</span><span class="p">,</span> <span class="kc">true</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-L, --logLevel [string]&#39;</span><span class="p">,</span> <span class="s1">&#39;Output log level. Choices: debug, info, notice, warning, error, critical, alert, emergency.&#39;</span><span class="p">,</span> <span class="s1">&#39;info&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-m, --message &lt;string&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;The updated content of the post.&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-p, --post &lt;string&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;Looks up a post by ID. You must be a moderator on the selected post\&#39;s forum.&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-S, --api_secret &lt;string&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;Your application\&#39;s api_secret.&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">action</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">options</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">Disqus</span> <span class="o">=</span> <span class="nx">container</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;Disqus&#39;</span><span class="p">);</span>
+    <span class="k">new</span> <span class="nx">Disqus</span><span class="p">(</span><span class="nx">options</span><span class="p">).</span><span class="nx">posts</span><span class="p">.</span><span class="nx">update</span><span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="nx">container</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;util&#39;</span><span class="p">).</span><span class="nx">printCliResult</span><span class="p">);</span>
+  <span class="p">});</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><h3 id="vote">vote</h3>
+
+<p>Register a vote on a post.</p>
+
+<p>Output of <code>disqus posts vote --help</code>:</p>
+
+<pre><code> Usage: disqus posts vote [options]
+
+ Options:
+
+ -h, --help                   output usage information
+ -A, --access_token &lt;string&gt;  Your access token.
+ -H, --https [boolean]        Whether to use https. Defaults to true.
+ -L, --logLevel [string]      Output log level. Choices: debug, info, notice, warning, error, critical, alert, emergency.
+ -p, --post &lt;string&gt;          Looks up a post by ID. You must be a moderator on the selected post's forum.
+ -S, --api_secret &lt;string&gt;    Your application's api_secret.
+ -v, --vote &lt;string&gt;          Choices: -1, 0, 1.
+</code></pre></div></div><div class="code"><div class="wrapper"><span class="nx">posts</span>
+  <span class="p">.</span><span class="nx">command</span><span class="p">(</span><span class="s1">&#39;vote&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">description</span><span class="p">(</span><span class="s1">&#39;Register a vote on a post.&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-A, --access_token &lt;string&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;Your access token.&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-H, --https [boolean]&#39;</span><span class="p">,</span> <span class="s1">&#39;Whether to use https. Defaults to true.&#39;</span><span class="p">,</span> <span class="kc">true</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-L, --logLevel [string]&#39;</span><span class="p">,</span> <span class="s1">&#39;Output log level. Choices: debug, info, notice, warning, error, critical, alert, emergency.&#39;</span><span class="p">,</span> <span class="s1">&#39;info&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-p, --post &lt;string&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;Looks up a post by ID. You must be a moderator on the selected post\&#39;s forum.&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-S, --api_secret &lt;string&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;Your application\&#39;s api_secret.&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">option</span><span class="p">(</span><span class="s1">&#39;-v, --vote &lt;string&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;Choices: -1, 0, 1.&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">action</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">options</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">Disqus</span> <span class="o">=</span> <span class="nx">container</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;Disqus&#39;</span><span class="p">);</span>
+    <span class="k">new</span> <span class="nx">Disqus</span><span class="p">(</span><span class="nx">options</span><span class="p">).</span><span class="nx">posts</span><span class="p">.</span><span class="nx">vote</span><span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="nx">container</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;util&#39;</span><span class="p">).</span><span class="nx">printCliResult</span><span class="p">);</span>
+  <span class="p">});</span>
+
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="nx">posts</span><span class="p">;</span></div></div></div></div></body></html>

@@ -4,7 +4,7 @@
 
  npm http GET https://registry.npmjs.org/disqus-node
  ...
- disqus-node@0.11.0 usr/local/lib/node_modules/disqus-node
+ disqus-node@0.12.0 usr/local/lib/node_modules/disqus-node
 
  MBP:~ jason$ disqus -h
 
@@ -18,6 +18,7 @@
  exports &lt;cmd&gt; [options] Execute command for the Exports resource.
  forums &lt;cmd&gt; [options] Execute command for the Forums resource.
  imports &lt;cmd&gt; [options] Execute command for the Imports resource.
+ posts &lt;cmd&gt; [options] Execute command for the Posts resource.
  topics &lt;cmd&gt; [options] Execute command for the Topics resource.
  trends &lt;cmd&gt; [options] Execute command for the Trends resource.
  whitelists &lt;cmd&gt; [options] Execute command for the Whitelists resource.
@@ -52,6 +53,25 @@
  Options:
 
  -h, --help  output usage information
+
+ MBP:~ jason$ disqus forums listPosts -h
+
+ Usage: listPosts [options]
+
+ Options:
+
+ -h, --help                 output usage information
+ -c, --cursor [cursor]      Defaults to null,
+ -f, --forum &lt;string&gt;       Looks up a forum by ID (aka short name).
+ -H, --https [boolean]      Whether to use https. Defaults to true.
+ -i, --include [array]      Defaults to ["approved"]. Choices: unapproved, approved, spam, deleted, flagged, highlighted.
+ -l, --limit [number]       Maximum number of posts to return. Maximum value of 100. Defaults to 25.
+ -L, --logLevel [string]    Output log level. Choices: debug, info, notice, warning, error, critical, alert, emergency.
+ -o, --order [string]       Choices: asc, desc. Defaults to "desc".
+ -q, --query [string]       Defaults to null.
+ -r, --related [array]      You may specify relations to include with your response. Choices: thread.
+ -s, --since [string]       Unix timestamp (or ISO datetime standard).
+ -S, --api_secret &lt;string&gt;  Your application's api_secret.
 
  MBP:~ jason$ disqus forums listPosts -f pseudobry -S '1234abcd' -l 3
 
@@ -92,7 +112,11 @@
 
 <p><a href="/lib/api/imports.html">API</a> | <a href="/lib/cli/imports.html">CLI</a> | <a href="https://disqus.com/api/docs/imports/">Disqus</a></p></div></div><div class="code"><div class="wrapper"><span class="nx">disqus</span>
   <span class="p">.</span><span class="nx">command</span><span class="p">(</span><span class="s1">&#39;imports &lt;cmd&gt; [options]&#39;</span><span class="p">)</span>
-  <span class="p">.</span><span class="nx">description</span><span class="p">(</span><span class="s1">&#39;Execute command for the Imports resource.&#39;</span><span class="p">);</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><h6 id="topics">Topics</h6>
+  <span class="p">.</span><span class="nx">description</span><span class="p">(</span><span class="s1">&#39;Execute command for the Imports resource.&#39;</span><span class="p">);</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><h6 id="posts">Posts</h6>
+
+<p><a href="/lib/api/imports.html">API</a> | <a href="/lib/cli/imports.html">CLI</a> | <a href="https://disqus.com/api/docs/imports/">Disqus</a></p></div></div><div class="code"><div class="wrapper"><span class="nx">disqus</span>
+  <span class="p">.</span><span class="nx">command</span><span class="p">(</span><span class="s1">&#39;posts &lt;cmd&gt; [options]&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">description</span><span class="p">(</span><span class="s1">&#39;Execute command for the Posts resource.&#39;</span><span class="p">);</span></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><h6 id="topics">Topics</h6>
 
 <p><a href="/lib/api/topics.html">API</a> | <a href="/lib/cli/topics.html">CLI</a> | <a href="https://disqus.com/api/docs/topics/">Disqus</a></p></div></div><div class="code"><div class="wrapper"><span class="nx">disqus</span>
   <span class="p">.</span><span class="nx">command</span><span class="p">(</span><span class="s1">&#39;topics &lt;cmd&gt; [options]&#39;</span><span class="p">)</span>
@@ -116,6 +140,7 @@
     <span class="k">case</span> <span class="s1">&#39;exports&#39;</span><span class="o">:</span>
     <span class="k">case</span> <span class="s1">&#39;forums&#39;</span><span class="o">:</span>
     <span class="k">case</span> <span class="s1">&#39;imports&#39;</span><span class="o">:</span>
+    <span class="k">case</span> <span class="s1">&#39;posts&#39;</span><span class="o">:</span>
     <span class="k">case</span> <span class="s1">&#39;topics&#39;</span><span class="o">:</span>
     <span class="k">case</span> <span class="s1">&#39;trends&#39;</span><span class="o">:</span>
     <span class="k">case</span> <span class="s1">&#39;whitelists&#39;</span><span class="o">:</span>

@@ -18,7 +18,160 @@
 
 <h2 id="documentation">Documentation</h2>
 
-<p><a href="/lib/index.html">API</a> | <a href="/lib/cli/index.html">CLI</a></p>
+<p><strong><a href="https://disqus.com/api/docs/">Disqus v3.0 API Documentation</a></strong></p>
+
+<p><br/></p>
+
+<h4 id="api-client-library">API Client Library</h4>
+
+<p><strong><a href="/lib/index.html">API Client Library Documentation</a></strong></p>
+
+<pre><code class="js">var Disqus = require('disqus-node');
+
+var disqus = new Disqus({
+  // required
+  api_secret: 'abcdefgh',
+  // required when authentication is required
+  access_token: '12345678',
+  // defaults shown
+  logLevel: 'info',
+  https: true
+});
+
+// promise-style
+disqus.forums.listPosts({
+  forum: 'pseudobry',
+  limit: 3
+}).then(function (response) {
+  response; // {
+                 "cursor": {...},
+                 "code": 0,
+                 "response": [
+                   {...},
+                   {...},
+                   {...}
+                 ]
+               }
+});
+
+// node-style
+disqus.forums.listPosts({
+  forum: 'pseudobry',
+  limit: 3
+}, function (err, response) {
+  response; // {
+                 "cursor": {...},
+                 "code": 0,
+                 "response": [
+                   {...},
+                   {...},
+                   {...}
+                 ]
+               }
+});
+</code></pre>
+
+<p><br/></p>
+
+<h4 id="command-line-interface">Command-line Interface</h4>
+
+<p><strong><a href="/lib/cli/index.html">CLI Documentation</a></strong></p>
+
+<pre><code>$ npm install -g disqus-node
+</code></pre>
+
+<p>CLI available as <code>disqus</code>. <code>disqus</code> has a number of available resources:</p>
+
+<pre><code>$ disqus -h
+
+Usage: disqus &lt;cmd&gt; &lt;subCmd&gt; [options]
+
+Commands:
+
+applications &lt;cmd&gt; [options] Execute command for the Applications resource.
+blacklists &lt;cmd&gt; [options] Execute command for the Blacklists resource.
+categories &lt;cmd&gt; [options] Execute command for the Categories resource.
+exports &lt;cmd&gt; [options] Execute command for the Exports resource.
+forums &lt;cmd&gt; [options] Execute command for the Forums resource.
+imports &lt;cmd&gt; [options] Execute command for the Imports resource.
+posts &lt;cmd&gt; [options] Execute command for the Posts resource.
+topics &lt;cmd&gt; [options] Execute command for the Topics resource.
+trends &lt;cmd&gt; [options] Execute command for the Trends resource.
+whitelists &lt;cmd&gt; [options] Execute command for the Whitelists resource.
+
+Options:
+
+-h, --help     output usage information
+-V, --version  output the version number
+</code></pre>
+
+<p>Each resource has available commands:</p>
+
+<pre><code>$ disqus forums -h
+
+Usage: disqus forums &lt;cmd&gt; [options]
+
+Commands:
+
+addModerator [options]  Adds a moderator to a forum.
+create [options]       Creates a new forum.
+details [options]      Returns forum details.
+follow [options]       Follow a forum.
+installed [options]    Returns true if forum has one or more views.
+listCategories [options]  Returns a list of categories within a forum.
+listFollowers [options]   Returns a list of users following a forum.
+listModerators [options]  Returns a list of all moderators on a forum.
+listMostActiveUsers [options]  Returns a list of users active within a forum ordered by most comments made.
+listMostLikedUsers [options]   Returns a list of users active within a forum ordered by most likes received.
+listPosts [options]     Returns a list of posts within a forum.
+listThreads [options]   Returns a list of threads within a forum sorted by the date created.
+listUsers [options]     Returns a list of users active within a forum.
+removeModerator [options]      Removes a moderator from a forum.
+unfollow [options]      Unfollow a forum.
+
+Options:
+
+-h, --help  output usage information
+</code></pre>
+
+<p><br/></p>
+
+<pre><code>$ disqus forums listPosts -h
+
+Usage: listPosts [options]
+
+Options:
+
+-h, --help                 output usage information
+-c, --cursor [cursor]      Defaults to null,
+-f, --forum &lt;string&gt;       Looks up a forum by ID (aka short name).
+-H, --https [boolean]      Whether to use https. Defaults to true.
+-i, --include [array]      Defaults to ["approved"]. Choices: unapproved, approved, spam, deleted, flagged, highlighted.
+-l, --limit [number]       Maximum number of posts to return. Maximum value of 100. Defaults to 25.
+-L, --logLevel [string]    Output log level. Choices: debug, info, notice, warning, error, critical, alert, emergency.
+-o, --order [string]       Choices: asc, desc. Defaults to "desc".
+-q, --query [string]       Defaults to null.
+-r, --related [array]      You may specify relations to include with your response. Choices: thread.
+-s, --since [string]       Unix timestamp (or ISO datetime standard).
+-S, --api_secret &lt;string&gt;  Your application's api_secret.
+</code></pre>
+
+<p><br/></p>
+
+<pre><code>$ disqus forums listPosts -f pseudobry -S '1234abcd' -l 3
+
+{
+  "cursor": {...},
+  "code": 0,
+  "response": [
+    {...},
+    {...},
+    {...}
+  ]
+}
+</code></pre>
+
+<p><br/></p>
 
 <h2 id="functional">Functional</h2>
 
@@ -29,18 +182,22 @@
 <li>Exports</li>
 <li>Forums</li>
 <li>Imports</li>
+<li>Posts</li>
 <li>Topics</li>
 <li>Trends</li>
 <li>Whitelists</li>
 </ul>
 
+<p><br/></p>
+
 <h2 id="not-yet-implemented">Not Yet Implemented</h2>
 
 <ul>
-<li>Posts</li>
 <li>Threads</li>
 <li>Users</li>
 </ul>
+
+<p><br/></p>
 
 <h2 id="license">License</h2>
 

@@ -136,6 +136,28 @@ Options:
 <br/>
 
 ```
+$ disqus forums listPosts -h
+  
+Usage: listPosts [options]
+  
+Options:
+  
+-h, --help                 output usage information
+-c, --cursor [cursor]      Defaults to null,
+-f, --forum <string>       Looks up a forum by ID (aka short name).
+-H, --https [boolean]      Whether to use https. Defaults to true.
+-i, --include [array]      Defaults to ["approved"]. Choices: unapproved, approved, spam, deleted, flagged, highlighted.
+-l, --limit [number]       Maximum number of posts to return. Maximum value of 100. Defaults to 25.
+-L, --logLevel [string]    Output log level. Choices: debug, info, notice, warning, error, critical, alert, emergency.
+-o, --order [string]       Choices: asc, desc. Defaults to "desc".
+-q, --query [string]       Defaults to null.
+-r, --related [array]      You may specify relations to include with your response. Choices: thread.
+-s, --since [string]       Unix timestamp (or ISO datetime standard).
+-S, --api_secret <string>  Your application's api_secret.
+```
+<br/>
+
+```
 $ disqus forums listPosts -f pseudobry -S '1234abcd' -l 3
 
 {

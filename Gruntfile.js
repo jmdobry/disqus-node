@@ -11,7 +11,7 @@ module.exports = function (grunt) {
 
     watch: {
       dist: {
-        files: ['lib/**/*.js', 'test/**.*.js', 'README.md'],
+        files: ['lib/**/*.js', 'test/**.*.js', 'README.md', 'doc.md'],
         tasks: ['build']
       }
     },

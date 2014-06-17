@@ -1,3 +1,8 @@
+##### 0.12.0 - 16 June 2014
+
+###### Backwards compatible API changes
+- #8 - Implemented Posts
+
 ##### 0.11.0 - 15 June 2014
 
 ###### Breaking API changes

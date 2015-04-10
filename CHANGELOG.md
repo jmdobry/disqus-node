@@ -1,3 +1,8 @@
+##### 0.13.0 - 10 April 2015
+
+###### Backwards compatible API changes
+- #14 - Add users.listPosts - Thanks @jarib 
+
 ##### 0.12.0 - 16 June 2014
 
 ###### Backwards compatible API changes

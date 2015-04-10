@@ -9,6 +9,7 @@ module.exports = function (container) {
     container.register('API.Posts.test', require('./Posts.test'));
     container.register('API.Topics.test', require('./Topics.test'));
     container.register('API.Trends.test', require('./Trends.test'));
+    container.register('API.Users.test', require('./Users.test'));
     container.register('API.Whitelists.test', require('./Whitelists.test'));
 
     describe('Applications', container.get('API.Applications.test'));
@@ -20,6 +21,7 @@ module.exports = function (container) {
     describe('Posts', container.get('API.Posts.test'));
     describe('Topics', container.get('API.Topics.test'));
     describe('Trends', container.get('API.Trends.test'));
+    describe('Users', container.get('API.Users.test'));
     describe('Whitelists', container.get('API.Whitelists.test'));
   };
 };

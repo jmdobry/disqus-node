@@ -38,7 +38,7 @@ module.exports = function (container, assert, sinon) {
           name: 'listPosts',
           method: 'GET',
           requiredOptions: ['api_secret'],
-          availableOptions: ['user', 'user:username']
+          availableOptions: ['since', 'related', 'cursor', 'limit', 'include', 'user', 'user:username']
         }, options, config, cb), 'util.executeApiMethod should have been called with the correct arguments');
       });
 
@@ -49,7 +49,7 @@ module.exports = function (container, assert, sinon) {
           name: 'listPosts',
           method: 'GET',
           requiredOptions: ['api_secret'],
-          availableOptions: ['user', 'user:username']
+          availableOptions: ['since', 'related', 'cursor', 'limit', 'include', 'user', 'user:username']
         }, {'user:username': 'foo'}, config, cb), 'util.executeApiMethod should have been called with the correct arguments');
       });
     });

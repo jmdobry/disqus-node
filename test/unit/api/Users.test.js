@@ -11,9 +11,11 @@ module.exports = function (container, assert, sinon) {
       config = {
         api_secret: '1234'
       };
+
       options = {
-        stuff: 'stuff'
+        user: 123
       };
+
       cb = function () {
       };
 
@@ -38,6 +40,17 @@ module.exports = function (container, assert, sinon) {
           requiredOptions: ['api_secret'],
           availableOptions: ['user', 'user:username']
         }, options, config, cb), 'util.executeApiMethod should have been called with the correct arguments');
+      });
+
+      it('should handle a string user argument', function () {
+        users.listPosts({user: 'foo'}, cb);
+        assert.isTrue(executeApiMethod.calledWithExactly({
+          resource: 'users',
+          name: 'listPosts',
+          method: 'GET',
+          requiredOptions: ['api_secret'],
+          availableOptions: ['user', 'user:username']
+        }, {'user:username': 'foo'}, config, cb), 'util.executeApiMethod should have been called with the correct arguments');
       });
     });
   };

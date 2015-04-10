@@ -26,9 +26,9 @@
 		"describe",
 		"beforeEach",
 		"afterEach",
-		"it"
+		"it",
+		"-Promise"
 	],
-
 
 	"debug": false,
 	"devel": true,
